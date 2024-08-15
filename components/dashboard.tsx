@@ -75,9 +75,15 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+// @ts-expect-error
 const IS_DOM = typeof ReactNativeWebView !== "undefined";
 
-function DOMLink({ navigate, ...props }: { navigate: (href: string) => void }) {
+function DOMLink({
+  navigate,
+  ...props
+}: {
+  navigate: typeof import("expo-router").router["navigate"];
+} & import("expo-router").LinkProps<any>) {
   return (
     <Link
       {...props}
@@ -97,7 +103,7 @@ function DOMLink({ navigate, ...props }: { navigate: (href: string) => void }) {
 export default function Dashboard({
   navigate,
 }: {
-  navigate: (href: string) => void;
+  navigate: typeof import("expo-router").router["navigate"];
 }) {
   return (
     <TooltipProvider>
