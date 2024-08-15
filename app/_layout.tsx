@@ -1,9 +1,9 @@
-import { Stack } from "expo-router";
+import { Stack, Tabs } from "expo-router";
 
 export default function RootLayout() {
   return (
-    <Stack>
+    <Tabs>
       <Stack.Screen name="index" />
-    </Stack>
+    </Tabs>
   );
 }
