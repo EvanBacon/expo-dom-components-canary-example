@@ -1,9 +1,19 @@
-'use dom';
+"use dom";
 
-export default function DomView() {
+export default function MyCounter({
+  index,
+  ...props
+}: {
+  index: number;
+  onPress: () => void;
+  dom?: import("expo/dom").DOMProps;
+}) {
   return (
-    <svg width="200" height="200">
-      <circle cx="100" cy="100" r="80" fill="blue" />
-    </svg>
+    <>
+      <h1>Counter {index}</h1>
+      <button onClick={() => props.onPress()}>
+        Increment from web -{">"} native -{">"} web
+      </button>
+    </>
   );
 }
