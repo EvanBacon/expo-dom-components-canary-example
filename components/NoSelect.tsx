@@ -20,7 +20,6 @@ export function StyleNoSelect() {
             -moz-user-select: none;
             -ms-user-select: none;
         }
-      
       `,
       }}
     />

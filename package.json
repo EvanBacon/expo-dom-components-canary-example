@@ -32,9 +32,6 @@
     "@react-navigation/native": "^6.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "echarts": "^5.5.1",
-    "echarts-for-react": "^3.0.2",
-    "echarts-gl": "^2.0.9",
     "emoji-mart": "^5.6.0",
     "expo": "^52.0.0-canary-20240814-ce0f7d5",
     "expo-constants": "17.0.0-canary-20240814-ce0f7d5",
@@ -61,7 +58,13 @@
     "recharts": "alpha",
     "tailwindcss": "^3.4.10",
     "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+
+    "@react-three/drei": "9.105.6",
+    "@react-three/fiber": "8.16.6",
+    "@types/three": "0.164.0",
+    "three": "0.164.1"
+
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
