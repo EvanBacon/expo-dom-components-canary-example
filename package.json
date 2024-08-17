@@ -15,7 +15,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@bacons/mdx": "^0.3.6",
+    "@bacons/mdx": "^0.3.8",
     "@expo/vector-icons": "^14.0.2",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -51,7 +51,7 @@
     "react-native-screens": "^3.34.0",
     "react-native-web": "~0.19.10",
     "react-native-webview": "13.8.6",
-    "recharts": "^2.12.7",
+    "recharts": "alpha",
     "tailwind": "^4.0.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
