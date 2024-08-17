@@ -30,6 +30,12 @@
     "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@react-navigation/native": "^6.0.2",
+    "@react-three/drei": "9.105.6",
+    "@react-three/fiber": "8.16.6",
+    "@tiptap/core": "^2.6.4",
+    "@tiptap/react": "^2.6.4",
+    "@tiptap/starter-kit": "^2.6.4",
+    "@types/three": "0.164.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "emoji-mart": "^5.6.0",
@@ -56,15 +62,11 @@
     "react-native-web": "~0.19.10",
     "react-native-webview": "13.8.6",
     "recharts": "alpha",
-    "tailwindcss": "^3.4.10",
+    "sass": "^1.77.8",
     "tailwind-merge": "^2.4.0",
+    "tailwindcss": "^3.4.10",
     "tailwindcss-animate": "^1.0.7",
-
-    "@react-three/drei": "9.105.6",
-    "@react-three/fiber": "8.16.6",
-    "@types/three": "0.164.0",
     "three": "0.164.1"
-
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
