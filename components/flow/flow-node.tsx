@@ -1,6 +1,7 @@
 import React, { memo, ReactNode } from "react";
 import { Handle, NodeProps, Position, Node } from "@xyflow/react";
-import { FiCloud } from "react-icons/fi";
+
+import { Route } from "lucide-react";
 
 export type TurboNodeData = {
   title: string;
@@ -13,7 +14,7 @@ export default memo(({ data }: NodeProps<Node<TurboNodeData>>) => {
     <>
       <div className="cloud gradient">
         <div>
-          <FiCloud />
+          <Route width={16} />
         </div>
       </div>
       <div className="wrapper gradient">
