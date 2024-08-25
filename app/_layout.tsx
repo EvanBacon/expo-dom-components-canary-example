@@ -1,12 +1,13 @@
-import { Slot, Tabs } from "expo-router";
+import { Slot } from "expo-router";
+import { Drawer } from "expo-router/drawer";
 
 export default function RootLayout() {
   if (process.env.EXPO_OS === "web") return <Slot />;
 
   return (
-    <Tabs>
-      <Tabs.Screen name="index" options={{ title: "shadcn" }} />
-      <Tabs.Screen name="products" options={{ title: "MDX" }} />
-    </Tabs>
+    <Drawer>
+      <Drawer.Screen name="index" options={{ title: "shadcn" }} />
+      <Drawer.Screen name="products" options={{ title: "MDX" }} />
+    </Drawer>
   );
 }

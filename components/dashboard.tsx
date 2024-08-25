@@ -76,31 +76,38 @@ import {
 } from "@/components/ui/tooltip";
 
 import BasicChart from "./basic-chart";
+import { forwardRef } from "react";
 
 // @ts-expect-error
 const IS_DOM = typeof ReactNativeWebView !== "undefined";
 
-function DOMLink({
-  navigate,
-  ...props
-}: {
-  navigate: typeof import("expo-router").router["navigate"];
-} & import("expo-router").LinkProps<any>) {
-  return (
-    <Link
-      {...props}
-      onPress={
-        IS_DOM
-          ? (e) => {
-              // NOTE: This is a workaround since Expo Router doesn't have DOM Components support yet.
-              e.preventDefault();
-              navigate(props.href);
-            }
-          : undefined
-      }
-    />
-  );
-}
+const DOMLink = forwardRef(
+  (
+    {
+      navigate,
+      ...props
+    }: {
+      navigate: typeof import("expo-router").router["navigate"];
+    } & import("expo-router").LinkProps<any>,
+    ref
+  ) => {
+    return (
+      <Link
+        ref={ref}
+        {...props}
+        onPress={
+          IS_DOM
+            ? (e) => {
+                // NOTE: This is a workaround since Expo Router doesn't have DOM Components support yet.
+                e.preventDefault();
+                navigate(props.href);
+              }
+            : undefined
+        }
+      />
+    );
+  }
+);
 
 export default function Dashboard({
   navigate,
