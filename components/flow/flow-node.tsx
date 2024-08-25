@@ -3,13 +3,13 @@ import { Handle, NodeProps, Position, Node } from "@xyflow/react";
 
 import { Route } from "lucide-react";
 
-export type TurboNodeData = {
+export type CustomFlowNodeData = {
   title: string;
   icon?: ReactNode;
   subline?: string;
 };
 
-export default memo(({ data }: NodeProps<Node<TurboNodeData>>) => {
+export default memo(({ data }: NodeProps<Node<CustomFlowNodeData>>) => {
   return (
     <>
       <div className="cloud gradient">

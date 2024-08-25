@@ -13,10 +13,10 @@ import {
 
 import "@xyflow/react/dist/base.css";
 import "./flow.css";
-import TurboNode, { TurboNodeData } from "./flow-node";
-import TurboEdge from "./flow-edge";
+import CustomFlowNode, { CustomFlowNodeData } from "./flow-node";
+import CustomFlowEdge from "./flow-edge";
 
-const initialNodes: Node<TurboNodeData>[] = [
+const initialNodes: Node<CustomFlowNodeData>[] = [
   {
     id: "1",
     position: { x: 13.921640091116174, y: -99.77175398633258 },
@@ -36,7 +36,7 @@ const initialNodes: Node<TurboNodeData>[] = [
       title: "iOS",
       subline: "Platform",
     },
-    type: "turbo",
+    type: "custom",
   },
   {
     id: "2",
@@ -57,7 +57,7 @@ const initialNodes: Node<TurboNodeData>[] = [
       title: "UIKit",
       subline: "Framework",
     },
-    type: "turbo",
+    type: "custom",
   },
   {
     id: "3",
@@ -78,7 +78,7 @@ const initialNodes: Node<TurboNodeData>[] = [
       title: "Android",
       subline: "Platform",
     },
-    type: "turbo",
+    type: "custom",
   },
   {
     id: "4",
@@ -99,7 +99,7 @@ const initialNodes: Node<TurboNodeData>[] = [
       title: "Android SDK",
       subline: "Framework",
     },
-    type: "turbo",
+    type: "custom",
   },
   {
     id: "5",
@@ -120,7 +120,7 @@ const initialNodes: Node<TurboNodeData>[] = [
       title: "React Native",
       subline: "Renderer",
     },
-    type: "turbo",
+    type: "custom",
   },
   {
     id: "6",
@@ -141,7 +141,7 @@ const initialNodes: Node<TurboNodeData>[] = [
       title: "Expo Router",
       subline: "Framework",
     },
-    type: "turbo",
+    type: "custom",
   },
   {
     id: "7",
@@ -162,7 +162,7 @@ const initialNodes: Node<TurboNodeData>[] = [
       title: "React DOM",
       subline: "Renderer",
     },
-    type: "turbo",
+    type: "custom",
   },
   {
     id: "8",
@@ -183,7 +183,7 @@ const initialNodes: Node<TurboNodeData>[] = [
       title: "HTML/CSS",
       subline: "</>",
     },
-    type: "turbo",
+    type: "custom",
   },
   {
     id: "9",
@@ -204,7 +204,7 @@ const initialNodes: Node<TurboNodeData>[] = [
       title: "Web",
       subline: "Platform",
     },
-    type: "turbo",
+    type: "custom",
   },
 ];
 
@@ -252,15 +252,15 @@ const initialEdges: Edge[] = [
 ];
 
 const nodeTypes = {
-  turbo: TurboNode,
+  custom: CustomFlowNode,
 };
 
 const edgeTypes = {
-  turbo: TurboEdge,
+  custom: CustomFlowEdge,
 };
 
 const defaultEdgeOptions = {
-  type: "turbo",
+  type: "custom",
   markerEnd: "edge-circle",
 };
 
@@ -284,7 +284,7 @@ const Flow = () => {
         nodes={nodes}
         edges={edges}
         onNodesChange={(props) => {
-          console.log(props[0].position);
+          console.log(props[0]);
           onNodesChange(props);
         }}
         onEdgesChange={onEdgesChange}
