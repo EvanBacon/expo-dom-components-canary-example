@@ -264,7 +264,12 @@ const defaultEdgeOptions = {
   markerEnd: "edge-circle",
 };
 
-const Flow = () => {
+const Flow = ({
+  style = {
+    height: "100vh",
+    width: "100%",
+  },
+}) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -274,12 +279,7 @@ const Flow = () => {
   );
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        width: "100%",
-      }}
-    >
+    <div style={style}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
