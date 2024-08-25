@@ -1,4 +1,4 @@
-import SyntaxComponent from "@/components/syntax/syntax";
+import SyntaxComponent from "@/components/syntax";
 import { View } from "react-native";
 
 export default function App() {

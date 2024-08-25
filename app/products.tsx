@@ -1,9 +1,10 @@
 "use dom";
 
-import "../global.css";
+import "@/global.css";
 
 import Story from "@/components/mdx/story.mdx";
 import { getDOMComponents, MDXComponents } from "@bacons/mdx";
+import { Highlight, themes } from "prism-react-renderer";
 
 const webElements = getDOMComponents();
 
@@ -12,7 +13,7 @@ export default function StoryWrapper() {
   const Img = webElements.img;
   // Provide pure DOM elements for the MDX.
   return (
-    <div className="p-4">
+    <div className="p-4 max-w-[100vw]">
       <MDXComponents
         components={{
           // Ensure we use default DOM elements instead of the default universal elements.
@@ -36,19 +37,44 @@ export default function StoryWrapper() {
           pre: (props) => (
             <pre
               {...props}
-              className="bg-gray-800 text-white p-4 rounded-md overflow-auto"
+              className="bg-white text-white p-4 rounded-md overflow-auto"
             />
           ),
-          code: (props) => (
-            <code
-              {...props}
-              className="bg-gray-800 text-white p-1 rounded-md"
-            />
-          ),
+          code: CustomCode,
         }}
       >
         <Story />
       </MDXComponents>
     </div>
+  );
+}
+
+function CustomCode(props: {
+  children: string;
+  // language-ts
+  className: string;
+  // "app.config.ts"
+  metastring: string;
+  // "html.pre"
+  parentName: string;
+}) {
+  return (
+    <Highlight
+      theme={themes.vsLight}
+      code={props.children.trim()}
+      language={props.className.replace(/^language-/, "")}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <pre style={style} className="pr-2">
+          {tokens.map((line, i) => (
+            <div key={i} {...getLineProps({ line })}>
+              {line.map((token, key) => (
+                <span key={key} {...getTokenProps({ token })} />
+              ))}
+            </div>
+          ))}
+        </pre>
+      )}
+    </Highlight>
   );
 }

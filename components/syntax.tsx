@@ -1,13 +1,16 @@
 "use dom";
 
 import { Highlight, themes } from "prism-react-renderer";
+
 import "@/global.css";
+
 export default function SyntaxComponent({
   code,
   language = "tsx",
 }: {
   code: string;
   language?: string;
+  dom?: import("expo/dom").DOMProps;
 }) {
   return (
     <div
