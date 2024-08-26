@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "sdkcanary",
-    "slug": "sdkcanary",
+    "name": "mdex",
+    "slug": "mdex",
     "version": "1.0.0",
-    "sdkVersion": "UNVERSIONED",
     "orientation": "default",
+    "sdkVersion": "UNVERSIONED",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "mdex",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -14,7 +14,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bacon.mdex"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,6 +31,14 @@
     "plugins": ["expo-router", "expo-font"],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "06b3157a-c080-423d-aa6f-7c4fc3346b55"
+      }
     }
   }
 }
