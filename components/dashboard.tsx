@@ -14,7 +14,9 @@ import {
   LineChart,
   ListFilter,
   MoreVertical,
+  Video,
   Package,
+  Type,
   Package2,
   PanelLeft,
   Search,
@@ -152,11 +154,24 @@ export default function Dashboard({
                   href="/products"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
-                  <Package className="h-5 w-5" />
-                  <span className="sr-only">Products</span>
+                  <Type className="h-5 w-5" />
+                  <span className="sr-only">Markdown</span>
                 </DOMLink>
               </TooltipTrigger>
-              <TooltipContent side="right">Products</TooltipContent>
+              <TooltipContent side="right">Markdown</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DOMLink
+                  navigate={navigate}
+                  href="/remotion"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                >
+                  <Video className="h-5 w-5" />
+                  <span className="sr-only">Remotion</span>
+                </DOMLink>
+              </TooltipTrigger>
+              <TooltipContent side="right">Remotion</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
