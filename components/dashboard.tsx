@@ -23,6 +23,11 @@ import {
   Settings,
   Truck,
   Users2,
+  Smile,
+  Code,
+  Box,
+  Crop,
+  Edit3,
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -177,27 +182,79 @@ export default function Dashboard({
               <TooltipTrigger asChild>
                 <DOMLink
                   navigate={navigate}
-                  href="/customers"
+                  href="/emoji-mart"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
-                  <Users2 className="h-5 w-5" />
-                  <span className="sr-only">Customers</span>
+                  <Smile className="h-5 w-5" />
+                  <span className="sr-only">Emoji Mart</span>
                 </DOMLink>
               </TooltipTrigger>
-              <TooltipContent side="right">Customers</TooltipContent>
+              <TooltipContent side="right">Emoji Mart</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
                 <DOMLink
                   navigate={navigate}
-                  href="/analytics"
+                  href="/prism-react-renderer"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
-                  <LineChart className="h-5 w-5" />
-                  <span className="sr-only">Analytics</span>
+                  <Code className="h-5 w-5" />
+                  <span className="sr-only">Prism React Renderer</span>
                 </DOMLink>
               </TooltipTrigger>
-              <TooltipContent side="right">Analytics</TooltipContent>
+              <TooltipContent side="right">Prism React Renderer</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DOMLink
+                  navigate={navigate}
+                  href="/react-flow"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                >
+                  <Box className="h-5 w-5" />
+                  <span className="sr-only">React Flow</span>
+                </DOMLink>
+              </TooltipTrigger>
+              <TooltipContent side="right">React Flow</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DOMLink
+                  navigate={navigate}
+                  href="/react-mobile-cropper"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                >
+                  <Crop className="h-5 w-5" />
+                  <span className="sr-only">React Mobile Cropper</span>
+                </DOMLink>
+              </TooltipTrigger>
+              <TooltipContent side="right">React Mobile Cropper</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DOMLink
+                  navigate={navigate}
+                  href="/react-three-fiber"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                >
+                  <Box className="h-5 w-5" />
+                  <span className="sr-only">React Three Fiber</span>
+                </DOMLink>
+              </TooltipTrigger>
+              <TooltipContent side="right">React Three Fiber</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DOMLink
+                  navigate={navigate}
+                  href="/tiptap"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                >
+                  <Edit3 className="h-5 w-5" />
+                  <span className="sr-only">Tiptap</span>
+                </DOMLink>
+              </TooltipTrigger>
+              <TooltipContent side="right">Tiptap</TooltipContent>
             </Tooltip>
           </nav>
           <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
@@ -248,24 +305,64 @@ export default function Dashboard({
                     href="/products"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
-                    <Package className="h-5 w-5" />
-                    Products
+                    <Type className="h-5 w-5" />
+                    Markdown
                   </DOMLink>
                   <DOMLink
                     navigate={navigate}
-                    href="/customers"
+                    href="/remotion"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
-                    <Users2 className="h-5 w-5" />
-                    Customers
+                    <Video className="h-5 w-5" />
+                    Remotion
                   </DOMLink>
                   <DOMLink
                     navigate={navigate}
-                    href="/settings"
+                    href="/emoji-mart"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
-                    <LineChart className="h-5 w-5" />
-                    Settings
+                    <Smile className="h-5 w-5" />
+                    Emoji Mart
+                  </DOMLink>
+                  <DOMLink
+                    navigate={navigate}
+                    href="/prism-react-renderer"
+                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  >
+                    <Code className="h-5 w-5" />
+                    Prism React Renderer
+                  </DOMLink>
+                  <DOMLink
+                    navigate={navigate}
+                    href="/react-flow"
+                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  >
+                    <Box className="h-5 w-5" />
+                    React Flow
+                  </DOMLink>
+                  <DOMLink
+                    navigate={navigate}
+                    href="/react-mobile-cropper"
+                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  >
+                    <Crop className="h-5 w-5" />
+                    React Mobile Cropper
+                  </DOMLink>
+                  <DOMLink
+                    navigate={navigate}
+                    href="/react-three-fiber"
+                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  >
+                    <Box className="h-5 w-5" />
+                    React Three Fiber
+                  </DOMLink>
+                  <DOMLink
+                    navigate={navigate}
+                    href="/tiptap"
+                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                  >
+                    <Edit3 className="h-5 w-5" />
+                    Tiptap
                   </DOMLink>
                 </nav>
               </SheetContent>
