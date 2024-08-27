@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import Dashboard from "@/components/shad/dashboard";
 import { router } from "expo-router";
 
@@ -7,7 +7,15 @@ import { router } from "expo-router";
 import * as Notifications from "expo-notifications";
 
 export default function Index() {
-  return <Dashboard navigate={router.navigate} notify={notify} />;
+  return (
+    <Dashboard
+      navigate={router.navigate}
+      notify={notify}
+      dom={{
+        contentInsetAdjustmentBehavior: "automatic",
+      }}
+    />
+  );
 }
 
 async function notify() {

@@ -38,6 +38,7 @@ export default function Products({
   navigate,
 }: {
   navigate: typeof import("expo-router").router["navigate"];
+  dom?: import("expo/dom").DOMProps;
 }) {
   return (
     <ShadLayout navigate={navigate}>

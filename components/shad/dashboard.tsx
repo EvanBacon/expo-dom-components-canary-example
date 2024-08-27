@@ -58,6 +58,7 @@ export default function Dashboard({
 }: {
   navigate: typeof import("expo-router").router["navigate"];
   notify: () => void;
+  dom?: import("expo/dom").DOMProps;
 }) {
   return (
     <ShadLayout navigate={navigate}>
