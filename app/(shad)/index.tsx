@@ -1,25 +1,13 @@
 import { View } from "react-native";
-import Dashboard from "@/components/dashboard";
+import Dashboard from "@/components/shad/dashboard";
 import { router } from "expo-router";
 
 // This component is platform-specific.
 
 import * as Notifications from "expo-notifications";
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: true,
-    shouldSetBadge: true,
-  }),
-});
-
 export default function Index() {
-  return (
-    <View style={{ flex: 1 }}>
-      <Dashboard navigate={router.navigate} notify={notify} />
-    </View>
-  );
+  return <Dashboard navigate={router.navigate} notify={notify} />;
 }
 
 async function notify() {
