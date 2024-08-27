@@ -93,3 +93,15 @@ function Shoe(props) {
     </group>
   );
 }
+
+// import { WebView } from "react-native-webview";
+
+// function MyWebComponent() {
+//   return (
+//     <WebView
+//       source={{
+//         uri: "https://reactnative.dev/",
+//       }}
+//     />
+//   );
+// }

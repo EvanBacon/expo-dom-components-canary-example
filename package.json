@@ -1,6 +1,6 @@
 {
   "name": "mdex",
-  "main": "expo-router/entry",
+  "main": "./index",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
@@ -43,7 +43,7 @@
     "expo-font": "13.0.0-canary-20240814-ce0f7d5",
     "expo-haptics": "14.0.0-canary-20240814-ce0f7d5",
     "expo-linking": "7.0.0-canary-20240814-ce0f7d5",
-    "expo-notifications": "^0.28.16",
+    "expo-notifications": "1.0.0-canary-20240814-ce0f7d5",
     "expo-router": "4.0.0-canary-20240814-ce0f7d5",
     "expo-splash-screen": "1.0.0-canary-20240814-ce0f7d5",
     "expo-status-bar": "1.12.2-canary-20240814-ce0f7d5",

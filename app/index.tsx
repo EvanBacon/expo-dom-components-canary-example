@@ -31,6 +31,8 @@ async function notify() {
       title: "New Order",
       body: "(from a DOM component 🚀)",
     },
-    trigger: null,
+    trigger: {
+      seconds: 1,
+    },
   });
 }
