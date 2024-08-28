@@ -1,7 +1,10 @@
-import { Tabs } from "expo-router";
+import { Slot, Tabs } from "expo-router";
 import { House, ShoppingCart, Package, LineChart } from "lucide-react-native";
 
 export default function RootLayout() {
+  // TODO: Add tab bar
+  // if (process.env.EXPO_OS === "web")
+  return <Slot />;
   return (
     <Tabs
       screenOptions={{

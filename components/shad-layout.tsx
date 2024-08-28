@@ -1,7 +1,7 @@
 import "@/global.css";
 
 import { DOMRouterProvider } from "@/lib/router-with-dom";
-import { Header, NavThing } from "@/components/shad-nav";
+import { Header, SideNavigationBar } from "@/components/shad-nav";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import React from "react";
 
@@ -16,13 +16,8 @@ export default function ShadLayout({
   children: React.ReactNode;
 }) {
   if (process.env.EXPO_OS === "web" && !IS_DOM) {
-    return (
-      <>
-        <DOMRouterProvider value={{ navigate }}>
-          <TooltipProvider>{children}</TooltipProvider>
-        </DOMRouterProvider>
-      </>
-    );
+    // In standard web, use a partial layout since the shared elements are in the Layout Route.
+    return <>{children}</>;
   }
 
   return <ShadLayoutFull navigate={navigate} children={children} />;
@@ -41,9 +36,11 @@ export function ShadLayoutFull({
       <DOMRouterProvider value={{ navigate }}>
         <TooltipProvider>
           <div className="flex min-h-screen w-full flex-col bg-muted/40">
-            <NavThing />
+            {!IS_DOM && <SideNavigationBar />}
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
               <Header />
+              {/* TODO: Migrate to native. */}
+              {/* {!IS_DOM && <Header />} */}
 
               <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
                 <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">

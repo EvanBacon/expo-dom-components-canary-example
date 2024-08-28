@@ -33,10 +33,7 @@ import {
   Settings,
   ShoppingCart,
 } from "lucide-react";
-import React, { forwardRef } from "react";
-
-// @ts-expect-error
-const IS_DOM = typeof ReactNativeWebView !== "undefined";
+import React from "react";
 
 import { Link, useSegments } from "@/lib/router-with-dom";
 
@@ -96,11 +93,7 @@ export function SheetTab({
   );
 }
 
-export function NavThing() {
-  if (IS_DOM) {
-    return null;
-  }
-
+export function SideNavigationBar() {
   const [, segment] = useSegments();
 
   return (
@@ -160,8 +153,6 @@ export function NavThing() {
 }
 
 function DrawerSheet() {
-  if (IS_DOM) return null;
-
   const [, segment] = useSegments();
 
   return (
@@ -219,8 +210,6 @@ function DrawerSheet() {
 }
 
 export function Header() {
-  if (IS_DOM) return null;
-
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
       <DrawerSheet />

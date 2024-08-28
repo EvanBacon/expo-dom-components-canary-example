@@ -25,7 +25,9 @@ const titles = {
 };
 
 export default function RootLayout({ segment }: { segment: string }) {
-  if (process.env.EXPO_OS === "web") return <Slot />;
+  // TODO: Add header bar
+  // if (process.env.EXPO_OS === "web")
+  return <Slot />;
 
   const initialScreenName = segment.replace(
     /\((.+)\)/,
