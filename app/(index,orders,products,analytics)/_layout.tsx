@@ -1,7 +1,5 @@
-import { Slot, Stack, Tabs, useSegments } from "expo-router";
-import { Drawer } from "expo-router/drawer";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { Image, View } from "react-native";
+import { Link, Slot, Stack } from "expo-router";
+import { Image, TouchableOpacity } from "react-native";
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -19,27 +17,61 @@ export const unstable_settings = {
   },
 };
 
-export default function RootLayout() {
+const titles = {
+  index: "Dashboard",
+  orders: "Orders",
+  products: "Products",
+  analytics: "Analytics",
+};
+
+export default function RootLayout({ segment }: { segment: string }) {
   if (process.env.EXPO_OS === "web") return <Slot />;
 
+  const initialScreenName = segment.replace(
+    /\((.+)\)/,
+    "$1"
+  ) as keyof typeof titles;
   return (
-    <Stack
-      screenOptions={{
-        headerLargeTitle: true,
-        headerSearchBarOptions: {},
-        headerRight(props) {
-          return (
-            <Image
-              style={{
-                width: 30,
-                aspectRatio: 1,
-                borderRadius: 24,
-              }}
-              source={require("@/public/placeholder-user.jpg")}
-            />
-          );
-        },
-      }}
-    />
+    <Stack>
+      <Stack.Screen
+        name={initialScreenName}
+        options={{
+          title: titles[initialScreenName],
+          headerLargeTitle: true,
+          headerSearchBarOptions: {},
+          headerRight(props) {
+            return (
+              <Link href={`/${segment}/settings`} asChild>
+                <TouchableOpacity
+                  style={{
+                    width: 30,
+                    aspectRatio: 1,
+                    borderRadius: 24,
+                  }}
+                >
+                  <Image
+                    style={{
+                      width: 30,
+                      height: 30,
+                      aspectRatio: 1,
+                      borderRadius: 24,
+                    }}
+                    source={require("@/public/placeholder-user.jpg")}
+                  />
+                </TouchableOpacity>
+              </Link>
+            );
+          },
+        }}
+      />
+      <Stack.Screen
+        name="settings"
+        options={{
+          title: "Settings",
+          presentation: "modal",
+          headerLargeTitle: true,
+        }}
+      />
+    </Stack>
   );
 }

@@ -1,15 +1,11 @@
-import { Slot, Stack, Tabs } from "expo-router";
-import { Drawer } from "expo-router/drawer";
+import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { View } from "react-native";
 
 export default function RootLayout() {
   return (
     <Tabs
       screenOptions={{
-        header(props) {
-          return <View></View>;
-        },
+        headerShown: false,
       }}
     >
       <Tabs.Screen
@@ -30,8 +26,8 @@ export default function RootLayout() {
           },
         }}
       />
-      {/* <Tabs.Screen
-        name="products"
+      <Tabs.Screen
+        name="(products)"
         options={{
           title: "Products",
           tabBarIcon(props) {
@@ -40,7 +36,7 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
-        name="analytics"
+        name="(analytics)"
         options={{
           title: "Analytics",
           tabBarIcon(props) {
@@ -48,15 +44,6 @@ export default function RootLayout() {
           },
         }}
       />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: "Settings",
-          tabBarIcon(props) {
-            return <Ionicons name="settings" {...props} />;
-          },
-        }}
-      /> */}
     </Tabs>
   );
 }

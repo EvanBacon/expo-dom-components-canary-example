@@ -1,9 +1,9 @@
-import ShadProducts from "@/components/shad/products";
+import Products from "@/components/shad/products";
 import { router } from "expo-router";
 
-export default function Products() {
+export default function ProductsRoute() {
   return (
-    <ShadProducts
+    <Products
       navigate={router.navigate}
       dom={{
         contentInsetAdjustmentBehavior: "automatic",
