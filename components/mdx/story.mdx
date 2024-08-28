@@ -8,6 +8,21 @@ In the year 2473, humanity had long since spread beyond Earth, colonizing planet
 
 ---
 
+## Bring to the table
+
+Expo Router brings exciting new features to the table, including:
+
+| Feature            | SDK Release |
+| :----------------- | ----------: |
+| File-based routing |      48.0.0 |
+| CSS Support        |      49.0.0 |
+| Typed Routes       |      49.0.0 |
+| API Routes         |      50.0.0 |
+| Fast Resolver      |      51.0.0 |
+| DOM Components     |      52.0.0 |
+
+Soon, we'll have React Server Components, Server Actions, and more!
+
 ## Best-in-Class
 
 Expo Router enables a best-in-class developer experience by carefully automating and innovating in every inch of the stack.
@@ -30,23 +45,9 @@ export default function MDX() {
 - Create files to define fully linkable navigation.
 - And share across all platforms!
 
-## Run Everywhere
+## Flow Chart
 
-import Three from "@/components/ambient-bulb";
-
-<Three
-  style={{
-    height: "100px",
-  }}
-/>
-
-The same codebase can run on the web, iOS, and Android. This enables you to run wherever your users are, with a single codebase.
-
----
-
-## Incrementally Native
-
-Expo builds on top of truly native primitives and enables you to drop down to each one incrementally on a component-by-component basis.
+Flow charts with `@xyflow/react` (React Flow).
 
 import Flow from "@/components/flow/flow";
 
@@ -56,10 +57,19 @@ import Flow from "@/components/flow/flow";
 
 ## Emoji Picker
 
+Custom emoji picker with `@emoji-mart/react`.
+
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 
 <Picker data={data} />
+
+```typescript
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+
+export default () => <Picker data={data} />;
+```
 
 ## Image Cropper
 
@@ -68,13 +78,29 @@ Image cropping with `react-mobile-cropper`.
 import Cropper from "@/components/mobile-cropper";
 
 <Cropper
-  image={process.env.EXPO_DOM_BASE_URL + "/placeholder-user.jpg"}
+  image={"/placeholder-user.jpg"}
+  style={{
+    height: 300,
+    maxHeight: 300,
+    maxWidth: "100%",
+  }}
   dom={{
     scrollEnabled: false,
     webviewDebuggingEnabled: true,
-    style: {
-      flex: 1,
-    },
+  }}
+/>
+
+---
+
+## 3D Scene
+
+WebGL and 3D with THREE.js.
+
+import Three from "@/components/ambient-bulb";
+
+<Three
+  style={{
+    height: "100px",
   }}
 />
 
@@ -82,14 +108,12 @@ import Cropper from "@/components/mobile-cropper";
 
 ## Rich Text
 
-Image cropping with `react-mobile-cropper`.
+Image cropping with `@tiptap/react`.
 
 import TipTapWrap from "@/components/tiptap-wrap";
 
 <TipTapWrap
   content={`
-      <p>With the History extension the Editor will keep track of your changes. And if you think you made a mistake, you can redo your changes. Try it out, change the content and hit the undo button!</p>
-<p>And yes, you can also use a keyboard shortcut to undo changes (Control/Cmd Z) or redo changes (Control/Cmd Shift Z).</p>
 <p>Wow, this editor has support for links to the whole <a href="https://en.wikipedia.org/wiki/World_Wide_Web">world wide web</a>. We tested a lot of URLs and I think you can add *every URL* you want. Isn’t that cool? Let’s try <a href="https://statamic.com/">another one!</a> Yep, seems to work.</p>
 <p>By default every link will get a <code>rel="noopener noreferrer nofollow"</code> attribute. It’s configurable though.</p>
 <p><strong>This is bold.</strong></p>
@@ -101,18 +125,3 @@ import TipTapWrap from "@/components/tiptap-wrap";
 />
 
 ---
-
-## Bring to the table
-
-Expo Router brings exciting new features to the table, including:
-
-| Feature            | SDK Release |
-| :----------------- | ----------: |
-| File-based routing |      48.0.0 |
-| CSS Support        |      49.0.0 |
-| Typed Routes       |      49.0.0 |
-| API Routes         |      50.0.0 |
-| Fast Resolver      |      51.0.0 |
-| DOM Components     |      52.0.0 |
-
-Soon, we'll have React Server Components, Server Actions, and more!

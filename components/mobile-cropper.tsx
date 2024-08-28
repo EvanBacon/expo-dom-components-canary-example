@@ -1,17 +1,15 @@
 "use dom";
 
 import { CropperRef, Cropper } from "react-mobile-cropper";
-// import "react-mobile-cropper/dist/style.css";
+import "react-mobile-cropper/dist/style.css";
 
 export default function CropPage({
   image,
+  style,
 }: {
   image: string;
+  style?: React.CSSProperties;
   dom?: import("expo/dom").DOMProps;
 }) {
-  const onChange = (cropper: CropperRef) => {
-    console.log(cropper.getCoordinates(), cropper.getCanvas());
-  };
-
-  return <Cropper src={image} onChange={onChange} className={"cropper"} />;
+  return <Cropper style={style} src={image} className="cropper" />;
 }
