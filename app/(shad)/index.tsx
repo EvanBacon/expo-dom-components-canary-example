@@ -18,6 +18,10 @@ export default function Index() {
 }
 
 async function notify() {
+  if (process.env.EXPO_OS === "web") {
+    alert("New Order (from a DOM component 🚀)");
+    return;
+  }
   await Notifications.requestPermissionsAsync();
 
   await Notifications.scheduleNotificationAsync({

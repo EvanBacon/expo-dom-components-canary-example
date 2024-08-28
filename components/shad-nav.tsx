@@ -23,7 +23,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import clsx from "clsx";
-import { Link, useSegments as useNativeSegments } from "expo-router";
 import {
   Home,
   LineChart as LineChartIcon,
@@ -36,35 +35,10 @@ import {
 } from "lucide-react";
 import React, { forwardRef } from "react";
 
-export const DomRouterContext = React.createContext<{
-  navigate?: typeof import("expo-router").router["navigate"];
-}>({});
-
-export const DOMRouterProvider = DomRouterContext.Provider;
-
 // @ts-expect-error
 const IS_DOM = typeof ReactNativeWebView !== "undefined";
 
-export const DOMLink = forwardRef(
-  ({ ...props }: {} & import("expo-router").LinkProps<any>, ref) => {
-    const { navigate } = React.useContext(DomRouterContext);
-    return (
-      <Link
-        ref={ref}
-        {...props}
-        onPress={
-          IS_DOM
-            ? (e) => {
-                // NOTE: This is a workaround since Expo Router doesn't have DOM Components support yet.
-                e.preventDefault();
-                navigate?.(props.href);
-              }
-            : undefined
-        }
-      />
-    );
-  }
-);
+import { Link, useSegments } from "@/lib/router-with-dom";
 
 export function SideBarTab({
   href,
@@ -80,7 +54,7 @@ export function SideBarTab({
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <DOMLink
+        <Link
           href={href}
           className={clsx(
             "flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8",
@@ -90,7 +64,7 @@ export function SideBarTab({
           {icon}
 
           <span className="sr-only">{title}</span>
-        </DOMLink>
+        </Link>
       </TooltipTrigger>
       <TooltipContent side="right">{title}</TooltipContent>
     </Tooltip>
@@ -109,7 +83,7 @@ export function SheetTab({
   icon: React.ReactNode;
 }) {
   return (
-    <DOMLink
+    <Link
       href={href}
       className={clsx(
         "flex items-center gap-4 px-2.5 hover:text-foreground",
@@ -118,34 +92,27 @@ export function SheetTab({
     >
       {icon}
       {title}
-    </DOMLink>
+    </Link>
   );
 }
 
-function useSegments() {
-  if (IS_DOM) {
-    return [];
-  }
-  return useNativeSegments();
-}
-
 export function NavThing() {
-  //   if (IS_DOM) {
-  //     return null;
-  //   }
+  if (IS_DOM) {
+    return null;
+  }
 
   const [, segment] = useSegments();
 
   return (
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
       <nav className="flex flex-col items-center gap-4 px-2 py-4">
-        <DOMLink
+        <Link
           href="/"
           className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
         >
           <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
           <span className="sr-only">Acme Inc</span>
-        </DOMLink>
+        </Link>
 
         <SideBarTab
           href={"/"}
@@ -177,13 +144,13 @@ export function NavThing() {
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <DOMLink
+            <Link
               href="/settings"
               className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
             >
               <Settings className="h-5 w-5" />
               <span className="sr-only">Settings</span>
-            </DOMLink>
+            </Link>
           </TooltipTrigger>
           <TooltipContent side="right">Settings</TooltipContent>
         </Tooltip>
@@ -207,13 +174,13 @@ function DrawerSheet() {
       </SheetTrigger>
       <SheetContent side="left" className="sm:max-w-xs">
         <nav className="grid gap-6 text-lg font-medium">
-          <DOMLink
+          <Link
             href="/"
             className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
           >
             <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
-          </DOMLink>
+          </Link>
 
           <SheetTab
             href="/"
@@ -261,13 +228,13 @@ export function Header() {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <DOMLink href="/">Dashboard</DOMLink>
+              <Link href="/">Dashboard</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <DOMLink href="/products">Products</DOMLink>
+              <Link href="/products">Products</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />

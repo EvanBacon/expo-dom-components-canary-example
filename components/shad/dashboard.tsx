@@ -83,7 +83,7 @@ export default function DashboardRoute({
               </Button>
             </CardFooter>
           </Card>
-          <BasicChart />
+          {/* <BasicChart /> */}
           <Card x-chunk="dashboard-05-chunk-2">
             <CardHeader className="pb-2">
               <CardDescription>This Month</CardDescription>
