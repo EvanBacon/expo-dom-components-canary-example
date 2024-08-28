@@ -49,8 +49,6 @@ import {
   Truck,
 } from "lucide-react";
 
-import BasicChart from "../basic-chart";
-
 export default function DashboardRoute({
   navigate,
   notify,

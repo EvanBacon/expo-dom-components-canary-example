@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { House, ShoppingCart, Package, LineChart } from "lucide-react-native";
 
 export default function RootLayout() {
   return (
@@ -12,36 +12,28 @@ export default function RootLayout() {
         name="(index)"
         options={{
           title: "Dashboard",
-          tabBarIcon(props) {
-            return <Ionicons name="home" {...props} />;
-          },
+          tabBarIcon: (props) => <House {...props} />,
         }}
       />
       <Tabs.Screen
         name="(orders)"
         options={{
           title: "Orders",
-          tabBarIcon(props) {
-            return <Ionicons name="cart" {...props} />;
-          },
+          tabBarIcon: (props) => <ShoppingCart {...props} />,
         }}
       />
       <Tabs.Screen
         name="(products)"
         options={{
           title: "Products",
-          tabBarIcon(props) {
-            return <Ionicons name="gift" {...props} />;
-          },
+          tabBarIcon: (props) => <Package {...props} />,
         }}
       />
       <Tabs.Screen
         name="(analytics)"
         options={{
           title: "Analytics",
-          tabBarIcon(props) {
-            return <Ionicons name="bar-chart" {...props} />;
-          },
+          tabBarIcon: (props) => <LineChart {...props} />,
         }}
       />
     </Tabs>
