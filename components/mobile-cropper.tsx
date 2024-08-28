@@ -1,7 +1,7 @@
 "use dom";
 
 import { CropperRef, Cropper } from "react-mobile-cropper";
-import "react-mobile-cropper/dist/style.css";
+// import "react-mobile-cropper/dist/style.css";
 
 export default function CropPage({
   image,
