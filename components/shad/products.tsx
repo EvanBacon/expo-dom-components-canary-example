@@ -34,7 +34,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import ShadLayout from "../shad-layout";
 
-export default function Products({
+export default function ProductsRoute({
   navigate,
 }: {
   navigate: typeof import("expo-router").router["navigate"];

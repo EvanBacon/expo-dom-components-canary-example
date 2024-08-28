@@ -6,6 +6,7 @@ import * as THREE from "three";
 export default function ThreeThing({
   style,
 }: {
+  style?: React.CSSProperties;
   dom?: import("expo/dom").DOMProps;
 }) {
   const ref = useRef<HTMLDivElement>(null);

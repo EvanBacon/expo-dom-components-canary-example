@@ -269,6 +269,9 @@ const Flow = ({
     height: "100vh",
     width: "100%",
   },
+}: {
+  style?: React.CSSProperties;
+  dom?: import("expo/dom").DOMProps;
 }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);

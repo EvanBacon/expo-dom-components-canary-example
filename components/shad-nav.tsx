@@ -23,7 +23,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import clsx from "clsx";
-import { Link, useSegments } from "expo-router";
+import { Link, useSegments as useNativeSegments } from "expo-router";
 import {
   Home,
   LineChart as LineChartIcon,
@@ -37,12 +37,8 @@ import {
 import React, { forwardRef } from "react";
 
 export const DomRouterContext = React.createContext<{
-  navigate: typeof import("expo-router").router["navigate"];
-}>({
-  navigate: (href: string) => {
-    console.log("Navigate to:", href);
-  },
-});
+  navigate?: typeof import("expo-router").router["navigate"];
+}>({});
 
 export const DOMRouterProvider = DomRouterContext.Provider;
 
@@ -61,7 +57,7 @@ export const DOMLink = forwardRef(
             ? (e) => {
                 // NOTE: This is a workaround since Expo Router doesn't have DOM Components support yet.
                 e.preventDefault();
-                navigate(props.href);
+                navigate?.(props.href);
               }
             : undefined
         }
@@ -76,7 +72,7 @@ export function SideBarTab({
   selected,
   icon,
 }: {
-  href: string;
+  href: import("expo-router").LinkProps<any>["href"];
   title: string;
   selected?: boolean;
   icon: React.ReactNode;
@@ -126,10 +122,17 @@ export function SheetTab({
   );
 }
 
-export function NavThing() {
+function useSegments() {
   if (IS_DOM) {
-    return null;
+    return [];
   }
+  return useNativeSegments();
+}
+
+export function NavThing() {
+  //   if (IS_DOM) {
+  //     return null;
+  //   }
 
   const [, segment] = useSegments();
 

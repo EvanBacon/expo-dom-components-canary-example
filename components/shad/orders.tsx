@@ -32,7 +32,7 @@ import { File, ListFilter, MoreHorizontal, PlusCircle } from "lucide-react";
 
 import ShadLayout from "../shad-layout";
 
-export default function AnalyticsRoute({
+export default function OrdersRoute({
   navigate,
 }: {
   navigate: typeof import("expo-router").router["navigate"];

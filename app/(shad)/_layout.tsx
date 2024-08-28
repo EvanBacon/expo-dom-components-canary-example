@@ -35,7 +35,7 @@ export default function RootLayout() {
         options={{
           title: "Products",
           tabBarIcon(props) {
-            return <Ionicons name="contract" {...props} />;
+            return <Ionicons name="gift" {...props} />;
           },
         }}
       />
@@ -45,6 +45,15 @@ export default function RootLayout() {
           title: "Analytics",
           tabBarIcon(props) {
             return <Ionicons name="bar-chart" {...props} />;
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: "Settings",
+          tabBarIcon(props) {
+            return <Ionicons name="settings" {...props} />;
           },
         }}
       />

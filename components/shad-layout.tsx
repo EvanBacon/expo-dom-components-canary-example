@@ -1,6 +1,7 @@
 import "@/global.css";
 
-import { DOMRouterProvider, Header, NavThing } from "@/components/shad-nav";
+import { DOMRouterProvider } from "@/lib/router-with-dom";
+import { Header, NavThing } from "@/components/shad-nav";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import React from "react";
 

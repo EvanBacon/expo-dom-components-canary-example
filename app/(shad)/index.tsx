@@ -1,4 +1,3 @@
-import { ScrollView, View } from "react-native";
 import Dashboard from "@/components/shad/dashboard";
 import { router } from "expo-router";
 
