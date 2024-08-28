@@ -13,7 +13,7 @@ export default function RootLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="(index)"
         options={{
           title: "Dashboard",
           tabBarIcon(props) {
@@ -22,7 +22,7 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
-        name="orders"
+        name="(orders)"
         options={{
           title: "Orders",
           tabBarIcon(props) {
@@ -30,7 +30,7 @@ export default function RootLayout() {
           },
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="products"
         options={{
           title: "Products",
@@ -56,7 +56,7 @@ export default function RootLayout() {
             return <Ionicons name="settings" {...props} />;
           },
         }}
-      />
+      /> */}
     </Tabs>
   );
 }

@@ -1,5 +1,5 @@
 import Dashboard from "@/components/shad/dashboard";
-import { router } from "expo-router";
+import { router, Stack } from "expo-router";
 
 // This component is platform-specific.
 
@@ -7,13 +7,16 @@ import * as Notifications from "expo-notifications";
 
 export default function Index() {
   return (
-    <Dashboard
-      navigate={router.navigate}
-      notify={notify}
-      dom={{
-        contentInsetAdjustmentBehavior: "automatic",
-      }}
-    />
+    <>
+      <Stack.Screen options={{ title: "Dashboard" }} />
+      <Dashboard
+        navigate={router.navigate}
+        notify={notify}
+        dom={{
+          contentInsetAdjustmentBehavior: "automatic",
+        }}
+      />
+    </>
   );
 }
 
