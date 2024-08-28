@@ -23,7 +23,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import clsx from "clsx";
-import { Link } from "expo-router";
+import { Link, useSegments } from "expo-router";
 import {
   Home,
   LineChart as LineChartIcon,
@@ -101,10 +101,37 @@ export function SideBarTab({
   );
 }
 
+export function SheetTab({
+  href,
+  title,
+  selected,
+  icon,
+}: {
+  href: import("expo-router").LinkProps<any>["href"];
+  title: string;
+  selected?: boolean;
+  icon: React.ReactNode;
+}) {
+  return (
+    <DOMLink
+      href={href}
+      className={clsx(
+        "flex items-center gap-4 px-2.5 hover:text-foreground",
+        selected ? "text-foreground" : "text-muted-foreground"
+      )}
+    >
+      {icon}
+      {title}
+    </DOMLink>
+  );
+}
+
 export function NavThing() {
   if (IS_DOM) {
     return null;
   }
+
+  const [, segment] = useSegments();
 
   return (
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
@@ -121,24 +148,27 @@ export function NavThing() {
           href={"/"}
           title={"Dashboard"}
           icon={<Home className="h-5 w-5" />}
+          selected={!segment}
         />
 
         <SideBarTab
           href="/orders"
           title="Orders"
           icon={<ShoppingCart className="h-5 w-5" />}
+          selected={segment === "orders"}
         />
 
         <SideBarTab
           href="/products"
           title="Products"
           icon={<Package className="h-5 w-5" />}
-          selected
+          selected={segment === "products"}
         />
         <SideBarTab
           href="/analytics"
           title="Analytics"
           icon={<LineChartIcon className="h-5 w-5" />}
+          selected={segment === "analytics"}
         />
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-4">
@@ -160,6 +190,10 @@ export function NavThing() {
 }
 
 function DrawerSheet() {
+  if (IS_DOM) return null;
+
+  const [, segment] = useSegments();
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -177,35 +211,37 @@ function DrawerSheet() {
             <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
           </DOMLink>
-          <DOMLink
-            href="/"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <Home className="h-5 w-5" />
-            Dashboard
-          </DOMLink>
-          <DOMLink
-            href="/orders"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <ShoppingCart className="h-5 w-5" />
-            Orders
-          </DOMLink>
-          <DOMLink
-            href="/products"
-            className="flex items-center gap-4 px-2.5 text-foreground"
-          >
-            <Package className="h-5 w-5" />
-            Products
-          </DOMLink>
 
-          <DOMLink
+          <SheetTab
+            href="/"
+            title="Dashboard"
+            icon={<Home className="h-5 w-5" />}
+            selected={!segment}
+          />
+          <SheetTab
+            href="/orders"
+            title="Orders"
+            icon={<ShoppingCart className="h-5 w-5" />}
+            selected={segment === "orders"}
+          />
+          <SheetTab
+            href="/analytics"
+            title="Analytics"
+            icon={<LineChartIcon className="h-5 w-5" />}
+            selected={segment === "analytics"}
+          />
+          <SheetTab
+            href="/products"
+            title="Products"
+            icon={<Package className="h-5 w-5" />}
+            selected={segment === "products"}
+          />
+          <SheetTab
             href="/settings"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <LineChartIcon className="h-5 w-5" />
-            Settings
-          </DOMLink>
+            title="Settings"
+            icon={<Settings className="h-5 w-5" />}
+            selected={segment === "settings"}
+          />
         </nav>
       </SheetContent>
     </Sheet>
@@ -214,9 +250,10 @@ function DrawerSheet() {
 
 export function Header() {
   if (IS_DOM) return null;
+
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
-      {!IS_DOM && <DrawerSheet />}
+      <DrawerSheet />
       <Breadcrumb className="hidden md:flex">
         <BreadcrumbList>
           <BreadcrumbItem>
