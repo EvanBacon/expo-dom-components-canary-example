@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "mdex",
+    "name": "mdextra",
     "slug": "mdex",
     "version": "1.0.0",
     "orientation": "default",
@@ -15,7 +15,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bacon.mdex"
+      "bundleIdentifier": "com.bacon.mdex",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
