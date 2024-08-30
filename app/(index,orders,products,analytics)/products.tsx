@@ -7,6 +7,7 @@ export default function ProductsRoute() {
       navigate={router.navigate}
       dom={{
         contentInsetAdjustmentBehavior: "automatic",
+        automaticallyAdjustsScrollIndicatorInsets: true,
       }}
     />
   );

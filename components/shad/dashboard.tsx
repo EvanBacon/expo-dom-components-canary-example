@@ -51,9 +51,11 @@ import {
 
 export default function DashboardRoute({
   navigate,
+  haptics,
   notify,
 }: {
   navigate: typeof import("expo-router").router["navigate"];
+  haptics: () => void;
   notify: () => void;
   dom?: import("expo/dom").DOMProps;
 }) {
@@ -116,9 +118,15 @@ export default function DashboardRoute({
         <Tabs defaultValue="week">
           <div className="flex items-center">
             <TabsList>
-              <TabsTrigger value="week">Week</TabsTrigger>
-              <TabsTrigger value="month">Month</TabsTrigger>
-              <TabsTrigger value="year">Year</TabsTrigger>
+              <TabsTrigger onClick={() => haptics()} value="week">
+                Week
+              </TabsTrigger>
+              <TabsTrigger onClick={() => haptics()} value="month">
+                Month
+              </TabsTrigger>
+              <TabsTrigger onClick={() => haptics()} value="year">
+                Year
+              </TabsTrigger>
             </TabsList>
             <div className="ml-auto flex items-center gap-2">
               <DropdownMenu>
@@ -142,7 +150,12 @@ export default function DashboardRoute({
                   <DropdownMenuCheckboxItem>Refunded</DropdownMenuCheckboxItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Button size="sm" variant="outline" className="h-7 gap-1 text-sm">
+              <Button
+                size="sm"
+                variant="outline"
+                className="h-7 gap-1 text-sm"
+                onClick={() => haptics()}
+              >
                 <File className="h-3.5 w-3.5" />
                 <span className="sr-only sm:not-sr-only">Export</span>
               </Button>

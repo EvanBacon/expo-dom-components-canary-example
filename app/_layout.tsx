@@ -1,5 +1,6 @@
 import { Slot, Tabs } from "expo-router";
 import { House, ShoppingCart, Package, LineChart } from "lucide-react-native";
+import * as Haptics from "expo-haptics";
 
 export default function RootLayout() {
   // TODO: Add tab bar
@@ -8,6 +9,12 @@ export default function RootLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarActiveTintColor: "rgb(15, 23, 42)",
+      }}
+      screenListeners={{
+        tabPress: (e) => {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        },
       }}
     >
       <Tabs.Screen

@@ -2,18 +2,13 @@
   "configVersion": 0,
   "apple": {
     "version": "1.0",
+    "copyright": "2024 Evan Bacon",
     "release": {
       "automaticRelease": true
     },
-    "copyright": "2024 Evan Bacon",
     "info": {
       "en-US": {
         "description": "mdextra is a new way to experience content.",
-        "keywords": [
-          
-        ],
-        "releaseNotes": "",
-        "promoText": "",
         "marketingUrl": "hthttps://github.com/EvanBacon/expo-dom-components-canary-example",
         "supportUrl": "https://github.com/EvanBacon/expo-dom-components-canary-example/issues",
         "title": "mdextra",
@@ -22,7 +17,6 @@
         "privacyChoicesUrl": "https://github.com/EvanBacon/expo-dom-components-canary-example/"
       }
     },
-
     "advisory": {
       "alcoholTobaccoOrDrugUseOrReferences": "NONE",
       "contests": "NONE",

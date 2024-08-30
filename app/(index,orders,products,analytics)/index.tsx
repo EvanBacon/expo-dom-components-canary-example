@@ -3,14 +3,19 @@
 import Dashboard from "@/components/shad/dashboard";
 import * as Notifications from "expo-notifications";
 import { router } from "expo-router";
+import * as Haptics from "expo-haptics";
 
 export default function Index() {
   return (
     <Dashboard
       navigate={router.navigate}
       notify={notify}
+      haptics={async () => {
+        await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+      }}
       dom={{
         contentInsetAdjustmentBehavior: "automatic",
+        automaticallyAdjustsScrollIndicatorInsets: true,
       }}
     />
   );
@@ -21,6 +26,7 @@ async function notify() {
     alert("New Order (from a DOM component 🚀)");
     return;
   }
+  await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
   await Notifications.requestPermissionsAsync();
 
   await Notifications.scheduleNotificationAsync({
@@ -29,8 +35,6 @@ async function notify() {
       title: "New Order",
       body: "(from a DOM component 🚀)",
     },
-    trigger: {
-      seconds: 1,
-    },
+    trigger: null,
   });
 }

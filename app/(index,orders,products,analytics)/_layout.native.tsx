@@ -38,8 +38,12 @@ export default function RootLayout({ segment }: { segment: string }) {
         name={initialScreenName}
         options={{
           title: titles[initialScreenName],
-          headerLargeTitle: true,
-          headerSearchBarOptions: {},
+          ...(initialScreenName === "index"
+            ? {
+                headerLargeTitle: true,
+                headerSearchBarOptions: {},
+              }
+            : {}),
           headerRight(props) {
             return (
               // @ts-expect-error
