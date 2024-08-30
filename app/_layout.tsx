@@ -12,7 +12,7 @@ export default function RootLayout() {
         tabBarActiveTintColor: "rgb(15, 23, 42)",
       }}
       screenListeners={{
-        tabPress: (e) => {
+        tabPress: () => {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         },
       }}

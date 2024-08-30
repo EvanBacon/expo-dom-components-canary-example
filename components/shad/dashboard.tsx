@@ -57,6 +57,7 @@ export default function DashboardRoute({
   navigate: typeof import("expo-router").router["navigate"];
   haptics: () => void;
   notify: () => void;
+  ref?: import("react").RefObject<import("react-native-webview").WebView>;
   dom?: import("expo/dom").DOMProps;
 }) {
   return (
