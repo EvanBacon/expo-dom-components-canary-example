@@ -287,7 +287,7 @@ const Flow = ({
         nodes={nodes}
         edges={edges}
         onNodesChange={(props) => {
-          console.log(props[0]);
+          // console.log(props[0]);
           onNodesChange(props);
         }}
         onEdgesChange={onEdgesChange}

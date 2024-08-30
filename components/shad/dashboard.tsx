@@ -1,5 +1,4 @@
 "use dom";
-
 import "@/global.css";
 
 import ShadLayout from "@/components/shad-layout";

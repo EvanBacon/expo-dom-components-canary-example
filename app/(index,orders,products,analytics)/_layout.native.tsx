@@ -1,4 +1,4 @@
-import { Link, Stack } from "expo-router";
+import { Link, Slot, Stack } from "expo-router";
 import { Image } from "react-native";
 import { TouchableImpact } from "@/components/touchable-impact";
 
