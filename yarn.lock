@@ -874,7 +874,7 @@
   dependencies:
     uuid "^8.0.0"
 
-"@expo/cli@0.18.13", "@expo/cli@0.19.0-canary-20240814-ce0f7d5", "@expo/cli@file:./vendor/expo-cli-0.18.13.tgz":
+"@expo/cli@0.18.13", "@expo/cli@file:./vendor/expo-cli-0.18.13.tgz":
   version "0.18.13"
   resolved "file:./vendor/expo-cli-0.18.13.tgz#3100dafc13c6a3228648d6d19ba0f30e4c051e38"
   dependencies:
@@ -1025,17 +1025,6 @@
     tmp "^0.0.33"
     tslib "^2.4.0"
 
-"@expo/env@0.3.1-canary-20240814-ce0f7d5":
-  version "0.3.1-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/@expo/env/-/env-0.3.1-canary-20240814-ce0f7d5.tgz#c606e0eda5d8c301a48538d544643ba6b907cd48"
-  integrity sha512-i4lsfD11gORmvpO44Ie4mVKgqbypQAZpp7I53Nk8WU2+B0bFFOboEei+purD/l+2Qouhm16tc7ZsGfeX/e3Dyg==
-  dependencies:
-    chalk "^4.0.0"
-    debug "^4.3.4"
-    dotenv "~16.4.5"
-    dotenv-expand "~11.0.6"
-    getenv "^1.0.0"
-
 "@expo/env@~0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@expo/env/-/env-0.3.0.tgz#a66064e5656e0e48197525f47f3398034fdf579e"
@@ -1068,7 +1057,7 @@
     temp-dir "~2.0.0"
     unique-string "~2.0.0"
 
-"@expo/image-utils@^0.5.0":
+"@expo/image-utils@^0.5.0", "@expo/image-utils@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@expo/image-utils/-/image-utils-0.5.1.tgz#06fade141facebcd8431355923d30f3839309942"
   integrity sha512-U/GsFfFox88lXULmFJ9Shfl2aQGcwoKPF7fawSCLixIKtMCpsI+1r0h+5i0nQnmt9tHuzXZDL8+Dg1z6OhkI9A==
@@ -1102,7 +1091,7 @@
     json5 "^2.2.2"
     write-file-atomic "^2.3.0"
 
-"@expo/metro-config@0.18.4", "@expo/metro-config@0.19.0-canary-20240814-ce0f7d5", "@expo/metro-config@file:./vendor/expo-metro-config-0.18.4.tgz", "@expo/metro-config@~0.18.0":
+"@expo/metro-config@0.18.4", "@expo/metro-config@file:./vendor/expo-metro-config-0.18.4.tgz", "@expo/metro-config@~0.18.0":
   version "0.18.4"
   resolved "file:./vendor/expo-metro-config-0.18.4.tgz#3cc8348f345091359f793321e5dd5bbd9527b7a7"
   dependencies:
@@ -1173,7 +1162,7 @@
     base64-js "^1.2.3"
     xmlbuilder "^14.0.0"
 
-"@expo/prebuild-config@7.0.9-canary-20240814-ce0f7d5", "@expo/prebuild-config@^7.0.4":
+"@expo/prebuild-config@7.0.4", "@expo/prebuild-config@7.0.9-canary-20240814-ce0f7d5", "@expo/prebuild-config@^7.0.4":
   version "7.0.9-canary-20240814-ce0f7d5"
   resolved "https://registry.yarnpkg.com/@expo/prebuild-config/-/prebuild-config-7.0.9-canary-20240814-ce0f7d5.tgz#9e5f85dad110f71fa609b7d2d3b41bd21b0862a6"
   integrity sha512-kgZkfBBkVBu38O2HfAs5hw8fqGrihr4fDD55+ZIhakbUMfGEnHvZNEskL2T4WB1ud2byOgMtebZWKGZ93z7ZBw==
@@ -3498,7 +3487,7 @@ babel-plugin-transform-flow-enums@^0.0.2:
   dependencies:
     "@babel/plugin-syntax-flow" "^7.12.1"
 
-babel-preset-expo@11.1.0-canary-20240814-ce0f7d5, "babel-preset-expo@file:./vendor/babel-preset-expo-11.0.6.tgz", babel-preset-expo@~11.0.6:
+"babel-preset-expo@file:./vendor/babel-preset-expo-11.0.6.tgz", babel-preset-expo@~11.0.6:
   version "11.0.6"
   resolved "file:./vendor/babel-preset-expo-11.0.6.tgz#2b3ec4791de81f2c851d3c091743248b7816ac33"
   dependencies:
@@ -4908,26 +4897,15 @@ expect@^29.0.0:
     jest-message-util "^29.7.0"
     jest-util "^29.7.0"
 
-expo-application@6.0.0-canary-20240814-ce0f7d5:
-  version "6.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-application/-/expo-application-6.0.0-canary-20240814-ce0f7d5.tgz#c56a1fc4f934918f3d3a9f06f2b049e0b1279199"
-  integrity sha512-mMEQT2wY62N9q4NHyNZ7rLrYatXCb86LhV6Cvl42XPwPCu0NmR/McHHPFAGsqbv1jpZdNt/3puq0XuHRAaWJDQ==
+expo-application@6.0.0-canary-20240814-ce0f7d5, "expo-application@file:./vendor/expo-application.tgz":
+  version "5.9.1"
+  resolved "file:./vendor/expo-application.tgz#bd17b3000164e3e61391ed024b1b2a5f24295844"
 
-expo-asset@11.0.0-canary-20240814-ce0f7d5:
-  version "11.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-11.0.0-canary-20240814-ce0f7d5.tgz#059489934141ba0aa70f5235598e2fa74fe24900"
-  integrity sha512-zuE+vUJDfM69QOT4bXGcHti8Hcmgspeyv7RmUH/r+cdUhZwYlMdWtl+64NOcRaYBSEslM++B8hcRnrV3vEwpbQ==
+"expo-asset@file:./vendor/expo-asset.tgz", expo-asset@~10.0.6:
+  version "10.0.6"
+  resolved "file:./vendor/expo-asset.tgz#8283e5dc4c645a13122bd4937a5db481c3a13309"
   dependencies:
-    "@expo/image-utils" "0.5.2-canary-20240814-ce0f7d5"
-    expo-constants "17.0.0-canary-20240814-ce0f7d5"
-    invariant "^2.2.4"
-    md5-file "^3.2.3"
-
-expo-asset@~10.0.6:
-  version "10.0.10"
-  resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-10.0.10.tgz#9e6e02c1a6ec3d19b50d5e615e4dd8e5cc30e857"
-  integrity sha512-0qoTIihB79k+wGus9wy0JMKq7DdenziVx3iUkGvMAy2azscSgWH6bd2gJ9CGnhC6JRd3qTMFBL0ou/fx7WZl7A==
-  dependencies:
+    "@expo/image-utils" "^0.5.1"
     expo-constants "~16.0.0"
     invariant "^2.2.4"
     md5-file "^3.2.3"
@@ -4950,67 +4928,37 @@ expo-atlas@^0.3.11:
     serve-static "^1.15.0"
     stream-json "^1.8.0"
 
-expo-constants@17.0.0-canary-20240814-ce0f7d5:
-  version "17.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-17.0.0-canary-20240814-ce0f7d5.tgz#fe924f323464a24be03d260269c3dd6436dfe522"
-  integrity sha512-PjAZ2I6z1DREP2JfLGidLT2lGqgPOTpCkar9zLgom6ATM06L0LtorxXfUCV8Bak8A7TaU1PF4+casb0Ry1MTkg==
-  dependencies:
-    "@expo/config" "9.1.0-canary-20240814-ce0f7d5"
-    "@expo/env" "0.3.1-canary-20240814-ce0f7d5"
-
-expo-constants@~16.0.0:
-  version "16.0.2"
-  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-16.0.2.tgz#eb5a1bddb7308fd8cadac8fc44decaf4784cac5e"
-  integrity sha512-9tNY3OVO0jfiMzl7ngb6IOyR5VFzNoN5OOazUWoeGfmMqVB5kltTemRvKraK9JRbBKIw+SOYLEmF0sEqgFZ6OQ==
+expo-constants@17.0.0-canary-20240814-ce0f7d5, "expo-constants@file:./vendor/expo-constants.tgz", expo-constants@~16.0.0:
+  version "16.0.1"
+  resolved "file:./vendor/expo-constants.tgz#380f044cc43f3bb41850a3ef2a79a814ee411e5a"
   dependencies:
     "@expo/config" "~9.0.0"
     "@expo/env" "~0.3.0"
-
-expo-file-system@18.0.0-canary-20240814-ce0f7d5:
-  version "18.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-18.0.0-canary-20240814-ce0f7d5.tgz#f6ac61d72b4b9fb88f826e45f0c1c091932d99a7"
-  integrity sha512-pYmLGPg8fYH5W1rD3KuNQwK8TdKb4E7jh6burmC7vP9nV0kedrhPXUj+RsT5mb3vhv4D3jmSUe/n6vbzTdK0uQ==
 
 expo-file-system@~17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-17.0.1.tgz#b9f8af8c1c06ec71d96fd7a0d2567fa9e1c88f15"
   integrity sha512-dYpnZJqTGj6HCYJyXAgpFkQWsiCH3HY1ek2cFZVHFoEc5tLz9gmdEgTF6nFHurvmvfmXqxi7a5CXyVm0aFYJBw==
 
-expo-font@13.0.0-canary-20240814-ce0f7d5:
-  version "13.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-13.0.0-canary-20240814-ce0f7d5.tgz#217de635557115abede0f3bbc1cbc33df64f39a7"
-  integrity sha512-2R8PKiPBjBXnIKNOYQT9fraBQPy19w6YoJczLoG8pDAc39IQEUyApoRBu2Ko4vSFkYzOfEGDmiCabkNs5mWfVQ==
+"expo-font@file:./vendor/expo-font.tgz", expo-font@~12.0.5:
+  version "12.0.5"
+  resolved "file:./vendor/expo-font.tgz#795f441ed55710042393ade483aff60fdb0ee055"
   dependencies:
     fontfaceobserver "^2.1.0"
 
-expo-font@~12.0.5:
-  version "12.0.9"
-  resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-12.0.9.tgz#096860a6b8b5dd54152262eafd318593ec2db48c"
-  integrity sha512-seTCyf0tbgkAnp3ZI9ZfK9QVtURQUgFnuj+GuJ5TSnN0XsOtVe1s2RxTvmMgkfuvfkzcjJ69gyRpsZS1cC8hjw==
-  dependencies:
-    fontfaceobserver "^2.1.0"
+"expo-haptics@file:./vendor/expo-haptics.tgz":
+  version "13.0.1"
+  resolved "file:./vendor/expo-haptics.tgz#cb18024cb7fbb7c4fbdf1fe78a7da71821852c52"
 
-expo-haptics@14.0.0-canary-20240814-ce0f7d5:
-  version "14.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-haptics/-/expo-haptics-14.0.0-canary-20240814-ce0f7d5.tgz#91d713bf114f11d2afa4363b395ce500d788d564"
-  integrity sha512-Cj849XCx3lpifC2zBVNTrILJX50adkGI52pYx7BbqCMPbLBKUIpxtROBRp2tGIeKwbmdk3EyeMzlDXTElV+B6g==
-
-expo-keep-awake@14.0.0-canary-20240814-ce0f7d5:
-  version "14.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-14.0.0-canary-20240814-ce0f7d5.tgz#a72dcee22dfe13dd48c5b1ee42a03af2b511f443"
-  integrity sha512-ARKMY6fvejHF68jcaQcvAFujGuvEXwGpL6W2kkfQfASAG/vmpmuNUc8Y+shhV4oB3Zd2hxOnR5xT7yq8tkf9Pw==
-
-expo-keep-awake@~13.0.2:
+"expo-keep-awake@file:./vendor/expo-keep-awake.tgz", expo-keep-awake@~13.0.2:
   version "13.0.2"
-  resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-13.0.2.tgz#5ef31311a339671eec9921b934fdd90ab9652b0e"
-  integrity sha512-kKiwkVg/bY0AJ5q1Pxnm/GvpeB6hbNJhcFsoOWDh2NlpibhCLaHL826KHUM+WsnJRbVRxJ+K9vbPRHEMvFpVyw==
+  resolved "file:./vendor/expo-keep-awake.tgz#d04fcfeb94bbeb5eb0153a6d651223d0590c5d83"
 
-expo-linking@7.0.0-canary-20240814-ce0f7d5:
-  version "7.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-linking/-/expo-linking-7.0.0-canary-20240814-ce0f7d5.tgz#b791269f7ae3db4ef5081be4d4bfe80217df95f6"
-  integrity sha512-4cCYaC6dtYZ4nqMG93PoU8dlSIGaAhKXPIdyErpb+2f+V/64oKABENBq22mEWk2NHMR1s+X8KLeuApjimGCE3Q==
+"expo-linking@file:./vendor/expo-linking.tgz":
+  version "6.3.1"
+  resolved "file:./vendor/expo-linking.tgz#588a9d106336685ae12e6f595a1ebb5924a52995"
   dependencies:
-    expo-constants "17.0.0-canary-20240814-ce0f7d5"
+    expo-constants "~16.0.0"
     invariant "^2.2.4"
 
 expo-modules-autolinking@1.11.1:
@@ -5024,20 +4972,7 @@ expo-modules-autolinking@1.11.1:
     find-up "^5.0.0"
     fs-extra "^9.1.0"
 
-expo-modules-autolinking@1.12.0-canary-20240814-ce0f7d5:
-  version "1.12.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-modules-autolinking/-/expo-modules-autolinking-1.12.0-canary-20240814-ce0f7d5.tgz#96142f000e5d6e8df6a5fc13c7af49de8c1ea45a"
-  integrity sha512-n7QY6QVDGsvTXca3FwN9OWREVurBcXUyL+yMGf542FNsjdtUB+AZ95QkOBSOuvmpgD2csxaMpDr7us7Nf9ESaA==
-  dependencies:
-    chalk "^4.1.0"
-    commander "^7.2.0"
-    fast-glob "^3.2.5"
-    find-up "^5.0.0"
-    fs-extra "^9.1.0"
-    require-from-string "^2.0.2"
-    resolve-from "^5.0.0"
-
-expo-modules-core@1.12.11, expo-modules-core@2.0.0-canary-20240814-ce0f7d5, "expo-modules-core@file:./vendor/expo-modules-core-1.12.11.tgz":
+expo-modules-core@1.12.11, "expo-modules-core@file:./vendor/expo-modules-core-1.12.11.tgz":
   version "1.12.11"
   resolved "file:./vendor/expo-modules-core-1.12.11.tgz#952a33105160697d5ebc64390870309634421bf9"
   dependencies:
@@ -5074,12 +5009,11 @@ expo-router@4.0.0-canary-20240814-ce0f7d5:
     schema-utils "^4.0.1"
     server-only "^0.0.1"
 
-expo-splash-screen@1.0.0-canary-20240814-ce0f7d5:
-  version "1.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-1.0.0-canary-20240814-ce0f7d5.tgz#8af67cf5be20b5af07fed10eb9120d5beca264ae"
-  integrity sha512-JyXoRAK6G08VzeLYBktXjGKrxwVmlbxz0QaMO0FD/bPxMEHN2hulaaMZUbr1Zgec61h+LU9e/0GBTpD6WHrxhQ==
+expo-splash-screen@1.0.0-canary-20240814-ce0f7d5, "expo-splash-screen@file:./vendor/expo-splash-screen.tgz":
+  version "0.27.4"
+  resolved "file:./vendor/expo-splash-screen.tgz#ae0e0455095a468847dd234c01f93971b49773a8"
   dependencies:
-    "@expo/prebuild-config" "7.0.9-canary-20240814-ce0f7d5"
+    "@expo/prebuild-config" "7.0.4"
 
 expo-status-bar@1.12.2-canary-20240814-ce0f7d5:
   version "1.12.2-canary-20240814-ce0f7d5"
@@ -5098,28 +5032,6 @@ expo-web-browser@14.0.0-canary-20240814-ce0f7d5:
   version "14.0.0-canary-20240814-ce0f7d5"
   resolved "https://registry.yarnpkg.com/expo-web-browser/-/expo-web-browser-14.0.0-canary-20240814-ce0f7d5.tgz#4936683c394b1f78213c1fa5b7e44400bfc3039b"
   integrity sha512-MEavcLKCREWeutVZdONi5+1wdhB12nF6UifdGYy5o/bSiaI8+sxc24uj0S2dfTLjoG9lJC3OSsocCvU7kRRBcA==
-
-expo@^52.0.0-canary-20240814-ce0f7d5:
-  version "52.0.0-canary-20240814-ce0f7d5"
-  resolved "https://registry.yarnpkg.com/expo/-/expo-52.0.0-canary-20240814-ce0f7d5.tgz#f1a94db0f4feaabd833449ea744bc7a7498f2bee"
-  integrity sha512-k0Vrs6BuMPAYcf025ZwkYkmPovp7jPR+Dw0268sUjpFSP/yEBbfH8CldIbmc3IOcRIq2+CGD6WxV9C0RkHlJ2g==
-  dependencies:
-    "@babel/runtime" "^7.20.0"
-    "@expo/cli" "0.19.0-canary-20240814-ce0f7d5"
-    "@expo/config" "9.1.0-canary-20240814-ce0f7d5"
-    "@expo/config-plugins" "8.0.9-canary-20240814-ce0f7d5"
-    "@expo/metro-config" "0.19.0-canary-20240814-ce0f7d5"
-    "@expo/vector-icons" "^14.0.0"
-    babel-preset-expo "11.1.0-canary-20240814-ce0f7d5"
-    expo-asset "11.0.0-canary-20240814-ce0f7d5"
-    expo-file-system "18.0.0-canary-20240814-ce0f7d5"
-    expo-font "13.0.0-canary-20240814-ce0f7d5"
-    expo-keep-awake "14.0.0-canary-20240814-ce0f7d5"
-    expo-modules-autolinking "1.12.0-canary-20240814-ce0f7d5"
-    expo-modules-core "2.0.0-canary-20240814-ce0f7d5"
-    fbemitter "^3.0.0"
-    web-streams-polyfill "^3.3.2"
-    whatwg-url-without-unicode "8.0.0-3"
 
 "expo@file:./vendor/expo-51.0.8.tgz":
   version "51.0.8"

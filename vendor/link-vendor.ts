@@ -4,32 +4,42 @@ import fs from "fs";
 import path from "path";
 import { $, Glob } from "bun";
 
-const moduleName = process.argv[2];
+const moduleNames = process.argv.slice(2);
 
-if (!moduleName) {
+if (!moduleNames.length) {
   console.error("Please provide a module name");
   process.exit(1);
 }
 
 const packageJson = require("../package.json");
 
-const modulePath = path.resolve(
-  __dirname,
-  `../../../expo/packages/${moduleName}`
-);
+(async () => {
+  console.log(moduleNames);
+  for (const moduleName of moduleNames) {
+    const modulePath = path.resolve(
+      __dirname,
+      `../../../expo/packages/${moduleName}`
+    );
+    console.log(`Linking module: ${moduleName}`);
+    await $`cd ${modulePath} && npm pack`;
 
-$`cd ${modulePath} && npm pack`;
+    const tarball = [...new Glob(`${modulePath}/*.tgz`).scanSync()][0];
 
-const tarball = [...new Glob(`${modulePath}/*.tgz`).scanSync()][0];
+    console.log(`Found tarball: ${tarball}`);
 
-console.log(`Found tarball: ${tarball}`);
+    await fs.promises.copyFile(tarball, `./vendor/${moduleName}.tgz`);
+    // Bun shell exits the process still >:0
+    // Force write even if file exists
+    // await $`cp -f ${tarball} ./vendor/${moduleName}.tgz`;
 
-$`cp ${tarball} ./vendor/${moduleName}.tgz`;
+    console.log(`Writing resolution`);
 
-packageJson.resolutions = packageJson.resolutions || {};
-packageJson.resolutions[moduleName] = `file:./vendor/${moduleName}.tgz`;
+    packageJson.resolutions = packageJson.resolutions || {};
+    packageJson.resolutions[moduleName] = `file:./vendor/${moduleName}.tgz`;
 
-fs.writeFileSync(
-  path.resolve(__dirname, "../package.json"),
-  JSON.stringify(packageJson, null, 2)
-);
+    fs.writeFileSync(
+      path.resolve(__dirname, "../package.json"),
+      JSON.stringify(packageJson, null, 2)
+    );
+  }
+})();
