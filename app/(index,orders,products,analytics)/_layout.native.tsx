@@ -1,5 +1,6 @@
-import { Link, Slot, Stack } from "expo-router";
-import { Image, TouchableOpacity } from "react-native";
+import { Link, Stack } from "expo-router";
+import { Image } from "react-native";
+import { TouchableImpact } from "@/components/touchable-impact";
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -48,11 +49,9 @@ export default function RootLayout({ segment }: { segment: string }) {
             return (
               // @ts-expect-error
               <Link href={`/${segment}/settings`} asChild>
-                <TouchableOpacity
+                <TouchableImpact
                   style={{
-                    width: 30,
                     aspectRatio: 1,
-                    borderRadius: 24,
                   }}
                 >
                   <Image
@@ -64,7 +63,7 @@ export default function RootLayout({ segment }: { segment: string }) {
                     }}
                     source={require("@/public/placeholder-user.jpg")}
                   />
-                </TouchableOpacity>
+                </TouchableImpact>
               </Link>
             );
           },
