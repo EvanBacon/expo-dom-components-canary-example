@@ -10,7 +10,10 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "resourceClass": "large",
+      "prebuildCommand": "npx expo prebuild --template ./vendor/expo-template-bare-minimum-51.0.27.tgz"
+    }
   },
   "submit": {
     "production": {}
