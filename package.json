@@ -85,8 +85,20 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "0.164.1"
   },
+  "resolutions": {
+    "expo": "file:./vendor/expo-51.0.8.tgz",
+    "babel-preset-expo": "file:./vendor/babel-preset-expo-11.0.6.tgz",
+    "@expo/cli": "file:./vendor/expo-cli-0.18.13.tgz",
+    "@expo/metro-config": "file:./vendor/expo-metro-config-0.18.4.tgz",
+    "@expo/config": "file:./vendor/expo-config-9.0.2.tgz",
+    "@expo/metro-runtime": "file:./vendor/expo-metro-runtime-3.2.1.tgz",
+    "@expo/prebuild-config": "7.0.9-canary-20240814-ce0f7d5",
+    "@expo/config-plugins": "8.0.9-canary-20240814-ce0f7d5",
+    "expo-modules-core": "file:./vendor/expo-modules-core-1.12.11.tgz"
+  },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/bun": "^1.1.8",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
     "@types/react-test-renderer": "^18.0.7",
