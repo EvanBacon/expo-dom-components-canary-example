@@ -8,11 +8,12 @@ export default function Settings() {
       <SettingsRoute
         navigate={router.navigate}
         dom={{
+          webviewDebuggingEnabled: true,
           contentInsetAdjustmentBehavior: "automatic",
           automaticallyAdjustsScrollIndicatorInsets: true,
         }}
       />
-      <StatusBar barStyle={"light-content"} />
+      <StatusBar barStyle="light-content" />
     </>
   );
 }

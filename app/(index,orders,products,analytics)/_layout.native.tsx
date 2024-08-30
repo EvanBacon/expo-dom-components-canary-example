@@ -13,9 +13,6 @@ export const unstable_settings = {
   analytics: {
     initialRouteName: "analytics",
   },
-  settings: {
-    initialRouteName: "settings",
-  },
 };
 
 const titles = {

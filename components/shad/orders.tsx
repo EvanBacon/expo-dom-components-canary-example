@@ -161,7 +161,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
@@ -202,7 +202,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
@@ -243,7 +243,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
@@ -284,7 +284,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
@@ -325,7 +325,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src="/placeholder.svg"
+                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
