@@ -3,11 +3,9 @@
   "main": "./index",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "EXPO_UNSTABLE_ATLAS=1 expo start -d",
     "android": "CUSTOM_RUN=1 expo run:android",
     "ios": "CUSTOM_RUN=1 expo run:ios",
-    "web": "expo start --web",
-    "test": "jest --watchAll",
     "lint": "expo lint"
   },
   "dependencies": {
@@ -93,6 +91,7 @@
     "@types/react": "~18.2.45",
     "@types/react-test-renderer": "^18.0.7",
     "autoprefixer": "^10.4.16",
+    "expo-atlas": "^0.3.11",
     "react-test-renderer": "18.2.0",
     "typescript": "~5.3.3"
   },

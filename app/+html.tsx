@@ -22,17 +22,14 @@ export default function Root({ children }: PropsWithChildren) {
 /* These styles make the body full-height */
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 /* These styles make the root element full-height */
 #root {
   display: flex;
-  height: 100%;
   flex: 1;
-}
-    
-    `,
+}`,
           }}
         />
 
