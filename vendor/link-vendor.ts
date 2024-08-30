@@ -16,10 +16,25 @@ const packageJson = require("../package.json");
 (async () => {
   console.log(moduleNames);
   for (const moduleName of moduleNames) {
-    const modulePath = path.resolve(
+    const modulePath = path.join(
       __dirname,
       `../../../expo/packages/${moduleName}`
     );
+    // Update the package.json version to avoid caching
+    const modulePkgPath = path.join(modulePath, "package.json");
+    const version = "1.0.0-pack" + Date.now();
+    await fs.promises.writeFile(
+      modulePkgPath,
+      JSON.stringify(
+        {
+          ...require(modulePkgPath),
+          version,
+        },
+        null,
+        2
+      )
+    );
+
     console.log(`Linking module: ${moduleName}`);
     await $`cd ${modulePath} && npm pack`;
 
@@ -27,7 +42,8 @@ const packageJson = require("../package.json");
 
     console.log(`Found tarball: ${tarball}`);
 
-    const linkedName = moduleName.replace("/", "-").replace("@", "");
+    const linkedName =
+      moduleName.replace("/", "-").replace("@", "") + "-" + version;
     await fs.promises.copyFile(tarball, `./vendor/${linkedName}.tgz`);
     // Bun shell exits the process still >:0
     // Force write even if file exists
@@ -37,6 +53,8 @@ const packageJson = require("../package.json");
 
     packageJson.resolutions = packageJson.resolutions || {};
     packageJson.resolutions[moduleName] = `file:./vendor/${linkedName}.tgz`;
+    packageJson.dependencies = packageJson.dependencies || {};
+    packageJson.dependencies[moduleName] = `file:./vendor/${linkedName}.tgz`;
 
     fs.writeFileSync(
       path.resolve(__dirname, "../package.json"),
