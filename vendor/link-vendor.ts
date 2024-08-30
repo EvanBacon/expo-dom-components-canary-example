@@ -27,7 +27,8 @@ const packageJson = require("../package.json");
 
     console.log(`Found tarball: ${tarball}`);
 
-    await fs.promises.copyFile(tarball, `./vendor/${moduleName}.tgz`);
+    const linkedName = moduleName.replace("/", "-").replace("@", "");
+    await fs.promises.copyFile(tarball, `./vendor/${linkedName}.tgz`);
     // Bun shell exits the process still >:0
     // Force write even if file exists
     // await $`cp -f ${tarball} ./vendor/${moduleName}.tgz`;
@@ -35,7 +36,7 @@ const packageJson = require("../package.json");
     console.log(`Writing resolution`);
 
     packageJson.resolutions = packageJson.resolutions || {};
-    packageJson.resolutions[moduleName] = `file:./vendor/${moduleName}.tgz`;
+    packageJson.resolutions[moduleName] = `file:./vendor/${linkedName}.tgz`;
 
     fs.writeFileSync(
       path.resolve(__dirname, "../package.json"),
