@@ -78,7 +78,7 @@ Image cropping with `react-mobile-cropper`.
 import Cropper from "@/components/mobile-cropper";
 
 <Cropper
-  image={process.env.EXPO_DOM_BASE_URL + "/placeholder-user.jpg"}
+  image={(process.env.EXPO_DOM_BASE_URL || "") + "/placeholder-user.jpg"}
   style={{
     height: 300,
     maxHeight: 300,

@@ -33,6 +33,9 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import ShadLayout from "../shad-layout";
+import { IS_DOM } from "expo/dom";
+
+const baseUrl = IS_DOM ? process.env.EXPO_DOM_BASE_URL : "";
 
 export default function ProductsRoute({
   navigate,
@@ -280,7 +283,7 @@ function ProductContents() {
                   alt="Product image"
                   className="aspect-square w-full rounded-md object-cover"
                   height="300"
-                  src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
+                  src={baseUrl + "/placeholder.svg"}
                   width="300"
                 />
                 <div className="grid grid-cols-3 gap-2">
@@ -289,7 +292,7 @@ function ProductContents() {
                       alt="Product image"
                       className="aspect-square w-full rounded-md object-cover"
                       height="84"
-                      src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
+                      src={baseUrl + "/placeholder.svg"}
                       width="84"
                     />
                   </button>
@@ -298,7 +301,7 @@ function ProductContents() {
                       alt="Product image"
                       className="aspect-square w-full rounded-md object-cover"
                       height="84"
-                      src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
+                      src={baseUrl + "/placeholder.svg"}
                       width="84"
                     />
                   </button>

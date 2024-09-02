@@ -18,6 +18,8 @@ export default function Index() {
       navigate={router.navigate}
       notify={notify}
       haptics={async () => {
+        if (process.env.EXPO_OS === "web") return;
+
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       }}
       dom={{

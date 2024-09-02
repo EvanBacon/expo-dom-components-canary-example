@@ -36,6 +36,9 @@ import {
 import React from "react";
 
 import { Link, useSegments } from "@/lib/router-with-dom";
+import { IS_DOM } from "expo/dom";
+
+const baseUrl = IS_DOM ? process.env.EXPO_DOM_BASE_URL : "";
 
 export function SideBarTab({
   href,
@@ -248,7 +251,7 @@ export function Header() {
             className="overflow-hidden rounded-full"
           >
             <img
-              src={process.env.EXPO_DOM_BASE_URL + "/placeholder-user.jpg"}
+              src={baseUrl + "/placeholder-user.jpg"}
               width={36}
               height={36}
               alt="Avatar"

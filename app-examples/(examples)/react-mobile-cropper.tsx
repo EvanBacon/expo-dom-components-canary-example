@@ -1,5 +1,8 @@
 import Cropper from "@/components/mobile-cropper";
+import { IS_DOM } from "expo/dom";
 import { View } from "react-native";
+
+const baseUrl = IS_DOM ? process.env.EXPO_DOM_BASE_URL : "";
 
 export default function CropPage() {
   return (
@@ -10,7 +13,7 @@ export default function CropPage() {
       }}
     >
       <Cropper
-        image={process.env.EXPO_DOM_BASE_URL + "/placeholder-user.jpg"}
+        image={baseUrl + "/placeholder-user.jpg"}
         dom={{
           scrollEnabled: false,
           webviewDebuggingEnabled: true,

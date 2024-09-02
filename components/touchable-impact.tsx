@@ -13,7 +13,7 @@ export const TouchableImpact = React.forwardRef<
       ref={ref}
       activeOpacity={0.8}
       onPressIn={(...props) => {
-        if (impact) {
+        if (impact && process.env.EXPO_OS !== "web") {
           Haptics.impactAsync(
             impact === true ? Haptics.ImpactFeedbackStyle.Light : impact
           );
@@ -21,7 +21,7 @@ export const TouchableImpact = React.forwardRef<
         onPressIn?.(...props);
       }}
       onPress={(...props) => {
-        if (impact) {
+        if (impact && process.env.EXPO_OS !== "web") {
           Haptics.impactAsync(
             impact === true ? Haptics.ImpactFeedbackStyle.Light : impact
           );

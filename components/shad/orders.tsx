@@ -31,6 +31,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { File, ListFilter, MoreHorizontal, PlusCircle } from "lucide-react";
 
 import ShadLayout from "../shad-layout";
+import { IS_DOM } from "expo/dom";
+
+const baseUrl = IS_DOM ? process.env.EXPO_DOM_BASE_URL : "";
 
 export default function OrdersRoute({
   navigate,
@@ -161,7 +164,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
+                        src={baseUrl + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
@@ -202,7 +205,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
+                        src={baseUrl + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
@@ -243,7 +246,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
+                        src={baseUrl + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
@@ -284,7 +287,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
+                        src={baseUrl + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
@@ -325,7 +328,7 @@ export default function OrdersRoute({
                         alt="Product image"
                         className="aspect-square rounded-md object-cover"
                         height="64"
-                        src={process.env.EXPO_DOM_BASE_URL + "/placeholder.svg"}
+                        src={baseUrl + "/placeholder.svg"}
                         width="64"
                       />
                     </TableCell>
