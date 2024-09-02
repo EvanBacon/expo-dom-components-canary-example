@@ -1,12 +1,9 @@
 import Products from "@/components/shad/products";
 import { router } from "expo-router";
-import { useScrollToTop } from "@/lib/tab-to-top";
-import { useRef } from "react";
+import { useScrollRef } from "@/lib/tab-to-top";
 
 export default function ProductsRoute() {
-  const ref = useRef(null);
-
-  useScrollToTop(ref);
+  const ref = useScrollRef();
 
   return (
     <Products

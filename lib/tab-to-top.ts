@@ -127,3 +127,15 @@ export function useScrollToTop(
     };
   }, [navigation, ref, offset, route.key]);
 }
+
+export function useScrollRef() {
+  if (process.env.EXPO_OS === "web") {
+    return undefined;
+  }
+
+  const ref = React.useRef(null);
+
+  useScrollToTop(ref);
+
+  return ref;
+}

@@ -1,13 +1,9 @@
 import Orders from "@/components/shad/orders";
 import { router } from "expo-router";
-import { useScrollToTop } from "@/lib/tab-to-top";
-import { useRef } from "react";
+import { useScrollRef } from "@/lib/tab-to-top";
 
 export default function OrdersRoute() {
-  const ref = useRef(null);
-
-  useScrollToTop(ref);
-
+  const ref = useScrollRef();
   return (
     <Orders
       // @ts-expect-error

@@ -5,12 +5,10 @@ import * as Notifications from "expo-notifications";
 import { router } from "expo-router";
 import * as Haptics from "expo-haptics";
 import React from "react";
-import { useScrollToTop } from "@/lib/tab-to-top";
+import { useScrollRef } from "@/lib/tab-to-top";
 
 export default function Index() {
-  const ref = React.useRef(null);
-
-  useScrollToTop(ref);
+  const ref = useScrollRef();
 
   return (
     <Dashboard
