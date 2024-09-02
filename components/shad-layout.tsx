@@ -11,28 +11,34 @@ import { IS_DOM } from "expo/dom";
 export default function ShadLayout({
   navigate,
   children,
+  select,
 }: {
   navigate: typeof import("expo-router").router["navigate"];
   children: React.ReactNode;
+  select?: boolean;
 }) {
   if (process.env.EXPO_OS === "web" && !IS_DOM) {
     // In standard web, use a partial layout since the shared elements are in the Layout Route.
     return <>{children}</>;
   }
 
-  return <ShadLayoutFull navigate={navigate} children={children} />;
+  return (
+    <ShadLayoutFull select={select} navigate={navigate} children={children} />
+  );
 }
 
 export function ShadLayoutFull({
   navigate,
   children,
+  select,
 }: {
   navigate: typeof import("expo-router").router["navigate"];
   children: React.ReactNode;
+  select?: boolean;
 }) {
   return (
     <>
-      <StyleNoSelect />
+      {!select && <StyleNoSelect />}
       <DOMRouterProvider value={{ navigate }}>
         <TooltipProvider>
           <div className="flex min-h-screen w-full flex-col bg-muted/40">
