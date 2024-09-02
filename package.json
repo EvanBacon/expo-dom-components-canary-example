@@ -94,8 +94,7 @@
     "tailwind-merge": "^2.4.0",
     "tailwindcss": "^3.4.10",
     "tailwindcss-animate": "^1.0.7",
-    "three": "0.164.1",
-    "expo-quick-actions": "^2.0.0"
+    "three": "0.164.1"
   },
   "resolutions": {
     "expo": "file:./vendor/expo-1.0.0-pack625718115551.tgz",
