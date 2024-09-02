@@ -58,7 +58,7 @@ export default function RootLayout({ segment }: { segment: string }) {
                       aspectRatio: 1,
                       borderRadius: 24,
                     }}
-                    source={require("@/public/placeholder-user.jpg")}
+                    source={require("@/public/evanbacon.jpg")}
                   />
                 </TouchableImpact>
               </Link>

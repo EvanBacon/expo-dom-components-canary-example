@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "mdextra",
+    "name": "domcom",
     "slug": "mdex",
     "version": "1.0.0",
     "orientation": "default",
 
     "icon": "./assets/images/icon.png",
-    "scheme": "mdex",
+    "scheme": "domcom",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/images/splash.png",
