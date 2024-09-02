@@ -1,11 +1,11 @@
 import "@/global.css";
 
 import { DOMRouterProvider } from "@/lib/router-with-dom";
-import { Header, SideNavigationBar } from "@/components/shad-nav";
+import { Header, SideNavigationBar } from "@/components/shad/shad-nav";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import React from "react";
 
-import { StyleNoSelect } from "./NoSelect";
+import { StyleNoSelect } from "../NoSelect";
 import { IS_DOM } from "expo/dom";
 
 export default function ShadLayout({

@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/chart";
 import { Separator } from "@/components/ui/separator";
 
-import ShadLayout from "../shad-layout";
+import ShadLayout from "./shad-layout";
 
 export default function AnalyticsRoute({
   navigate,

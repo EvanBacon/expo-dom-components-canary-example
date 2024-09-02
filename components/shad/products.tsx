@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import ShadLayout from "../shad-layout";
+import ShadLayout from "./shad-layout";
 import { IS_DOM } from "expo/dom";
 
 const baseUrl = IS_DOM ? process.env.EXPO_DOM_BASE_URL : "";

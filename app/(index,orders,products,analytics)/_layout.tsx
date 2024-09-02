@@ -1,4 +1,4 @@
-import { ShadLayoutFull } from "@/components/shad-layout";
+import { ShadLayoutFull } from "@/components/shad/shad-layout";
 import { router, Slot } from "expo-router";
 
 export default function RootLayout() {

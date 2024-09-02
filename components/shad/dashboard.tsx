@@ -1,7 +1,7 @@
 "use dom";
 import "@/global.css";
 
-import ShadLayout from "@/components/shad-layout";
+import ShadLayout from "@/components/shad/shad-layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {

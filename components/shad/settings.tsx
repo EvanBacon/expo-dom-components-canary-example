@@ -1,6 +1,6 @@
 "use dom";
 
-import ShadLayout from "../shad-layout";
+import ShadLayout from "./shad-layout";
 import StoryWrapper from "../mdx/mdx-route";
 
 export default function SettingsRoute({

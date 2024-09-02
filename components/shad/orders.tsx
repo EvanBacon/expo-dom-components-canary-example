@@ -30,7 +30,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { File, ListFilter, MoreHorizontal, PlusCircle } from "lucide-react";
 
-import ShadLayout from "../shad-layout";
+import ShadLayout from "./shad-layout";
 import { IS_DOM } from "expo/dom";
 
 const baseUrl = IS_DOM ? process.env.EXPO_DOM_BASE_URL : "";
