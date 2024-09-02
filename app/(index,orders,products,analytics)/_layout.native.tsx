@@ -31,7 +31,13 @@ export default function RootLayout({ segment }: { segment: string }) {
     "$1"
   ) as keyof typeof titles;
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: "#FAFBFC",
+        },
+      }}
+    >
       <Stack.Screen
         name={initialScreenName}
         options={{

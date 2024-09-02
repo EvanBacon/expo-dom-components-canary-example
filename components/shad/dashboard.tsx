@@ -96,8 +96,15 @@ export default function DashboardRoute({
                   +10% from last month
                 </div>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="gap-2">
                 <Progress value={12} aria-label="12% increase" />
+                <Button
+                  onClick={() => {
+                    navigate("/analytics");
+                  }}
+                >
+                  See More
+                </Button>
               </CardFooter>
             </Card>
 
