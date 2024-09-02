@@ -4,6 +4,7 @@
     "slug": "mdex",
     "version": "1.0.0",
     "orientation": "default",
+    "sdkVersion": "52.0.0",
 
     "icon": "./assets/images/icon.png",
     "scheme": "domcom",
