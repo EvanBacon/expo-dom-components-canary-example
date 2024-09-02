@@ -40,6 +40,7 @@ export default function OrdersRoute({
 }: {
   navigate: typeof import("expo-router").router["navigate"];
   dom?: import("expo/dom").DOMProps;
+  ref?: import("react").RefObject<import("react-native-webview").WebView>;
 }) {
   return (
     <ShadLayout navigate={navigate}>

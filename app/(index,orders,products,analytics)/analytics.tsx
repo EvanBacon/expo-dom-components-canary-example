@@ -6,7 +6,6 @@ export default function AnalyticsRoute() {
   const ref = useScrollRef();
   return (
     <ShadAnalytics
-      // @ts-expect-error
       ref={ref}
       navigate={router.navigate}
       dom={{

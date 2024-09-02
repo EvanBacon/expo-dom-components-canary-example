@@ -6,7 +6,6 @@ export default function OrdersRoute() {
   const ref = useScrollRef();
   return (
     <Orders
-      // @ts-expect-error
       ref={ref}
       navigate={router.navigate}
       dom={{

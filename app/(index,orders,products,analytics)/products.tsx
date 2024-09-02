@@ -7,7 +7,6 @@ export default function ProductsRoute() {
 
   return (
     <Products
-      // @ts-expect-error
       ref={ref}
       navigate={router.navigate}
       dom={{
