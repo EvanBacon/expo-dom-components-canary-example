@@ -113,7 +113,7 @@ export function useScrollToTop(
                 });
               } else if ("injectJavaScript" in scrollable) {
                 scrollable.injectJavaScript(
-                  `;window.scrollTo({ top: ${offset}, behavior: 'smooth' });`
+                  `;window.scrollTo({ top: ${offset}, behavior: 'smooth' }); return true;`
                 );
               }
             }
