@@ -12,16 +12,8 @@ export default function Index() {
     <Dashboard
       notify={notify}
       //
-      navigate={router.navigate}
-      haptics={async () => {
-        if (process.env.EXPO_OS === "web") return;
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-      }}
       ref={useScrollRef()}
-      dom={{
-        contentInsetAdjustmentBehavior: "automatic",
-        automaticallyAdjustsScrollIndicatorInsets: true,
-      }}
+      {...extraProps}
     />
   );
 }
@@ -45,23 +37,14 @@ async function notify() {
   });
 }
 
-// export default function Index() {
-//   const ref = useScrollRef();
-
-//   return (
-//     <Dashboard
-//       ref={ref}
-//       navigate={router.navigate}
-//       notify={notify}
-//       haptics={async () => {
-//         if (process.env.EXPO_OS === "web") return;
-
-//         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-//       }}
-//       dom={{
-//         contentInsetAdjustmentBehavior: "automatic",
-//         automaticallyAdjustsScrollIndicatorInsets: true,
-//       }}
-//     />
-//   );
-// }
+const extraProps = {
+  navigate: router.navigate,
+  haptics: async () => {
+    if (process.env.EXPO_OS === "web") return;
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+  },
+  dom: {
+    contentInsetAdjustmentBehavior: "automatic",
+    automaticallyAdjustsScrollIndicatorInsets: true,
+  },
+} as const;
