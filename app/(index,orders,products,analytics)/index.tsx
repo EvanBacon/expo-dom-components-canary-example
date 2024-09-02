@@ -8,18 +8,16 @@ import React from "react";
 import { useScrollRef } from "@/lib/tab-to-top";
 
 export default function Index() {
-  const ref = useScrollRef();
-
   return (
     <Dashboard
-      ref={ref}
-      navigate={router.navigate}
       notify={notify}
+      //
+      navigate={router.navigate}
       haptics={async () => {
         if (process.env.EXPO_OS === "web") return;
-
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
       }}
+      ref={useScrollRef()}
       dom={{
         contentInsetAdjustmentBehavior: "automatic",
         automaticallyAdjustsScrollIndicatorInsets: true,
@@ -34,6 +32,7 @@ async function notify() {
     return;
   }
   await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+
   await Notifications.requestPermissionsAsync();
 
   await Notifications.scheduleNotificationAsync({
@@ -45,3 +44,24 @@ async function notify() {
     trigger: null,
   });
 }
+
+// export default function Index() {
+//   const ref = useScrollRef();
+
+//   return (
+//     <Dashboard
+//       ref={ref}
+//       navigate={router.navigate}
+//       notify={notify}
+//       haptics={async () => {
+//         if (process.env.EXPO_OS === "web") return;
+
+//         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+//       }}
+//       dom={{
+//         contentInsetAdjustmentBehavior: "automatic",
+//         automaticallyAdjustsScrollIndicatorInsets: true,
+//       }}
+//     />
+//   );
+// }
