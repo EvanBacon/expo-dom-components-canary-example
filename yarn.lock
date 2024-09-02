@@ -1076,9 +1076,9 @@
     json5 "^2.2.2"
     write-file-atomic "^2.3.0"
 
-"@expo/metro-config@0.18.4", "@expo/metro-config@file:./vendor/expo-metro-config-1.0.0-pack1026784876514.tgz", "@expo/metro-config@~0.18.0":
-  version "1.0.0-pack107211457341"
-  resolved "file:./vendor/expo-metro-config-1.0.0-pack1026784876514.tgz#d04abdd8e23e17fecad5e5e1c5ddc830f9370d1b"
+"@expo/metro-config@0.18.4", "@expo/metro-config@file:./vendor/expo-metro-config-1.0.0-pack1725298287216.tgz", "@expo/metro-config@~0.18.0":
+  version "1.0.0-pack1725298287216"
+  resolved "file:./vendor/expo-metro-config-1.0.0-pack1725298287216.tgz#cc6b35ca5e08188e6de9b64c3823c414970ea344"
   dependencies:
     "@babel/core" "^7.20.0"
     "@babel/generator" "^7.20.5"
