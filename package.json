@@ -54,7 +54,7 @@
     "expo": "file:./vendor/expo-1.0.0-pack625718115551.tgz",
     "babel-preset-expo": "file:./vendor/babel-preset-expo-1.0.0-pack617503302671.tgz",
     "@expo/cli": "file:./vendor/expo-cli-1.0.0-pack1725277235476.tgz",
-    "@expo/metro-config": "file:./vendor/expo-metro-config-1.0.0-pack1026784876514.tgz",
+    "@expo/metro-config": "file:./vendor/expo-metro-config-1.0.0-pack1725298287216.tgz",
     "@expo/config": "file:./vendor/expo-config-9.0.2.tgz",
     "@expo/metro-runtime": "file:./vendor/expo-metro-runtime-3.2.1.tgz",
     "expo-modules-core": "file:./vendor/expo-modules-core-1.12.11.tgz",
@@ -94,13 +94,14 @@
     "tailwind-merge": "^2.4.0",
     "tailwindcss": "^3.4.10",
     "tailwindcss-animate": "^1.0.7",
-    "three": "0.164.1"
+    "three": "0.164.1",
+    "expo-quick-actions": "^2.0.0"
   },
   "resolutions": {
     "expo": "file:./vendor/expo-1.0.0-pack625718115551.tgz",
     "babel-preset-expo": "file:./vendor/babel-preset-expo-1.0.0-pack617503302671.tgz",
     "@expo/cli": "file:./vendor/expo-cli-1.0.0-pack1725277235476.tgz",
-    "@expo/metro-config": "file:./vendor/expo-metro-config-1.0.0-pack1026784876514.tgz",
+    "@expo/metro-config": "file:./vendor/expo-metro-config-1.0.0-pack1725298287216.tgz",
     "@expo/config": "file:./vendor/expo-config-9.0.2.tgz",
     "@expo/metro-runtime": "file:./vendor/expo-metro-runtime-3.2.1.tgz",
     "@expo/prebuild-config": "file:./vendor/expo-prebuild-config.tgz",
