@@ -22,34 +22,19 @@ export default function RootLayout({ segment }: { segment: string }) {
         name={initialScreenName}
         options={{
           title: titles[initialScreenName],
-          ...(initialScreenName === "index"
+          headerLargeTitle: true,
+          headerSearchBarOptions: {},
+          headerRight() {
+            return <ProfileButton segment={segment} />;
+          },
+
+          //
+          ...(initialScreenName !== "index"
             ? {
-                headerLargeTitle: true,
-                headerSearchBarOptions: {},
+                headerLargeTitle: undefined,
+                headerSearchBarOptions: undefined,
               }
             : {}),
-          headerRight(props) {
-            return (
-              // @ts-expect-error
-              <Link href={`/${segment}/settings`} asChild>
-                <TouchableImpact
-                  style={{
-                    aspectRatio: 1,
-                  }}
-                >
-                  <Image
-                    style={{
-                      width: 30,
-                      height: 30,
-                      aspectRatio: 1,
-                      borderRadius: 24,
-                    }}
-                    source={require("@/public/evanbacon.jpg")}
-                  />
-                </TouchableImpact>
-              </Link>
-            );
-          },
         }}
       />
       <Stack.Screen
@@ -61,6 +46,28 @@ export default function RootLayout({ segment }: { segment: string }) {
         }}
       />
     </Stack>
+  );
+}
+
+function ProfileButton({ segment }: { segment: string }) {
+  return (
+    <Link href={`/${segment}/settings`} asChild>
+      <TouchableImpact
+        style={{
+          aspectRatio: 1,
+        }}
+      >
+        <Image
+          style={{
+            width: 30,
+            height: 30,
+            aspectRatio: 1,
+            borderRadius: 24,
+          }}
+          source={require("@/public/evanbacon.jpg")}
+        />
+      </TouchableImpact>
+    </Link>
   );
 }
 
