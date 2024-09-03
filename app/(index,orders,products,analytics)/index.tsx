@@ -23,6 +23,7 @@ async function notify() {
     alert("New Order (from a DOM component 🚀)");
     return;
   }
+
   await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
 
   await Notifications.requestPermissionsAsync();

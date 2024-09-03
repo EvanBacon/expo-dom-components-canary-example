@@ -2,26 +2,6 @@ import { Link, Slot, Stack } from "expo-router";
 import { Image } from "react-native";
 import { TouchableImpact } from "@/components/touchable-impact";
 
-export const unstable_settings = {
-  initialRouteName: "index",
-  orders: {
-    initialRouteName: "orders",
-  },
-  products: {
-    initialRouteName: "products",
-  },
-  analytics: {
-    initialRouteName: "analytics",
-  },
-};
-
-const titles = {
-  index: "Dashboard",
-  orders: "Orders",
-  products: "Products",
-  analytics: "Analytics",
-};
-
 export default function RootLayout({ segment }: { segment: string }) {
   // TODO: Add header bar
   // return <Slot />;
@@ -83,3 +63,23 @@ export default function RootLayout({ segment }: { segment: string }) {
     </Stack>
   );
 }
+
+export const unstable_settings = {
+  initialRouteName: "index",
+  orders: {
+    initialRouteName: "orders",
+  },
+  products: {
+    initialRouteName: "products",
+  },
+  analytics: {
+    initialRouteName: "analytics",
+  },
+};
+
+const titles = {
+  index: "Dashboard",
+  orders: "Orders",
+  products: "Products",
+  analytics: "Analytics",
+};
