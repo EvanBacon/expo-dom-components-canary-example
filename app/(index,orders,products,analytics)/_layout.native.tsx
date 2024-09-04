@@ -6,10 +6,7 @@ export default function RootLayout({ segment }: { segment: string }) {
   // TODO: Add header bar
   // return <Slot />;
 
-  const initialScreenName = segment.replace(
-    /\((.+)\)/,
-    "$1"
-  ) as keyof typeof titles;
+  const name = getRouteName(segment);
   return (
     <Stack
       screenOptions={{
@@ -19,9 +16,9 @@ export default function RootLayout({ segment }: { segment: string }) {
       }}
     >
       <Stack.Screen
-        name={initialScreenName}
+        name={name}
         options={{
-          title: titles[initialScreenName],
+          title: titles[name],
           headerLargeTitle: true,
           headerSearchBarOptions: {},
           headerRight() {
@@ -29,7 +26,7 @@ export default function RootLayout({ segment }: { segment: string }) {
           },
 
           //
-          ...(initialScreenName !== "index"
+          ...(name !== "index"
             ? {
                 headerLargeTitle: undefined,
                 headerSearchBarOptions: undefined,
@@ -90,3 +87,7 @@ const titles = {
   products: "Products",
   analytics: "Analytics",
 };
+
+function getRouteName(segment: string) {
+  return segment.replace(/\((.+)\)/, "$1") as keyof typeof titles;
+}
