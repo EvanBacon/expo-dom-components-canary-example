@@ -51,7 +51,6 @@ import {
 export default function DashboardRoute({
   notify,
   navigate,
-  ...props
 }: {
   notify: () => void;
 } & Props) {
@@ -121,15 +120,9 @@ export default function DashboardRoute({
           <Tabs defaultValue="week">
             <div className="flex items-center">
               <TabsList>
-                <TabsTrigger onClick={() => props.haptics()} value="week">
-                  Week
-                </TabsTrigger>
-                <TabsTrigger onClick={() => props.haptics()} value="month">
-                  Month
-                </TabsTrigger>
-                <TabsTrigger onClick={() => props.haptics()} value="year">
-                  Year
-                </TabsTrigger>
+                <TabsTrigger value="week">Week</TabsTrigger>
+                <TabsTrigger value="month">Month</TabsTrigger>
+                <TabsTrigger value="year">Year</TabsTrigger>
               </TabsList>
               <div className="ml-auto flex items-center gap-2">
                 <DropdownMenu>
@@ -161,7 +154,6 @@ export default function DashboardRoute({
                   size="sm"
                   variant="outline"
                   className="h-7 gap-1 text-sm"
-                  onClick={() => props.haptics()}
                 >
                   <File className="h-3.5 w-3.5" />
                   <span className="sr-only sm:not-sr-only">Export</span>
@@ -520,7 +512,6 @@ export default function DashboardRoute({
 }
 
 type Props = {
-  haptics: () => void;
   navigate: typeof import("expo-router").router["navigate"];
 
   ref?: import("react").RefObject<import("react-native-webview").WebView>;

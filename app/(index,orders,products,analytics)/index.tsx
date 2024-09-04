@@ -3,11 +3,10 @@
 import Dashboard from "@/components/shad/dashboard";
 import * as Notifications from "expo-notifications";
 import { router } from "expo-router";
-import * as Haptics from "expo-haptics";
 import React from "react";
 import { useScrollRef } from "@/lib/tab-to-top";
 
-export default function Index() {
+export default function IndexRoute() {
   return (
     <Dashboard
       notify={notify}
@@ -24,8 +23,6 @@ async function notify() {
     return;
   }
 
-  await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-
   await Notifications.requestPermissionsAsync();
 
   await Notifications.scheduleNotificationAsync({
@@ -40,10 +37,6 @@ async function notify() {
 
 const extraProps = {
   navigate: router.navigate,
-  haptics: async () => {
-    if (process.env.EXPO_OS === "web") return;
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-  },
   dom: {
     contentInsetAdjustmentBehavior: "automatic",
     automaticallyAdjustsScrollIndicatorInsets: true,
