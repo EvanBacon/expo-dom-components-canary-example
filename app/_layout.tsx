@@ -4,7 +4,8 @@ import * as Haptics from "expo-haptics";
 
 export default function RootLayout() {
   // TODO: Add tab bar
-  if (process.env.EXPO_OS === "web") return <Slot />;
+  // if (process.env.EXPO_OS === "web")
+  return <Slot />;
   return (
     <Tabs
       screenOptions={{

@@ -4,7 +4,7 @@ import { TouchableImpact } from "@/components/touchable-impact";
 
 export default function RootLayout({ segment }: { segment: string }) {
   // TODO: Add header bar
-  // return <Slot />;
+  return <Slot />;
 
   const name = getRouteName(segment);
   return (
@@ -19,11 +19,11 @@ export default function RootLayout({ segment }: { segment: string }) {
         name={name}
         options={{
           title: titles[name],
-          headerLargeTitle: true,
-          headerSearchBarOptions: {},
-          headerRight() {
-            return <ProfileButton segment={segment} />;
-          },
+          // headerLargeTitle: true,
+          // headerSearchBarOptions: {},
+          // headerRight() {
+          //   return <ProfileButton segment={segment} />;
+          // },
 
           //
           ...(name !== "index"

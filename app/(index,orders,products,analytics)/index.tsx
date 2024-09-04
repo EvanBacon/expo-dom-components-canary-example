@@ -9,7 +9,7 @@ import { useScrollRef } from "@/lib/tab-to-top";
 export default function IndexRoute() {
   return (
     <Dashboard
-      notify={notify}
+      // notify={notify}
       //
       ref={useScrollRef()}
       {...extraProps}
@@ -17,23 +17,23 @@ export default function IndexRoute() {
   );
 }
 
-async function notify() {
-  if (process.env.EXPO_OS === "web") {
-    alert("New Order (from a DOM component 🚀)");
-    return;
-  }
+// async function notify() {
+//   if (process.env.EXPO_OS === "web") {
+//     alert("New Order (from a DOM component 🚀)");
+//     return;
+//   }
 
-  await Notifications.requestPermissionsAsync();
+//   await Notifications.requestPermissionsAsync();
 
-  await Notifications.scheduleNotificationAsync({
-    identifier: "hello",
-    content: {
-      title: "New Order",
-      body: "(from a DOM component 🚀)",
-    },
-    trigger: null,
-  });
-}
+//   await Notifications.scheduleNotificationAsync({
+//     identifier: "hello",
+//     content: {
+//       title: "New Order",
+//       body: "(from a DOM component 🚀)",
+//     },
+//     trigger: null,
+//   });
+// }
 
 const extraProps = {
   navigate: router.navigate,
