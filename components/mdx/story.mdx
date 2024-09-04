@@ -32,7 +32,7 @@ Expo Router enables a best-in-class developer experience by carefully automating
 "use dom";
 
 // Import MDX as React
-import Story from "@/components/story.mdx";
+import Story from "@/components/mdx/story.mdx";
 
 // Export a linkable route
 export default function MDX() {
@@ -75,7 +75,7 @@ export default () => <Picker data={data} />;
 
 Image cropping with `react-mobile-cropper`.
 
-import Cropper from "@/components/mobile-cropper";
+import Cropper from "@/components/mdx/mobile-cropper";
 
 <Cropper
   image={(process.env.EXPO_DOM_BASE_URL || "") + "/placeholder-user.jpg"}
@@ -96,7 +96,7 @@ import Cropper from "@/components/mobile-cropper";
 
 WebGL and 3D with THREE.js.
 
-import Three from "@/components/ambient-bulb";
+import Three from "@/components/mdx/ambient-bulb";
 
 <Three
   style={{
@@ -110,7 +110,7 @@ import Three from "@/components/ambient-bulb";
 
 Editing complex text with `@tiptap/react`.
 
-import TipTapWrap from "@/components/tiptap-wrap";
+import TipTapWrap from "@/components/mdx/tiptap-wrap";
 
 <TipTapWrap
   content={`
