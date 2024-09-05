@@ -4760,10 +4760,10 @@ execa@^5.0.0, execa@^5.1.1:
     invariant "^2.2.4"
     md5-file "^3.2.3"
 
-expo-atlas@next:
-  version "0.3.20"
-  resolved "https://registry.yarnpkg.com/expo-atlas/-/expo-atlas-0.3.20.tgz#199e9c0e8aa2fe0bf6f1669c64fcf12c882e0a7b"
-  integrity sha512-rJfBTLgYATpgJzlqSLNMromMSTvjsAmaW9WBa2AFUmhu6kYxlmLNPN7YSJ7cBk+/OOr/XSR20UoX0o0mf/gdpA==
+expo-atlas@0.3.21:
+  version "0.3.21"
+  resolved "https://registry.yarnpkg.com/expo-atlas/-/expo-atlas-0.3.21.tgz#10b61a7502903577876d428684bb309cb3187309"
+  integrity sha512-fFDK79qb4dOrMzHZQHIUiQEJ8fsxxZXc7mxWoXPjDY6OvlKTmWE3D6Zmz0FTvYmKOO+L2ObkkKPMykH1MEWItA==
   dependencies:
     "@expo/server" "^0.4.4"
     arg "^5.0.2"
