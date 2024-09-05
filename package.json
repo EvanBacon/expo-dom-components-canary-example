@@ -122,7 +122,7 @@
     "@types/bun": "^1.1.8",
     "@types/react": "~18.2.45",
     "autoprefixer": "^10.4.16",
-    "expo-atlas": "^0.3.11",
+    "expo-atlas": "next",
     "typescript": "~5.3.3"
   },
   "private": true
