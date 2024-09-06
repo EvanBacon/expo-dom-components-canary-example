@@ -6,6 +6,7 @@ import * as THREE from "three";
 export default function ThreeThing({
   style,
 }: {
+  style?: React.CSSProperties;
   dom?: import("expo/dom").DOMProps;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,7 +18,7 @@ export default function ThreeThing({
     renderer.setPixelRatio(
       window.devicePixelRatio ? window.devicePixelRatio : 1
     );
-    renderer.setSize(ref.current.clientWidth, ref.current.clientHeight);
+    renderer.setSize(ref.current?.clientWidth, ref.current?.clientHeight);
     renderer.autoClear = false;
     renderer.setClearColor(0x000000, 0.0);
     ref.current!.appendChild(renderer.domElement);
@@ -100,6 +101,7 @@ export default function ThreeThing({
     window.addEventListener("resize", onWindowResize, false);
 
     function onWindowResize() {
+      if (!ref.current) return;
       camera.aspect = ref.current.clientWidth / ref.current.clientHeight;
       camera.updateProjectionMatrix();
 

@@ -1,21 +1,25 @@
 {
   "expo": {
-    "name": "mdex",
+    "name": "domcom",
     "slug": "mdex",
     "version": "1.0.0",
     "orientation": "default",
-    "sdkVersion": "UNVERSIONED",
+    "sdkVersion": "52.0.0",
+
     "icon": "./assets/images/icon.png",
-    "scheme": "mdex",
-    "userInterfaceStyle": "automatic",
+    "scheme": "domcom",
+    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#191A20"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bacon.mdex"
+      "bundleIdentifier": "com.bacon.mdex",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
