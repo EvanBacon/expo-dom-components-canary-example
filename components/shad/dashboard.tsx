@@ -1,3 +1,5 @@
+"use dom";
+
 import "@/global.css";
 
 import ShadLayout from "@/components/shad/shad-layout";
@@ -49,8 +51,9 @@ import {
 
 export default function DashboardRoute({
   navigate,
+  notify,
 }: {
-  // notify: () => void;
+  notify: () => void;
 } & Props) {
   return (
     <ShadLayout navigate={navigate}>
@@ -70,7 +73,7 @@ export default function DashboardRoute({
                 <Button
                   onClick={() => {
                     // TODO...
-                    // notify();
+                    notify();
                   }}
                 >
                   Create New Order

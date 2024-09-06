@@ -26,9 +26,8 @@ export function ShadLayoutFull({
             <SideNavigationBar />
             {/* {!IS_DOM && <SideNavigationBar />} */}
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-              <Header />
               {/* TODO: Migrate to native. */}
-              {/* {!IS_DOM && <Header />} */}
+              {!IS_DOM && <Header />}
 
               {children}
             </div>

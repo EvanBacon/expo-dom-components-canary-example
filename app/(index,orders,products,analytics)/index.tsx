@@ -7,33 +7,27 @@ import React from "react";
 import { useScrollRef } from "@/lib/tab-to-top";
 
 export default function IndexRoute() {
-  return (
-    <Dashboard
-      // notify={notify}
-      //
-      ref={useScrollRef()}
-      {...extraProps}
-    />
-  );
+  return <Dashboard notify={notify} ref={useScrollRef()} {...extraProps} />;
 }
 
-// async function notify() {
-//   if (process.env.EXPO_OS === "web") {
-//     alert("New Order (from a DOM component 🚀)");
-//     return;
-//   }
+// native notify function
+async function notify() {
+  if (process.env.EXPO_OS === "web") {
+    alert("New Order (from a DOM component 🚀)");
+    return;
+  }
 
-//   await Notifications.requestPermissionsAsync();
+  await Notifications.requestPermissionsAsync();
 
-//   await Notifications.scheduleNotificationAsync({
-//     identifier: "hello",
-//     content: {
-//       title: "New Order",
-//       body: "(from a DOM component 🚀)",
-//     },
-//     trigger: null,
-//   });
-// }
+  await Notifications.scheduleNotificationAsync({
+    identifier: "hello",
+    content: {
+      title: "New Order",
+      body: "(from a DOM component 🚀)",
+    },
+    trigger: null,
+  });
+}
 
 const extraProps = {
   navigate: router.navigate,
