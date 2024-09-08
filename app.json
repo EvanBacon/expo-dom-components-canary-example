@@ -5,7 +5,6 @@
     "version": "1.0.0",
     "orientation": "default",
     "sdkVersion": "52.0.0",
-
     "icon": "./assets/images/icon.png",
     "scheme": "domcom",
     "userInterfaceStyle": "light",
@@ -32,7 +31,6 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": ["expo-router", "expo-font"],
     "experiments": {
       "typedRoutes": true
     },
