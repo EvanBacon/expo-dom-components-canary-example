@@ -2,6 +2,7 @@
 
 import ShadLayout from "./shad-layout";
 import StoryWrapper from "../mdx/mdx-route";
+import { useEffect } from "react";
 
 export default function SettingsRoute({
   navigate,
@@ -9,6 +10,10 @@ export default function SettingsRoute({
   navigate: typeof import("expo-router").router["navigate"];
   dom?: import("expo/dom").DOMProps;
 }) {
+  useEffect(() => {
+    import("eruda").then((eruda) => eruda.default.init());
+  }, []);
+
   return (
     <ShadLayout navigate={navigate} select>
       <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
