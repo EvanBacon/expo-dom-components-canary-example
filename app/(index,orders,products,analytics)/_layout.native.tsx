@@ -19,19 +19,9 @@ export default function RootLayout({ segment }: { segment: string }) {
         name={name}
         options={{
           title: titles[name],
-          headerLargeTitle: true,
-          headerSearchBarOptions: {},
           headerRight() {
             return <ProfileButton segment={segment} />;
           },
-
-          //
-          ...(name !== "index"
-            ? {
-                headerLargeTitle: undefined,
-                headerSearchBarOptions: undefined,
-              }
-            : {}),
         }}
       />
       <Stack.Screen
