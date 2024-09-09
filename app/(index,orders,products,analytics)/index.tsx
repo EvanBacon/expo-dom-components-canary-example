@@ -1,13 +1,45 @@
 // This component is platform-specific.
 
+import { Stack } from "expo-router";
 import Dashboard from "@/components/shad/dashboard";
 import * as Notifications from "expo-notifications";
 import { router } from "expo-router";
-import React from "react";
+import { useCallback, useState } from "react";
 import { useScrollRef } from "@/lib/tab-to-top";
 
 export default function IndexRoute() {
-  return <Dashboard notify={notify} ref={useScrollRef()} {...extraProps} />;
+  const [enableSearchBar, setEnableSearchBar] = useState(false);
+
+  const onLoad = useCallback(() => {
+    if (process.env.EXPO_OS !== 'web') {
+      setEnableSearchBar(true);
+    }
+  }, []);
+
+  return (
+    <>
+      <Stack.Screen
+        options={
+          enableSearchBar
+            ? {
+                headerLargeTitle: true,
+                headerSearchBarOptions: {},
+              }
+            : {}
+        }
+      />
+      <Dashboard
+        notify={notify}
+        ref={useScrollRef()}
+        {...extraProps}
+        dom={{
+          contentInsetAdjustmentBehavior: "automatic",
+          automaticallyAdjustsScrollIndicatorInsets: true,
+          onLoad,
+        }}
+      />
+    </>
+  );
 }
 
 // native notify function
@@ -31,8 +63,4 @@ async function notify() {
 
 const extraProps = {
   navigate: router.navigate,
-  dom: {
-    contentInsetAdjustmentBehavior: "automatic",
-    automaticallyAdjustsScrollIndicatorInsets: true,
-  },
 } as const;
