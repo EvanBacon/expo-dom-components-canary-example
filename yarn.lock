@@ -4785,6 +4785,10 @@ expo-atlas@0.3.21:
     serve-static "^1.15.0"
     stream-json "^1.8.0"
 
+"expo-blur@file:./vendor/expo-blur-1.0.0-pack1725969518862.tgz":
+  version "1.0.0-pack1725969518862"
+  resolved "file:./vendor/expo-blur-1.0.0-pack1725969518862.tgz#12d26dedc0c81c834bc1c630441f54ac3218b857"
+
 expo-constants@17.0.0-canary-20240904-69100c1:
   version "17.0.0-canary-20240904-69100c1"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-17.0.0-canary-20240904-69100c1.tgz#f7fbf1e92c49b8f7f47cdf0204d81dab45dbcfa2"

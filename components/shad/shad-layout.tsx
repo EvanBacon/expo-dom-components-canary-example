@@ -22,7 +22,7 @@ export function ShadLayoutFull({
       {!select && <StyleNoSelect />}
       <DOMRouterProvider value={{ navigate }}>
         <TooltipProvider>
-          <div className="flex min-h-screen w-full flex-col bg-[#F2F2F7]">
+          <div className="flex min-h-screen w-full flex-col bg-[#F2F2F7] pb-10">
             <SideNavigationBar />
             {/* {!IS_DOM && <SideNavigationBar />} */}
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">

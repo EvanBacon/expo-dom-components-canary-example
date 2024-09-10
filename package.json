@@ -65,6 +65,7 @@
     "expo": "file:./vendor/expo-1.0.0-pack1725829371222.tgz",
     "expo-application": "file:./vendor/expo-application-1.0.0-pack1725829719336.tgz",
     "expo-asset": "11.0.0-canary-20240904-69100c1",
+    "expo-blur": "file:./vendor/expo-blur-1.0.0-pack1725969518862.tgz",
     "expo-constants": "17.0.0-canary-20240904-69100c1",
     "expo-file-system": "file:./vendor/expo-file-system-1.0.0-pack1725829716481.tgz",
     "expo-font": "13.0.0-canary-20240904-69100c1",
@@ -125,6 +126,7 @@
     "expo-application": "file:./vendor/expo-application-1.0.0-pack1725829719336.tgz",
     "babel-preset-expo": "file:./vendor/babel-preset-expo-1.0.0-pack1725829720804.tgz",
     "@expo/prebuild-config": "file:./vendor/expo-prebuild-config-1.0.0-pack1725829722496.tgz",
-    "@expo/cli": "file:./vendor/expo-cli-1.0.0-pack1725830029576.tgz"
+    "@expo/cli": "file:./vendor/expo-cli-1.0.0-pack1725830029576.tgz",
+    "expo-blur": "file:./vendor/expo-blur-1.0.0-pack1725969518862.tgz"
   }
 }

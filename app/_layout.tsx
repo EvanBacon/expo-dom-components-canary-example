@@ -1,6 +1,8 @@
 import { Slot, Tabs } from "expo-router";
 import { House, ShoppingCart, Package, LineChart } from "lucide-react-native";
 import * as Haptics from "expo-haptics";
+import { BlurView } from "expo-blur";
+import { StyleSheet } from "react-native";
 
 export default function RootLayout() {
   // TODO: Add tab bar
@@ -10,6 +12,16 @@ export default function RootLayout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: "rgb(15, 23, 42)",
+        tabBarStyle: {
+          position: "absolute",
+        },
+        tabBarBackground: () => (
+          <BlurView
+            tint="light"
+            intensity={100}
+            style={StyleSheet.absoluteFill}
+          />
+        ),
       }}
       screenListeners={{
         tabPress: () => {
