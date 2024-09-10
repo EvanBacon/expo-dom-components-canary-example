@@ -35,14 +35,19 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import ShadLayout from "./shad-layout";
+import { useGlobalButtonHaptics } from "../global-button-haptics";
 
 export default function AnalyticsRoute({
   navigate,
+  onButtonClick,
 }: {
   navigate: typeof import("expo-router").router["navigate"];
   dom?: import("expo/dom").DOMProps;
   ref?: import("react").RefObject<import("react-native-webview").WebView>;
+  onButtonClick: (size: number) => Promise<void>;
 }) {
+  useGlobalButtonHaptics(onButtonClick);
+
   return (
     <ShadLayout navigate={navigate}>
       <Charts />

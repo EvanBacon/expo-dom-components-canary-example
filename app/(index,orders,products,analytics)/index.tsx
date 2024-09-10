@@ -5,9 +5,27 @@ import * as Notifications from "expo-notifications";
 import { router } from "expo-router";
 import React from "react";
 import { useScrollRef } from "@/lib/tab-to-top";
+import * as Haptics from "expo-haptics";
 
 export default function IndexRoute() {
-  return <Dashboard notify={notify} ref={useScrollRef()} {...extraProps} />;
+  return (
+    <Dashboard
+      notify={notify}
+      onButtonClick={async (size: number) => {
+        if (process.env.EXPO_OS !== "web") {
+          Haptics.impactAsync(
+            [
+              Haptics.ImpactFeedbackStyle.Light,
+              Haptics.ImpactFeedbackStyle.Medium,
+              Haptics.ImpactFeedbackStyle.Heavy,
+            ][size]
+          );
+        }
+      }}
+      ref={useScrollRef()}
+      {...extraProps}
+    />
+  );
 }
 
 // native notify function

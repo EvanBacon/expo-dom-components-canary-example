@@ -32,16 +32,21 @@ import { File, ListFilter, MoreHorizontal, PlusCircle } from "lucide-react";
 
 import ShadLayout from "./shad-layout";
 import { IS_DOM } from "expo/dom";
+import { useGlobalButtonHaptics } from "../global-button-haptics";
 
 const baseUrl = IS_DOM ? process.env.EXPO_DOM_BASE_URL : "";
 
 export default function OrdersRoute({
   navigate,
+  onButtonClick,
 }: {
   navigate: typeof import("expo-router").router["navigate"];
   dom?: import("expo/dom").DOMProps;
   ref?: import("react").RefObject<import("react-native-webview").WebView>;
+  onButtonClick: (size: number) => Promise<void>;
 }) {
+  useGlobalButtonHaptics(onButtonClick);
+
   return (
     <ShadLayout navigate={navigate}>
       <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">

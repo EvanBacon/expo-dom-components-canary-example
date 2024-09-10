@@ -53,7 +53,13 @@ export default function RootLayout({ segment }: { segment: string }) {
         options={{
           title: "Settings",
           presentation: "modal",
-          headerLargeTitle: true,
+          headerTransparent: true,
+          headerBlurEffect: "prominent",
+          headerShadowVisible: true,
+          headerStyle: {
+            // Hack to ensure the collapsed small header shows the shadow / border.
+            backgroundColor: "rgba(255,255,255,0.01)",
+          },
         }}
       />
     </Stack>

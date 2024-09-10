@@ -2,14 +2,18 @@
 
 import ShadLayout from "./shad-layout";
 import StoryWrapper from "../mdx/mdx-route";
+import { useGlobalButtonHaptics } from "../global-button-haptics";
 // import { useEffect } from "react";
 
 export default function SettingsRoute({
   navigate,
+  onButtonClick,
 }: {
   navigate: typeof import("expo-router").router["navigate"];
   dom?: import("expo/dom").DOMProps;
+  onButtonClick: (size: number) => Promise<void>;
 }) {
+  useGlobalButtonHaptics(onButtonClick);
   // useEffect(() => {
   //   import("eruda").then((eruda) => eruda.default.init());
   // }, []);
