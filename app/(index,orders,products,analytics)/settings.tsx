@@ -24,7 +24,9 @@ export default function Settings() {
           }
         }}
       />
-      <StatusBar barStyle="light-content" />
+      {process.env.EXPO_OS === "android" && (
+        <StatusBar barStyle="light-content" />
+      )}
     </>
   );
 }

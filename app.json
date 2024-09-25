@@ -11,12 +11,13 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#191A20"
+      "backgroundColor": "#fff"
     },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.bacon.mdex",
       "infoPlist": {
+        "UIViewControllerBasedStatusBarAppearance": true,
         "ITSAppUsesNonExemptEncryption": false
       }
     },

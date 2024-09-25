@@ -7,7 +7,7 @@ export const TouchableImpact = React.forwardRef<
   React.ComponentProps<typeof TouchableBase> & {
     impact?: boolean | Haptics.ImpactFeedbackStyle;
   }
->(({ onPress, onPressIn, impact = true, ...props }, ref) => {
+>(({ onPressIn, impact = true, ...props }, ref) => {
   return (
     <TouchableBase
       ref={ref}
@@ -19,14 +19,6 @@ export const TouchableImpact = React.forwardRef<
           );
         }
         onPressIn?.(...props);
-      }}
-      onPress={(...props) => {
-        if (impact && process.env.EXPO_OS !== "web") {
-          Haptics.impactAsync(
-            impact === true ? Haptics.ImpactFeedbackStyle.Light : impact
-          );
-        }
-        onPress?.(...props);
       }}
       {...props}
     />

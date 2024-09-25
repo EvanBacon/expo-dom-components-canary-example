@@ -25,17 +25,19 @@ export function useGlobalButtonHaptics(haptics?: (size: number) => void) {
   useEffect(() => {
     if (!haptics) return;
 
-    const listener = (event: MouseEvent) => {
+    const listener = (event: TouchEvent) => {
       // Check if the clicked element is a button
       if (event.target?.tagName === "BUTTON") {
         haptics(getSizeScale(event.target as HTMLButtonElement));
       }
     };
     // Global event listener for clicks
-    document.addEventListener("click", listener);
+    // document.addEventListener("click", listener);
+    // Global event listener for touch start
+    document.addEventListener("touchstart", listener);
 
     return () => {
-      document.removeEventListener("click", listener);
+      document.removeEventListener("touchstart", listener);
     };
   }, [haptics]);
 

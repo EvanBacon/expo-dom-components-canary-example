@@ -48,7 +48,6 @@ import {
   MoreVertical,
   Truck,
 } from "lucide-react";
-import { useEffect } from "react";
 import { useGlobalButtonHaptics } from "../global-button-haptics";
 
 export default function DashboardRoute({

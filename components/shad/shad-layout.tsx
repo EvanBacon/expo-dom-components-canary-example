@@ -53,6 +53,8 @@ export default function ShadLayout({
   }
 
   return (
-    <ShadLayoutFull select={select} navigate={navigate} children={children} />
+    <div className="animate-fade-in">
+      <ShadLayoutFull select={select} navigate={navigate} children={children} />
+    </div>
   );
 }

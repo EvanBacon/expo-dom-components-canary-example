@@ -23,7 +23,17 @@ export default function IndexRoute() {
         }
       }}
       ref={useScrollRef()}
-      {...extraProps}
+      navigate={router.navigate}
+      dom={{
+        contentInsetAdjustmentBehavior: "automatic",
+        automaticallyAdjustsScrollIndicatorInsets: true,
+        onLoadEnd(event) {
+          // Keep the splash screen open until the DOM content has loaded.
+          setTimeout(() => {
+            SplashScreen.hideAsync();
+          }, 1);
+        },
+      }}
     />
   );
 }
@@ -46,11 +56,4 @@ async function notify() {
     trigger: null,
   });
 }
-
-const extraProps = {
-  navigate: router.navigate,
-  dom: {
-    contentInsetAdjustmentBehavior: "automatic",
-    automaticallyAdjustsScrollIndicatorInsets: true,
-  },
-} as const;
+import * as SplashScreen from "expo-splash-screen";

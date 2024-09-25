@@ -9,7 +9,8 @@
     "lint": "expo lint",
     "prebuild": "expo prebuild --template ./vendor/expo-template-bare-minimum-51.0.27.tgz",
     "predeploy:web": "expo export -p web",
-    "deploy:web": "netlify deploy --dir dist"
+    "deploy:web": "netlify deploy --dir dist",
+    "prepare": "npx patch-package"
   },
   "dependencies": {
     "@bacons/mdx": "^0.3.8",
