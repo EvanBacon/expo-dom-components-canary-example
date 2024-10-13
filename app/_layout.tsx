@@ -1,6 +1,5 @@
 import { Slot, Tabs } from "expo-router";
 import { House, ShoppingCart, Package, LineChart } from "lucide-react-native";
-import * as Haptics from "expo-haptics";
 import { BlurView } from "expo-blur";
 import { StyleSheet } from "react-native";
 import { HapticTab } from "@/components/haptic-tab";

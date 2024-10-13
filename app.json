@@ -25,7 +25,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.bacon.mdex"
     },
     "web": {
       "bundler": "metro",
@@ -42,6 +43,10 @@
       "eas": {
         "projectId": "06b3157a-c080-423d-aa6f-7c4fc3346b55"
       }
-    }
+    },
+    "plugins": [
+      "expo-font",
+      "expo-router"
+    ]
   }
 }
