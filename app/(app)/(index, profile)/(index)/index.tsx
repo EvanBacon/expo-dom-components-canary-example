@@ -1,13 +1,13 @@
-// This component is platform-specific.
-
 import Dashboard from "@/components/shad/dashboard";
 import * as Notifications from "expo-notifications";
-import { router } from "expo-router";
+import { Redirect, router } from "expo-router";
 import React from "react";
 import { useScrollRef } from "@/lib/tab-to-top";
 import * as Haptics from "expo-haptics";
 
 export default function IndexRoute() {
+  const { restaurants } = useRestaurantStore();
+
   return (
     <Dashboard
       notify={notify}
@@ -22,6 +22,7 @@ export default function IndexRoute() {
           );
         }
       }}
+      restaurants={restaurants}
       ref={useScrollRef()}
       navigate={router.navigate}
       dom={{
@@ -56,4 +57,6 @@ async function notify() {
     trigger: null,
   });
 }
-import * as SplashScreen from "expo-splash-screen";
+import * as SplashScreen from "expo-splash-screen";import { useAuth } from "@/components/providers/auth-provider";
+import { useRestaurantStore } from "@/lib/store/restaurantStore";
+

@@ -1,14 +1,25 @@
-import { Link, Slot, Stack } from "expo-router";
-import { Image } from "react-native";
+import { Link, Stack, } from "expo-router";
+import { I18nManager, PlatformColor } from "react-native";
 import { TouchableImpact } from "@/components/touchable-impact";
-
-import { PlatformColor } from "react-native";
+import {  Settings } from "lucide-react-native";
+import React, { useEffect } from "react";
+import { useRestaurantStore } from "@/lib/store/restaurantStore";
 
 export default function RootLayout({ segment }: { segment: string }) {
-  // TODO: Add header bar
-  // return <Slot />;
+  // Force RTL for the entire app
+  I18nManager.allowRTL(true);
+  I18nManager.forceRTL(true);
+
+  // States
+  const { fetchRestaurants } = useRestaurantStore();
+
+  // Fetch everything
+  useEffect(() => {
+      fetchRestaurants();
+  }, []);
 
   const name = getRouteName(segment);
+
   return (
     <Stack
       screenOptions={{
@@ -17,48 +28,35 @@ export default function RootLayout({ segment }: { segment: string }) {
         headerShadowVisible: true,
         headerLargeTitleShadowVisible: false,
         headerStyle: {
-          // Hack to ensure the collapsed small header shows the shadow / border.
+          // Hack to ensure the collapsed small header shows the shadow / border
           backgroundColor: "rgba(255,255,255,0.01)",
         },
         headerLargeStyle: {
-          backgroundColor: PlatformColor("systemGroupedBackgroundColor"), // Color of your background
+          backgroundColor: "background",
         },
         contentStyle: {
-          backgroundColor: PlatformColor("systemGroupedBackgroundColor"),
+          backgroundColor: "white",
         },
+        headerShown: false,
       }}
     >
       <Stack.Screen
         name={name}
         options={{
           title: titles[name],
-          headerLargeTitle: true,
-          headerSearchBarOptions: {},
           headerRight() {
             return <ProfileButton segment={segment} />;
           },
-
-          //
-          ...(name !== "index"
-            ? {
-                headerLargeTitle: undefined,
-                headerSearchBarOptions: undefined,
-              }
-            : {}),
-        }}
-      />
-      <Stack.Screen
-        name="settings"
-        options={{
-          title: "Settings",
-          presentation: "modal",
-          headerTransparent: true,
-          headerBlurEffect: "prominent",
-          headerShadowVisible: true,
-          headerStyle: {
-            // Hack to ensure the collapsed small header shows the shadow / border.
-            backgroundColor: "rgba(255,255,255,0.01)",
+          contentStyle: {
+            backgroundColor: "white",
           },
+          headerLargeStyle: {
+            backgroundColor: "white",
+          },
+          headerBackVisible: false,
+          headerLargeTitle: undefined,
+          headerSearchBarOptions: undefined,
+          headerShown: false,
         }}
       />
     </Stack>
@@ -73,19 +71,20 @@ function ProfileButton({ segment }: { segment: string }) {
           aspectRatio: 1,
         }}
       >
-        <Image
+        <Settings
           style={{
             width: 30,
             height: 30,
             aspectRatio: 1,
             borderRadius: 24,
           }}
-          source={require("@/public/evanbacon.jpg")}
+          color={PlatformColor("label")}
         />
       </TouchableImpact>
     </Link>
   );
 }
+
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -101,12 +100,11 @@ export const unstable_settings = {
 };
 
 const titles = {
-  index: "Dashboard",
-  orders: "Orders",
-  products: "Products",
-  analytics: "Analytics",
+  index: "מסעדות",
+  profile: "פרופיל",
 };
 
 function getRouteName(segment: string) {
   return segment.replace(/\((.+)\)/, "$1") as keyof typeof titles;
 }
+

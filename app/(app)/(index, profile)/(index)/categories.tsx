@@ -1,4 +1,4 @@
-import Orders from "@/components/shad/orders";
+import Categories from "@/components/shad/categories";
 import { router } from "expo-router";
 import { useScrollRef } from "@/lib/tab-to-top";
 import * as Haptics from "expo-haptics";
@@ -6,7 +6,7 @@ import * as Haptics from "expo-haptics";
 export default function OrdersRoute() {
   const ref = useScrollRef();
   return (
-    <Orders
+    <Categories
       ref={ref}
       navigate={router.navigate}
       dom={{
@@ -27,3 +27,4 @@ export default function OrdersRoute() {
     />
   );
 }
+

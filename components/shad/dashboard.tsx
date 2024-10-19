@@ -3,523 +3,282 @@
 import "@/global.css";
 
 import ShadLayout from "@/components/shad/shad-layout";
+import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-} from "@/components/ui/pagination";
-import { Progress } from "@/components/ui/progress";
-import { Separator } from "@/components/ui/separator";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Copy,
-  CreditCard,
-  File,
-  ListFilter,
-  MoreVertical,
-  Truck,
-} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import { useGlobalButtonHaptics } from "../global-button-haptics";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { ChevronLeft, Heart, Star, Clock } from "lucide-react";
+import { motion } from "framer-motion";
+import { ScrollView, View } from "react-native";
+import { useRestaurantStore } from "@/lib/store/restaurantStore";
 
 export default function DashboardRoute({
   navigate,
   notify,
   onButtonClick,
+  restaurants,
 }: {
   notify: () => void;
   onButtonClick: (size: number) => Promise<void>;
 } & Props) {
   useGlobalButtonHaptics(onButtonClick);
+  const [favorites, setFavorites] = useState<number[]>([]);
+
+  const toggleFavorite = (id: number) => {
+    setFavorites((prev) =>
+      prev.includes(id) ? prev.filter((fav) => fav !== id) : [...prev, id],
+    );
+  };
 
   return (
     <ShadLayout navigate={navigate}>
-      <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
-        <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
-            <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
-              <CardHeader className="pb-3">
-                <CardTitle>Your Orders</CardTitle>
-                <CardDescription className="max-w-lg text-balance leading-relaxed">
-                  Introducing Our Dynamic Orders Dashboard for Seamless
-                  Management and Insightful Analysis.
-                </CardDescription>
-              </CardHeader>
-
-              <CardFooter>
+      <TooltipProvider>
+        <div
+          className="bg-background text-foreground relative min-h-screen w-screen pb-4 "
+          dir="rtl"
+        >
+          <div className="space-y-6">
+            <div>
+              <div className="flex justify-between items-center p-4">
+                <h2 className="text-2xl font-semibold">אני רוצה לאכול..</h2>
                 <Button
-                  onClick={() => {
-                    // TODO...
-                    notify();
-                  }}
+                  variant="link"
+                  className="text-[#FF8000] px-2 flex items-center hover:text-[#FF8000]/80 bg-[#FF8000]/10 "
+                  onClick={() => navigate("/categories")}
                 >
-                  Create New Order
+                  ראה הכל
                 </Button>
-              </CardFooter>
-            </Card>
-            <Card x-chunk="dashboard-05-chunk-2">
-              <CardHeader className="pb-2">
-                <CardDescription>This Month</CardDescription>
-
-                <CardTitle className="text-4xl">$5,329</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-xs text-muted-foreground">
-                  +10% from last month
-                </div>
-              </CardContent>
-              <CardFooter className="gap-2">
-                <Progress value={12} aria-label="12% increase" />
-                <Button
-                  onClick={() => {
-                    navigate("/analytics");
-                  }}
-                >
-                  See More
-                </Button>
-              </CardFooter>
-            </Card>
-
-            <Card x-chunk="dashboard-05-chunk-1">
-              <CardHeader className="pb-2">
-                <CardDescription>This Week</CardDescription>
-                <CardTitle className="text-4xl">$1,329</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-xs text-muted-foreground">
-                  +25% from last week
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Progress value={25} aria-label="25% increase" />
-              </CardFooter>
-            </Card>
-          </div>
-          <Tabs defaultValue="week">
-            <div className="flex items-center">
-              <TabsList>
-                <TabsTrigger value="week">Week</TabsTrigger>
-                <TabsTrigger value="month">Month</TabsTrigger>
-                <TabsTrigger value="year">Year</TabsTrigger>
-              </TabsList>
-              <div className="ml-auto flex items-center gap-2">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="h-7 gap-1 text-sm"
+              </div>
+              <ScrollView
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  overflow: "scroll",
+                  flexWrap: "nowrap",
+                }}
+                showsVerticalScrollIndicator={false}
+              >
+                <div className="flex space-x-3 space-x-reverse pb-3 pr-1 ">
+                  {categories.map((category, index) => (
+                    <motion.div
+                      key={category.name}
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: 0.2 + index * 0.2,
+                      }}
+                      className={"mr-2"}
                     >
-                      <ListFilter className="h-3.5 w-3.5" />
-                      <span className="sr-only sm:not-sr-only">Filter</span>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>Filter by</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuCheckboxItem checked>
-                      Fulfilled
-                    </DropdownMenuCheckboxItem>
-                    <DropdownMenuCheckboxItem>
-                      Declined
-                    </DropdownMenuCheckboxItem>
-                    <DropdownMenuCheckboxItem>
-                      Refunded
-                    </DropdownMenuCheckboxItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="h-7 gap-1 text-sm"
-                >
-                  <File className="h-3.5 w-3.5" />
-                  <span className="sr-only sm:not-sr-only">Export</span>
-                </Button>
+                      <Card
+                        className={`w-32 flex-shrink-0 ${
+                          index === categories.length - 1 ? "ml-4" : ""
+                        }`}
+                      >
+                        <CardContent className="p-0">
+                          <img
+                            src={category.image}
+                            alt={category.name}
+                            className="w-full h-24 object-cover rounded-t-lg"
+                          />
+                          <div className="p-2">
+                            <h3 className="font-semibold mt-2 text-right">
+                              {category.name}
+                            </h3>
+                            <p className="text-sm text-muted-foreground text-right">
+                              {category.places} מקומות
+                            </p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </ScrollView>
+            </div>
+
+            <div className="p-3 pt-0">
+              <h2 className="text-2xl font-semibold pb-4">כל המסעדות</h2>
+              <div className="space-y-4">
+                {restaurants.map((restaurant: any) => (
+                  <AnimatedCard key={restaurant._id}>
+                    <Card
+                      className="relative overflow-hidden"
+                      onClick={() => navigate(`/restaurant/${restaurant._id}`)}
+                    >
+                      <CardContent className="p-0">
+                        {restaurant.popular && (
+                          <Badge className="absolute top-2 left-2 bg-[#FF8000] text-white">
+                            פופולרי
+                          </Badge>
+                        )}
+                        <img
+                          src={restaurant.profile.banner}
+                          alt={restaurant.name}
+                          className="w-full h-48 object-cover"
+                        />
+                        <div className="p-4">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h3 className="text-xl font-semibold">
+                                {restaurant.name}
+                              </h3>
+                              <p className="text-muted-foreground">
+                                {restaurant.address}
+                              </p>
+                            </div>
+                            <button
+                              onClick={() => toggleFavorite(restaurant.id)}
+                              className="text-muted-foreground hover:text-[#FF8000] transition-colors"
+                            >
+                              <Heart
+                                className={`h-6 w-6 ${
+                                  favorites.includes(restaurant.id)
+                                    ? "fill-current text-[#FF8000]"
+                                    : ""
+                                }`}
+                              />
+                            </button>
+                          </div>
+                          <div className="flex items-center mt-2 space-x-2 space-x-reverse flex-wrap">
+                            <Badge variant="secondary">
+                              <Clock className="h-4 w-4 ml-1" />
+                              {restaurant.deliveryTime} דקות
+                            </Badge>
+                            <Badge variant="secondary">
+                              <Star className="h-4 w-4 ml-1 fill-current" />
+                              {restaurant.rating}
+                            </Badge>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </AnimatedCard>
+                ))}
               </div>
             </div>
-            <TabsContent value="week">
-              <Card x-chunk="dashboard-05-chunk-3">
-                <CardHeader className="px-7">
-                  <CardTitle>Orders</CardTitle>
-                  <CardDescription>
-                    Recent orders from your store.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Customer</TableHead>
-                        <TableHead className="hidden sm:table-cell">
-                          Type
-                        </TableHead>
-                        <TableHead className="hidden sm:table-cell">
-                          Status
-                        </TableHead>
-                        <TableHead className="hidden md:table-cell">
-                          Date
-                        </TableHead>
-                        <TableHead className="text-right">Amount</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow className="bg-accent">
-                        <TableCell>
-                          <div className="font-medium">Liam Johnson</div>
-                          <div className="hidden text-sm text-muted-foreground md:inline">
-                            liam@example.com
-                          </div>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          Sale
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          <Badge className="text-xs" variant="secondary">
-                            Fulfilled
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          2023-06-23
-                        </TableCell>
-                        <TableCell className="text-right">$250.00</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <div className="font-medium">Olivia Smith</div>
-                          <div className="hidden text-sm text-muted-foreground md:inline">
-                            olivia@example.com
-                          </div>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          Refund
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          <Badge className="text-xs" variant="outline">
-                            Declined
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          2023-06-24
-                        </TableCell>
-                        <TableCell className="text-right">$150.00</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <div className="font-medium">Noah Williams</div>
-                          <div className="hidden text-sm text-muted-foreground md:inline">
-                            noah@example.com
-                          </div>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          Subscription
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          <Badge className="text-xs" variant="secondary">
-                            Fulfilled
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          2023-06-25
-                        </TableCell>
-                        <TableCell className="text-right">$350.00</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <div className="font-medium">Emma Brown</div>
-                          <div className="hidden text-sm text-muted-foreground md:inline">
-                            emma@example.com
-                          </div>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          Sale
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          <Badge className="text-xs" variant="secondary">
-                            Fulfilled
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          2023-06-26
-                        </TableCell>
-                        <TableCell className="text-right">$450.00</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <div className="font-medium">Liam Johnson</div>
-                          <div className="hidden text-sm text-muted-foreground md:inline">
-                            liam@example.com
-                          </div>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          Sale
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          <Badge className="text-xs" variant="secondary">
-                            Fulfilled
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          2023-06-23
-                        </TableCell>
-                        <TableCell className="text-right">$250.00</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <div className="font-medium">Liam Johnson</div>
-                          <div className="hidden text-sm text-muted-foreground md:inline">
-                            liam@example.com
-                          </div>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          Sale
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          <Badge className="text-xs" variant="secondary">
-                            Fulfilled
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          2023-06-23
-                        </TableCell>
-                        <TableCell className="text-right">$250.00</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <div className="font-medium">Olivia Smith</div>
-                          <div className="hidden text-sm text-muted-foreground md:inline">
-                            olivia@example.com
-                          </div>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          Refund
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          <Badge className="text-xs" variant="outline">
-                            Declined
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          2023-06-24
-                        </TableCell>
-                        <TableCell className="text-right">$150.00</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>
-                          <div className="font-medium">Emma Brown</div>
-                          <div className="hidden text-sm text-muted-foreground md:inline">
-                            emma@example.com
-                          </div>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          Sale
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          <Badge className="text-xs" variant="secondary">
-                            Fulfilled
-                          </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          2023-06-26
-                        </TableCell>
-                        <TableCell className="text-right">$450.00</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
+          </div>
         </div>
-        <div>
-          <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
-            <CardHeader className="flex flex-row items-start bg-muted/50">
-              <div className="grid gap-0.5">
-                <CardTitle className="group flex items-center gap-2 text-lg">
-                  Order Oe31b70H
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100"
-                  >
-                    <Copy className="h-3 w-3" />
-                    <span className="sr-only">Copy Order ID</span>
-                  </Button>
-                </CardTitle>
-                <CardDescription>Date: November 23, 2023</CardDescription>
-              </div>
-              <div className="ml-auto flex items-center gap-1">
-                <Button size="sm" variant="outline" className="h-8 gap-1">
-                  <Truck className="h-3.5 w-3.5" />
-                  <span className="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">
-                    Track Order
-                  </span>
-                </Button>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button size="icon" variant="outline" className="h-8 w-8">
-                      <MoreVertical className="h-3.5 w-3.5" />
-                      <span className="sr-only">More</span>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem>Edit</DropdownMenuItem>
-                    <DropdownMenuItem>Export</DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>Trash</DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            </CardHeader>
-            <CardContent className="p-6 text-sm">
-              <div className="grid gap-3">
-                <div className="font-semibold">Order Details</div>
-                <ul className="grid gap-3">
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">
-                      Glimmer Lamps x <span>2</span>
-                    </span>
-                    <span>$250.00</span>
-                  </li>
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">
-                      Aqua Filters x <span>1</span>
-                    </span>
-                    <span>$49.00</span>
-                  </li>
-                </ul>
-                <Separator className="my-2" />
-                <ul className="grid gap-3">
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Subtotal</span>
-                    <span>$299.00</span>
-                  </li>
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Shipping</span>
-                    <span>$5.00</span>
-                  </li>
-                  <li className="flex items-center justify-between">
-                    <span className="text-muted-foreground">Tax</span>
-                    <span>$25.00</span>
-                  </li>
-                  <li className="flex items-center justify-between font-semibold">
-                    <span className="text-muted-foreground">Total</span>
-                    <span>$329.00</span>
-                  </li>
-                </ul>
-              </div>
-              <Separator className="my-4" />
-              <div className="grid grid-cols-2 gap-4">
-                <div className="grid gap-3">
-                  <div className="font-semibold">Shipping Information</div>
-                  <address className="grid gap-0.5 not-italic text-muted-foreground">
-                    <span>Liam Johnson</span>
-                    <span>1234 Main St.</span>
-                    <span>Anytown, CA 12345</span>
-                  </address>
-                </div>
-                <div className="grid auto-rows-max gap-3">
-                  <div className="font-semibold">Billing Information</div>
-                  <div className="text-muted-foreground">
-                    Same as shipping address
-                  </div>
-                </div>
-              </div>
-              <Separator className="my-4" />
-              <div className="grid gap-3">
-                <div className="font-semibold">Customer Information</div>
-                <dl className="grid gap-3">
-                  <div className="flex items-center justify-between">
-                    <dt className="text-muted-foreground">Customer</dt>
-                    <dd>Liam Johnson</dd>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <dt className="text-muted-foreground">Email</dt>
-                    <dd>
-                      <a href="mailto:">liam@acme.com</a>
-                    </dd>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <dt className="text-muted-foreground">Phone</dt>
-                    <dd>
-                      <a href="tel:">+1 234 567 890</a>
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-              <Separator className="my-4" />
-              <div className="grid gap-3">
-                <div className="font-semibold">Payment Information</div>
-                <dl className="grid gap-3">
-                  <div className="flex items-center justify-between">
-                    <dt className="flex items-center gap-1 text-muted-foreground">
-                      <CreditCard className="h-4 w-4" />
-                      Visa
-                    </dt>
-                    <dd>**** **** **** 4532</dd>
-                  </div>
-                </dl>
-              </div>
-            </CardContent>
-            <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
-              <div className="text-xs text-muted-foreground">
-                Updated <time dateTime="2023-11-23">November 23, 2023</time>
-              </div>
-              <Pagination className="ml-auto mr-0 w-auto">
-                <PaginationContent>
-                  <PaginationItem>
-                    <Button size="icon" variant="outline" className="h-6 w-6">
-                      <ChevronLeft className="h-3.5 w-3.5" />
-                      <span className="sr-only">Previous Order</span>
-                    </Button>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <Button size="icon" variant="outline" className="h-6 w-6">
-                      <ChevronRight className="h-3.5 w-3.5" />
-                      <span className="sr-only">Next Order</span>
-                    </Button>
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
-            </CardFooter>
-          </Card>
-        </div>
-      </main>
+      </TooltipProvider>
     </ShadLayout>
   );
 }
+function AnimatedCard({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      },
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-500 ease-out ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
+const restaurants = [
+  {
+    id: 1,
+    name: "דובנוב 8",
+    type: "ביסטרו ארוחת בוקר",
+    image: "/placeholder.svg?height=300&width=400",
+    rating: 8.6,
+    price: 4,
+    deliveryTime: "45-55",
+    popular: true,
+  },
+  {
+    id: 2,
+    name: "מסעדת השף",
+    type: "מסעדה איטלקית",
+    image: "/placeholder.svg?height=300&width=400",
+    rating: 9.2,
+    price: 3,
+    deliveryTime: "30-40",
+    popular: false,
+  },
+  {
+    id: 3,
+    name: "סושי בר",
+    type: "מסעדה יפנית",
+    image: "/placeholder.svg?height=300&width=400",
+    rating: 8.9,
+    price: 4,
+    deliveryTime: "40-50",
+    popular: true,
+  },
+  {
+    id: 4,
+    name: "פלאפל הזהב",
+    type: "אוכל רחוב",
+    image: "/placeholder.svg?height=300&width=400",
+    rating: 9.0,
+    price: 2,
+    deliveryTime: "20-30",
+    popular: false,
+  },
+  {
+    id: 5,
+    name: "פיצה נפוליטנה",
+    type: "פיצרייה",
+    image: "/placeholder.svg?height=300&width=400",
+    rating: 8.7,
+    price: 3,
+    deliveryTime: "25-35",
+    popular: true,
+  },
+];
+
+const categories = [
+  {
+    name: "אוכל רחוב",
+    places: 281,
+    image: "/placeholder.svg?height=100&width=100",
+  },
+  { name: "סלט", places: 200, image: "/placeholder.svg?height=100&width=100" },
+  { name: "כשר", places: 221, image: "/placeholder.svg?height=100&width=100" },
+  { name: "פיצה", places: 150, image: "/placeholder.svg?height=100&width=100" },
+  {
+    name: "המבורגר",
+    places: 180,
+    image: "/placeholder.svg?height=100&width=100",
+  },
+];
 
 type Props = {
-  navigate: typeof import("expo-router").router["navigate"];
+  navigate: (typeof import("expo-router").router)["navigate"];
 
   ref?: import("react").RefObject<import("react-native-webview").WebView>;
   dom?: import("expo/dom").DOMProps;
+  restaurants: any;
 };

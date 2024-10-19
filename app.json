@@ -1,21 +1,20 @@
 {
   "expo": {
-    "name": "domcom",
-    "slug": "mdex",
+    "name": "Grub",
+    "slug": "grub",
     "version": "1.0.0",
     "orientation": "default",
     "sdkVersion": "52.0.0",
     "icon": "./assets/images/icon.png",
-    "scheme": "domcom",
+    "scheme": "grub",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#fff"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bacon.mdex",
+      "bundleIdentifier": "com.flawstick.grub",
       "infoPlist": {
         "UIViewControllerBasedStatusBarAppearance": true,
         "ITSAppUsesNonExemptEncryption": false
@@ -38,9 +37,6 @@
     "extra": {
       "router": {
         "origin": false
-      },
-      "eas": {
-        "projectId": "06b3157a-c080-423d-aa6f-7c4fc3346b55"
       }
     }
   }

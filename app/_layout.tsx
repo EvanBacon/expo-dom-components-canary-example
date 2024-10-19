@@ -1,63 +1,35 @@
-import { Slot, Tabs } from "expo-router";
-import { House, ShoppingCart, Package, LineChart } from "lucide-react-native";
-import * as Haptics from "expo-haptics";
-import { BlurView } from "expo-blur";
-import { StyleSheet } from "react-native";
-import { HapticTab } from "@/components/haptic-tab";
-import * as SplashScreen from "expo-splash-screen";
-
-SplashScreen.preventAutoHideAsync();
+import { Redirect, Slot, SplashScreen, router } from "expo-router";
+import { AuthProvider } from "@/components/providers/auth-provider";
+import { useFonts } from "expo-font";
+import { ActivityIndicator, View } from "react-native";
+import { initializeUserStore } from "@/lib/store/loginStore";
+import { useEffect } from "react";
 
 export default function RootLayout() {
-  // TODO: Add tab bar
-  if (process.env.EXPO_OS === "web") return <Slot />;
+  const [fontsLoaded] = useFonts({
+    fredoka: require("@/assets/fonts/fredoka-regular.ttf"),
+    "fredoka-bold": require("@/assets/fonts/fredoka-bold.ttf"),
+    "fredoka-semibold": require("@/assets/fonts/fredoka-semibold.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
+  if (process.env.EXPO_OS === "web")
+    return (
+      <AuthProvider>
+        <Slot />
+      </AuthProvider>
+    );
+
   return (
-    <Tabs
-      screenOptions={{
-        lazy: false,
-        tabBarButton: HapticTab,
-        headerShown: false,
-        tabBarActiveTintColor: "rgb(15, 23, 42)",
-        tabBarStyle: {
-          position: "absolute",
-        },
-        tabBarBackground: () => (
-          <BlurView
-            tint="light"
-            intensity={100}
-            style={StyleSheet.absoluteFill}
-          />
-        ),
-      }}
-    >
-      <Tabs.Screen
-        name="(index)"
-        options={{
-          title: "Dashboard",
-          tabBarIcon: (props) => <House {...props} />,
-        }}
-      />
-      <Tabs.Screen
-        name="(orders)"
-        options={{
-          title: "Orders",
-          tabBarIcon: (props) => <ShoppingCart {...props} />,
-        }}
-      />
-      <Tabs.Screen
-        name="(products)"
-        options={{
-          title: "Products",
-          tabBarIcon: (props) => <Package {...props} />,
-        }}
-      />
-      <Tabs.Screen
-        name="(analytics)"
-        options={{
-          title: "Analytics",
-          tabBarIcon: (props) => <LineChart {...props} />,
-        }}
-      />
-    </Tabs>
+    <AuthProvider>
+      <Slot />
+    </AuthProvider>
   );
 }
