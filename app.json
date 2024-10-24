@@ -45,8 +45,12 @@
       }
     },
     "plugins": [
-      "expo-font",
-      "expo-router"
+      [
+        "expo-router",
+        {
+          "sitemap": false
+        }
+      ]
     ]
   }
 }
