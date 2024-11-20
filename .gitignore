@@ -14,6 +14,7 @@ web-build/
 .DS_Store
 
 
+/android
 /ios
 # Local Netlify folder
 .netlify
