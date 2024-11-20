@@ -11,7 +11,7 @@ export default function RootLayout({ segment }: { segment: string }) {
   I18nManager.forceRTL(true);
 
   // States
-  const { fetchRestaurants } = useRestaurantStore();
+  const { fetchRestaurants, restaurants} = useRestaurantStore();
 
   // Fetch everything
   useEffect(() => {

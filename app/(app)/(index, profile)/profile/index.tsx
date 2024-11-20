@@ -17,6 +17,7 @@ import {
   ChevronLeft,
 } from 'lucide-react-native';
 import { useAuth } from '@/components/providers/auth-provider';
+import LogoutButton from '@/components/native/profile/logout';
 
 export default function Profile() {
   I18nManager.allowRTL(true);
@@ -117,11 +118,7 @@ export default function Profile() {
         />
       </View>
 
-      {/* Logout Button */}
-      <TouchableOpacity style={styles.logoutButton} onPress={() => {}}>
-        <LogOut size={20} color="white" style={styles.logoutIcon} />
-        <Text style={styles.logoutText}>התנתק</Text>
-      </TouchableOpacity>
+      <LogoutButton />
     </ScrollView>
     </SafeAreaView>
   );

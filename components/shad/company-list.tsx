@@ -3,11 +3,9 @@
 import "@/global.css";
 
 import { useGlobalButtonHaptics } from "../global-button-haptics";
-import { ScrollView } from "react-native";
+import { I18nManager, ScrollView } from "react-native";
 import { motion } from "framer-motion";
-import { Avatar, AvatarFallback } from "../ui/avatar";
-import ShadLayout from "./shad-layout";
-import { useEffect } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function CompanyList({
   navigate,
@@ -63,12 +61,11 @@ export default function CompanyList({
           variants={itemVariants}
           transition={{ duration: 0.25, ease: "easeOut" }} // Fast and smooth transition
         >
-          <Avatar className="ml-6">
-            <AvatarFallback>{/* Empty avatar */}</AvatarFallback>
+          <Avatar className="ml-3">
+            <AvatarImage src={item?.profile?.logo} alt={item.name} />
+            <AvatarFallback>{item.name[0]}</AvatarFallback>
           </Avatar>
-          <span className="flex-grow text-right ml-3 font-medium">
-            {item.name}
-          </span>
+          <span className="flex text-right font-medium">{item.name}</span>
         </motion.li>
       ))}
     </ScrollView>

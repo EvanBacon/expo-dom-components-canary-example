@@ -1,3 +1,4 @@
+import { useMenuStore } from "@/lib/hooks/useMenu";
 import React, { useState, useEffect } from "react";
 import { TouchableOpacity, StyleSheet, I18nManager } from "react-native";
 import { LayoutChangeEvent } from "react-native";
@@ -15,6 +16,13 @@ interface CategoryData {
   width: number;
 }
 
+interface Category {
+  _id: string;
+  name: string;
+  description: string;
+  index: number;
+}
+
 export default function CategoriesHorizontalDropdown({
   menuY,
   scrollY,
@@ -24,9 +32,9 @@ export default function CategoriesHorizontalDropdown({
 }: {
   menuY: number;
   scrollY: SharedValue<number>;
-  categories: string[];
+  categories: Category[];
   sCategory: string;
-  onCategoryChange: (category: string) => void;
+  onCategoryChange: (category: any) => void;
 }) {
   const [categoryLayouts, setCategoryLayouts] = useState<{
     [key: string]: CategoryData;
@@ -39,13 +47,13 @@ export default function CategoriesHorizontalDropdown({
   const categoriesTextColor = useAnimatedStyle(() => {
     const color = interpolateColor(
       scrollY.value,
-      [menuY - 100, menuY + 50],
+      [menuY - 300, menuY - 50],
       ["#33333300", "#333333FF"],
     );
 
     const translateY = interpolate(
       scrollY.value,
-      [menuY, menuY + 50],
+      [menuY - 300, menuY - 50],
       [-10, 0],
       "clamp",
     );
@@ -57,21 +65,21 @@ export default function CategoriesHorizontalDropdown({
   });
 
   // Callback to capture position and width when layout changes
-  const handleLayout = (category: string) => (event: LayoutChangeEvent) => {
+  const handleLayout = (categoryId: string) => (event: LayoutChangeEvent) => {
     const { x, width } = event.nativeEvent.layout;
     setCategoryLayouts((prev) => ({
       ...prev,
-      [category]: { position: x, width },
+      [categoryId]: { position: x, width },
     }));
   };
 
-  const handleCategoryPress = (category: string) => {
-    if (categoryLayouts[category]) {
+  const handleCategoryPress = (categoryId: string) => {
+    if (categoryLayouts[categoryId]) {
       selectedCategoryData.value = {
-        position: categoryLayouts[category].position,
-        width: categoryLayouts[category].width,
+        position: categoryLayouts[categoryId].position,
+        width: categoryLayouts[categoryId].width,
       };
-      onCategoryChange(category);
+      onCategoryChange(categoryId);
     }
   };
 
@@ -95,27 +103,21 @@ export default function CategoriesHorizontalDropdown({
   });
 
   return (
-    <Animated.ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{
-        flexDirection: I18nManager.isRTL ? "row-reverse" : "row",
-      }}
-    >
+    <Animated.ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <Animated.View style={[styles.underline, animatedUnderlineStyle]} />
-      {categories?.map((category, index) => (
+      {categories?.map((category) => (
         <TouchableOpacity
-          key={index}
+          key={category._id}
           style={{
             paddingHorizontal: 10,
             alignItems: "center",
             justifyContent: "center",
           }}
-          onLayout={handleLayout(category)}
-          onPress={() => handleCategoryPress(category)}
+          onLayout={handleLayout(category._id)}
+          onPress={() => handleCategoryPress(category._id)}
         >
           <Animated.Text style={[styles.menuItem, categoriesTextColor]}>
-            {category}
+            {category.name}
           </Animated.Text>
         </TouchableOpacity>
       ))}

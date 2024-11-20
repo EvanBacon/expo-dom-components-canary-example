@@ -1,13 +1,26 @@
-import { Stack, useRouter } from "expo-router";
+import { Stack, Tabs, useFocusEffect, useNavigation, useRouter } from "expo-router";
 import { I18nManager, PlatformColor } from "react-native";
 import { TouchableImpact } from "@/components/touchable-impact";
-import { XIcon } from "lucide-react-native";
-import React from "react";
+import { ArrowRight, ChevronDown, XIcon } from "lucide-react-native";
+import React, { useCallback } from "react";
 
 export default function RootLayout({ segment }: { segment: string }) {
   // Force RTL for the entire app
   I18nManager.allowRTL(true);
   I18nManager.forceRTL(true);
+
+  const navigation = useNavigation();
+
+  useFocusEffect(
+    useCallback(() => {
+      // Hide tab bar when this screen is focused
+      navigation.getParent()?.getParent()?.setOptions({ tabBarStyle: { display: "none" } });
+      return () => {
+        // Show tab bar again when leaving this screen
+        navigation.getParent()?.getParent()?.setOptions({ tabBarStyle: { display: "flex" } });
+      };
+    }, [navigation])
+  );
 
   return (
     <Stack
@@ -19,19 +32,18 @@ export default function RootLayout({ segment }: { segment: string }) {
         gestureEnabled: true,
         gestureDirection: "horizontal",
         headerStyle: {
-          // Hack to ensure the collapsed small header shows the shadow / border
           backgroundColor: "rgba(255,255,255,0.01)",
         },
         headerLargeStyle: {
           backgroundColor: "background",
         },
         contentStyle: {
-          backgroundColor: "white",
+          backgroundColor: "#fff",
         },
       }}
     >
       <Stack.Screen
-        name={"item"}
+        name={"item/[item]"}
         options={{
           title: "מנה",
           contentStyle: {
@@ -63,6 +75,47 @@ export default function RootLayout({ segment }: { segment: string }) {
           navigationBarHidden: true,
         }}
       />
+      <Stack.Screen
+        name={"cart/[restaurant]"}
+        options={{
+          title: "עגלת קניות",
+          contentStyle: {
+            backgroundColor: "white",
+          },
+          headerLargeStyle: {
+            backgroundColor: "white",
+          },
+          headerTitleStyle: {
+              fontFamily: "fredoka-semibold",
+              fontSize: 20,
+          },
+          headerBackVisible: false,
+          presentation: "card",
+          animation: "slide_from_bottom",
+          headerLeft: () => {
+            return <ChevronDownButton />;
+          },
+        }} />
+      <Stack.Screen
+        name={"checkout/[restaurant]"}
+        options={{
+          title: "תשלום",
+          contentStyle: {
+            backgroundColor: "white",
+          },
+          headerLargeStyle: {
+            backgroundColor: "white",
+          },
+          headerTitleStyle: {
+              fontFamily: "fredoka-semibold",
+              fontSize: 20,
+          },
+          headerBackVisible: false,
+          presentation: "card",
+          headerLeft: () => {
+            return <ArrowBack />;
+          },
+        }} />
     </Stack>
   );
 }
@@ -83,4 +136,53 @@ function XButton() {
         </TouchableImpact>
     );
 }
+
+function ChevronDownButton() {
+    const router = useRouter();
+    return (
+        <TouchableImpact onPress={router.back} style={{
+            padding: 6,
+            borderRadius: 24,
+            backgroundColor: "#dddddde0",
+            alignItems: "center",
+            justifyContent: "center",
+        }}>
+        <ChevronDown
+        style={{
+            width: 40,
+            height: 40,
+            aspectRatio: 1,
+            borderRadius: 24,
+        }}
+        color={PlatformColor("label")}
+        />
+        </TouchableImpact>
+    );
+}
+
+
+
+function ArrowBack() {
+    const router = useRouter();
+    return (
+        <TouchableImpact onPress={router.back} style={{
+            padding: 4,
+            borderRadius: 24,
+            backgroundColor: "#dddddde0",
+            alignItems: "center",
+            justifyContent: "center",
+        }}>
+        <ArrowRight
+        style={{
+            width: 40,
+            height: 40,
+            aspectRatio: 1,
+            borderRadius: 24,
+        }}
+        color={PlatformColor("label")}
+        />
+        </TouchableImpact>
+    );
+}
+
 

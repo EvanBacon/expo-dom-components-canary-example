@@ -21,7 +21,7 @@ export default function ScaleImageHeader({ Uri, scrollY }: HeaderProps) {
   const animatedImageStyle = useAnimatedStyle(() => {
     const expandedHeight = interpolate(
       scrollY.value,
-      [-300, 0, 250],
+      [-300, 0, 300],
       [imageHeight * 1.5, imageHeight, 0],
       "clamp",
     );

@@ -1,7 +1,7 @@
 import { Redirect, Tabs } from "expo-router";
 import { Utensils, User } from "lucide-react-native";
 import { BlurView } from "expo-blur";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { HapticTab } from "@/components/haptic-tab";
 import * as SplashScreen from "expo-splash-screen";
 import { useAuth } from "@/components/providers/auth-provider";
@@ -9,6 +9,9 @@ import React, { useEffect, useState } from "react";
 import { useRestaurantStore } from "@/lib/store/restaurantStore";
 import { initializeUserStore, useLoginStore } from "@/lib/store/loginStore";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import DraggableExpandableFABs from "@/components/native/draggable-fabs";
+import { SafeAreaView } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -41,6 +44,7 @@ export default function RootLayout() {
   if (!isLoggedIn && !user) return <Redirect href="/auth" />;
 
   return (
+      <GestureHandlerRootView style={{ flex: 1 }}>
     <Tabs
       screenOptions={{
         lazy: false,
@@ -74,6 +78,10 @@ export default function RootLayout() {
         }}
       />
     </Tabs>
+    <View style={{ position: "absolute" }}>
+    <DraggableExpandableFABs />
+    </View>
+    </GestureHandlerRootView>
   );
 }
 

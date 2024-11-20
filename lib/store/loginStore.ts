@@ -1,6 +1,7 @@
 import axios from "axios";
 import { create } from "zustand";
 import EncryptedStorage from "react-native-encrypted-storage";
+import { useCompanyStore } from "./companyStore";
 
 interface LoginState {
   token: string | null;
@@ -120,6 +121,8 @@ export async function initializeUserStore() {
         tenantId: null,
       });
     }
+
+    await useCompanyStore.getState().fetchSelectedCompanyData();
   }
 }
 

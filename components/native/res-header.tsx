@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
 import { MoreHorizontal, Search, View } from "lucide-react-native";
 import Animated, {
   useAnimatedStyle,
@@ -10,19 +10,22 @@ import Animated, {
 } from "react-native-reanimated";
 import { ArrowRight } from "lucide-react-native";
 import CategoriesHorizationalDropdown from "./categories-drop";
+import { router } from "expo-router";
 
 const RestaurantHeader = ({
   scrollY,
+  restaurant,
   menuY,
   categories,
   category,
   onCategoryChange,
 }: {
   scrollY: SharedValue<number>;
+  restaurant: any;
   menuY: number;
-  categories: string[];
-  category: string;
-  onCategoryChange: (category: string) => void;
+  categories: any[];
+  category: any;
+  onCategoryChange: (category: any) => void;
 }) => {
   // Animated styles for header background opacity
   const headerStyle = useAnimatedStyle(() => {
@@ -113,11 +116,11 @@ const RestaurantHeader = ({
   const menuDropDownStyle = useAnimatedStyle(() => {
     const translateY = interpolate(
       scrollY.value,
-      [menuY - 200, menuY],
+      [menuY - 350, menuY - 100],
       [0, 70],
       "clamp",
     );
-    const opacity = interpolate(scrollY.value, [200, 300], [0, 1], "clamp");
+    const opacity = interpolate(scrollY.value, [200, 250], [0, 1], "clamp");
 
     return {
       transform: [{ translateY }],
@@ -125,25 +128,8 @@ const RestaurantHeader = ({
     };
   });
 
-  const categoriesTextColor = useAnimatedStyle(() => {
-    const color = interpolateColor(
-      scrollY.value,
-      [menuY - 100, menuY + 50],
-      ["#33333300", "#333333FF"],
-    );
-
-    const translateY = interpolate(
-      scrollY.value,
-      [menuY, menuY + 50],
-      [-10, 0],
-      "clamp",
-    );
-
-    return {
-      color,
-      transform: [{ translateY }],
-    };
-  });
+  // Animated TouchableOpacity
+  const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
   return (
     <>
@@ -153,9 +139,14 @@ const RestaurantHeader = ({
       <Animated.View style={[styles.header, headerStyle]}>
         <SafeAreaView style={styles.headerContent}>
           {/* Back Button */}
-          <Animated.View style={[styles.circleButton, circleButtonStyle]}>
+          <AnimatedTouchable
+            style={[styles.circleButton, circleButtonStyle]}
+            onPress={router.back}
+          >
             <ArrowRight color="#333" size={24} />
-          </Animated.View>
+          </AnimatedTouchable>
+
+          {/* Categories Dropdown */}
 
           {/* Search Bar */}
           <Animated.View style={[styles.searchBar, searchBarStyle]}>
@@ -178,7 +169,7 @@ const RestaurantHeader = ({
                   { position: "absolute", paddingLeft: 28 },
                 ]}
               >
-                מסעדת פיצה פלאפל
+                {restaurant?.name}
               </Animated.Text>
               <Search color="#999" size={20} style={[styles.searchIcon]} />
             </Animated.View>

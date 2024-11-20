@@ -24,6 +24,7 @@ export default function CompanyListRoute() {
             onChangeText: (text: NativeSyntheticEvent<any>) => {
                 setSearch(text.nativeEvent.text);
             },
+            cancelButtonText: "ביטול",
             hideWhenScrolling: false,
           },
           title: "חברות",

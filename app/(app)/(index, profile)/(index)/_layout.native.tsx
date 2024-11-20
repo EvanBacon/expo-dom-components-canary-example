@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { useRestaurantStore } from "@/lib/store/restaurantStore";
 import { useAuth } from "@/components/providers/auth-provider";
 import { useLoginStore } from "@/lib/store/loginStore";
+import { useCompanyStore } from "@/lib/store/companyStore";
 
 export default function RootLayout({ segment }: { segment: string }) {
   // Force RTL for the entire app

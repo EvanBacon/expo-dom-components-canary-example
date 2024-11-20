@@ -2,7 +2,7 @@
   "expo": {
     "name": "Grub",
     "slug": "grub",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "default",
     "sdkVersion": "52.0.0",
     "icon": "./assets/images/icon.png",
@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.flawstick.grub",
+      "bundleIdentifier": "com.flawstick.aion",
       "infoPlist": {
         "UIViewControllerBasedStatusBarAppearance": true,
         "ITSAppUsesNonExemptEncryption": false
@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.flawstick.aion"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +38,9 @@
     "extra": {
       "router": {
         "origin": false
+      },
+      "eas": {
+        "projectId": "1e8ef05b-9084-489e-9741-e4d5ce72303e"
       }
     }
   }

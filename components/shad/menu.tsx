@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,11 +8,12 @@ import {
   ScrollView,
   Dimensions,
   I18nManager,
+  TouchableOpacity,
 } from "react-native";
 import {
   GestureHandlerRootView,
   PanGestureHandler,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
 import * as Haptics from "expo-haptics";
 import Animated, {
@@ -27,6 +28,8 @@ import Animated, {
 import { Check } from "lucide-react-native";
 import { Image as ExpoImage } from "react-native-expo-image-cache";
 import { router } from "expo-router";
+import useMenu, { useMenuStore } from "@/lib/hooks/useMenu";
+import { useCompanyStore } from "@/lib/store/companyStore";
 
 I18nManager.forceRTL(true);
 I18nManager.allowRTL(true);
@@ -35,40 +38,53 @@ const isRTL = I18nManager.isRTL;
 
 interface MenuProps {
   menuItems: any;
+  restaruantId: string;
 }
 
 export default function Menu({ menuItems }: MenuProps) {
+  const { categories, loading, setCategoryRef, categoryRefs } = useMenuStore();
+  const { selectedCompanyData } = useCompanyStore();
   const handleAddToCart = (item: any) => {
     // TODO: Implement cart logic
-    console.log(`Added ${item.name} to the cart`);
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    onClick(item._id);
   };
 
   // TODO: Implement navigation using resId prop, two seconds probably, goodnight
   const onClick = (itemId: string) => {
-    router.navigate(`/restaurant/item/${restaruantId}/${itemId}`);
+    router.navigate(`/restaurant/item/${itemId}`);
   };
 
+  // create as many refs as there are categories
+  useEffect(() => {
+    categories.forEach((category) => {
+      setCategoryRef(category._id, React.createRef());
+    });
+  }, [categories]);
+
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={styles.container}>
-        {Object.entries(menuItems).map(
-          ([categoryName, items]: any, categoryIndex) => (
-            <View key={categoryIndex} style={styles.categoryContainer}>
-              <Text style={styles.category}>{categoryName}</Text>
-              {items.map((item: any, itemIndex: any) => (
-                <SwipeableItem
-                  key={itemIndex}
-                  item={item}
-                  handleAddToCart={handleAddToCart}
-                  onClick={onClick}
-                />
-              ))}
-            </View>
-          ),
-        )}
-      </ScrollView>
-    </GestureHandlerRootView>
+    <ScrollView contentContainerStyle={styles.container}>
+      {categories.map((category: any, categoryIndex) => (
+        <View
+          key={categoryIndex}
+          style={styles.categoryContainer}
+          ref={categoryRefs[category._id]}
+        >
+          <Text style={styles.category}>{category.name}</Text>
+          {menuItems
+            .filter((item: any) => item.category === category._id)
+            .map((item: any, itemIndex: any) => (
+              <SwipeableItem
+                key={itemIndex}
+                item={item}
+                handleAddToCart={handleAddToCart}
+                onClick={onClick}
+                selectedCompanyData={selectedCompanyData}
+              />
+            ))}
+        </View>
+      ))}
+    </ScrollView>
   );
 }
 
@@ -76,17 +92,20 @@ interface SwipeableItemProps {
   item: any;
   handleAddToCart: (item: any) => void;
   onClick: (itemId: string) => void;
+  selectedCompanyData: any;
 }
 
 const SwipeableItem = ({
   item,
   handleAddToCart,
   onClick,
+  selectedCompanyData,
 }: SwipeableItemProps) => {
   const [hapticFired, setHapticFired] = useState(false);
   const translateX = useSharedValue(0);
   const SCREEN_WIDTH = Dimensions.get("window").width;
   const SWIPE_THRESHOLD = SCREEN_WIDTH * 0.25; // Positive threshold
+  const MOVE_RIGHT_THRESHOLD = SCREEN_WIDTH * 0.75; // Negative threshold
 
   // Direction multiplier based on RTL
   const direction = isRTL ? 1 : -1;
@@ -130,43 +149,78 @@ const SwipeableItem = ({
       [0, 1],
       Extrapolate.CLAMP,
     );
-    return { transform: [{ scale }] };
+
+    const marginRight = interpolate(
+      translateX.value,
+      [0, SWIPE_THRESHOLD],
+      [0, 36],
+      Extrapolate.CLAMP,
+    );
+
+    return {
+      transform: [{ scale }],
+      marginRight,
+    };
+  });
+
+  const animatedBackgroundStyle = useAnimatedStyle(() => {
+    const width = interpolate(
+      translateX.value,
+      [0, SWIPE_THRESHOLD],
+      [0, SCREEN_WIDTH],
+      Extrapolate.CLAMP,
+    );
+    const opacity = interpolate(
+      translateX.value,
+      [0, SWIPE_THRESHOLD],
+      [0, 1],
+      Extrapolate.CLAMP,
+    );
+    return { width, opacity };
   });
 
   return (
-    <TouchableOpacity
-      style={{ overflow: "hidden" }}
-      onPress={() => onClick(item._id as string)}
-    >
+    <View style={{ overflow: "hidden" }}>
       {/* Background with check icon */}
-      <View style={styles.rightAction}>
+      <Animated.View style={[styles.rightAction, animatedBackgroundStyle]}>
         <Animated.View style={[styles.iconContainer, iconScaleStyle]}>
           <Check size={32} color="#fff" />
         </Animated.View>
-      </View>
+      </Animated.View>
       {/* Swipeable item */}
       <PanGestureHandler
         onGestureEvent={panGesture}
-        // Add the following props:
         activeOffsetX={[-15, 15]}
         failOffsetY={[-15, 15]}
       >
-        <Animated.View style={[styles.itemContainer, animatedStyle]}>
-          <View style={styles.itemContent}>
-            <View style={styles.itemHeader}>
-              <Text style={styles.itemName}>{item.name}</Text>
+        <Animated.View style={[{ flex: 1 }, animatedStyle]}>
+          <TouchableWithoutFeedback
+            onPress={() => onClick(item._id)}
+            style={styles.itemContainer}
+          >
+            <View style={styles.itemContent}>
+              <View style={styles.itemHeader}>
+                <Text style={styles.itemName}>{item.name}</Text>
+              </View>
+              <Text style={styles.itemDescription}>{item.description}</Text>
+              <Text style={styles.itemPrice}>
+                ₪
+                {(
+                  item?.price *
+                  (100 - selectedCompanyData?.companyContributionPercentage) *
+                  0.01
+                ).toFixed(2)}
+              </Text>
             </View>
-            <Text style={styles.itemDescription}>{item.description}</Text>
-            <Text style={styles.itemPrice}>₪{item.price.toFixed(2)}</Text>
-          </View>
-          <ExpoImage
-            defaultSource={item.imageUrl}
-            uri={item.imageUrl}
-            style={styles.itemImage}
-          />
+            <ExpoImage
+              defaultSource={item.imageUrl}
+              uri={item.imageUrl}
+              style={styles.itemImage}
+            />
+          </TouchableWithoutFeedback>
         </Animated.View>
       </PanGestureHandler>
-    </TouchableOpacity>
+    </View>
   );
 };
 
@@ -184,6 +238,7 @@ const styles = StyleSheet.create({
   category: {
     fontSize: 24,
     fontWeight: "bold",
+    fontFamily: "fredoka",
     color: "#1F2937", // text-gray-800
     marginBottom: 8,
     textAlign: "left",
@@ -212,6 +267,7 @@ const styles = StyleSheet.create({
     color: "#1F2937", // text-gray-800
     fontSize: 16,
     paddingRight: 16,
+    fontFamily: "fredoka-semibold",
   },
   itemDescription: {
     fontSize: 14,
@@ -219,12 +275,14 @@ const styles = StyleSheet.create({
     marginTop: 4,
     textAlign: "left",
     paddingRight: 16,
+    fontFamily: "fredoka",
   },
   itemPrice: {
     color: "#FF8000",
     marginTop: 4,
     fontWeight: "500",
     textAlign: "left",
+    fontFamily: "fredoka-semibold",
   },
   itemImage: {
     width: 100,
@@ -239,13 +297,9 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     right: 0,
-    width: "100%",
     backgroundColor: "#FD8000",
     justifyContent: "center",
     alignItems: "flex-end",
-    paddingHorizontal: 20,
   },
-  iconContainer: {
-    marginRight: 16, // Adjust as needed
-  },
+  iconContainer: {},
 });

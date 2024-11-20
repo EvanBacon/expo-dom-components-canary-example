@@ -14,7 +14,10 @@
     "production": {
       "resourceClass": "large",
       "autoIncrement": true,
-      "prebuildCommand": "npx expo prebuild --template ./vendor/expo-template-bare-minimum-51.0.27.tgz"
+      "prebuildCommand": "npx expo prebuild --template ./vendor/expo-template-bare-minimum-51.0.27.tgz",
+      "env": {
+        "EAS_BUILD_DISABLE_BUNDLE_JAVASCRIPT_STEP": "1"
+      }
     }
   },
   "submit": {

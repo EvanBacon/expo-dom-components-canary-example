@@ -10,13 +10,15 @@ import Animated, {
 } from "react-native-reanimated";
 import { TouchableImpact } from "../touchable-impact";
 import { XIcon } from "lucide-react-native";
+import { Image as ExpoImage } from "react-native-expo-image-cache";
 
 // Interface for props, including the shared scroll value from Reanimated
 interface HeaderProps {
   scrollY: SharedValue<number>;
+  menuItem: any;
 }
 
-export default function ItemHeader({ scrollY }: HeaderProps) {
+export default function ItemHeader({ scrollY, menuItem }: HeaderProps) {
   const imageHeight = Dimensions.get("window").height * 0.33; // Set initial image height
   const router = useRouter();
 
@@ -40,10 +42,10 @@ export default function ItemHeader({ scrollY }: HeaderProps) {
 
   // Slip text from the top
   const slipText = useAnimatedStyle(() => {
-    const opacity = interpolate(scrollY.value, [220, 300], [0, 1], "clamp");
+    const opacity = interpolate(scrollY.value, [220, 280], [0, 1], "clamp");
     const translateY = interpolate(
       scrollY.value,
-      [220, 300],
+      [220, 280],
       [-10, 0],
       "clamp",
     );
@@ -131,7 +133,7 @@ export default function ItemHeader({ scrollY }: HeaderProps) {
             fontFamily: "fredoka-semibold",
           }}
         >
-          מנה
+          {menuItem?.name}
         </Text>
       </Animated.View>
 
@@ -187,12 +189,10 @@ export default function ItemHeader({ scrollY }: HeaderProps) {
           animatedImageStyle,
         ]}
       >
-        <Image
-          source={{
-            uri: "https://assets.epicurious.com/photos/57c5c6d9cf9e9ad43de2d96e/master/pass/the-ultimate-hamburger.jpg",
-          }}
+        <ExpoImage
+          uri={menuItem.imageUrl}
           style={{ width: "100%", height: "100%" }}
-          resizeMode="cover"
+          transitionDuration={1000}
         />
       </Animated.View>
     </BlurView>
