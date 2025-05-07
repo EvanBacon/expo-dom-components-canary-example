@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "domcom",
+    "name": "use dom",
     "slug": "mdex",
     "version": "1.0.0",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
-    "scheme": "domcom",
+    "scheme": "usedom",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/images/splash.png",
