@@ -12,6 +12,7 @@
     "prepare": "npx patch-package"
   },
   "dependencies": {
+    "@bacons/apple-colors": "^0.0.8",
     "@bacons/mdx": "^0.3.8",
     "@emoji-mart/data": "^1.2.1",
     "@emoji-mart/react": "^1.1.1",

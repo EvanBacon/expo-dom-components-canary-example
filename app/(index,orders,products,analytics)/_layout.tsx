@@ -2,8 +2,7 @@ import { Link, Slot, Stack } from "expo-router";
 import { Image } from "react-native";
 import { TouchableImpact } from "@/components/touchable-impact";
 
-import { PlatformColor } from "react-native";
-
+import * as AC from "@bacons/apple-colors";
 import { ShadLayoutFull } from "@/components/shad/shad-layout";
 
 export default function RootLayout({ segment }: { segment: string }) {
@@ -31,10 +30,10 @@ export default function RootLayout({ segment }: { segment: string }) {
           backgroundColor: "rgba(255,255,255,0.01)",
         },
         headerLargeStyle: {
-          backgroundColor: PlatformColor("systemGroupedBackgroundColor"), // Color of your background
+          backgroundColor: AC.systemGroupedBackground,
         },
         contentStyle: {
-          backgroundColor: PlatformColor("systemGroupedBackgroundColor"),
+          backgroundColor: AC.systemGroupedBackground,
         },
       }}
     >

@@ -1,8 +1,6 @@
-# Experimental DOM Components with Expo Canary
+# Expo DOM Components Demo
 
-This project demonstrates how to use experimental [DOM components](https://docs.expo.dev/guides/dom-components/) with Expo canary.
-
-Your best bet is to use dev clients (`npx expo run`), but you can also try running this in Expo Go but YMMV until Expo SDK 52 is released.
+This project demonstrates how to use [Expo DOM components](https://docs.expo.dev/guides/dom-components/).
 
 This demo has a template UI from:
 
@@ -11,7 +9,6 @@ This demo has a template UI from:
 - React Three Fiber [demo](https://codesandbox.io/p/sandbox/re-using-gltfs-dix1y?file=%2Fpackage.json%3A10%2C3-10%2C23) from @drcmda.
 - An image cropper from `react-mobile-cropper`.
 - Emoji picker from `emoji-mart`.
-
 
 Try it now:
 
