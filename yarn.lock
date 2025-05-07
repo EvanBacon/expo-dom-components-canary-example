@@ -957,7 +957,7 @@
     debug "^4.3.1"
     globals "^11.1.0"
 
-"@babel/types@^7.0.0", "@babel/types@^7.20.7", "@babel/types@^7.25.2", "@babel/types@^7.27.1", "@babel/types@^7.3.3":
+"@babel/types@^7.0.0", "@babel/types@^7.20.7", "@babel/types@^7.25.2", "@babel/types@^7.26.0", "@babel/types@^7.27.1", "@babel/types@^7.3.3":
   version "7.27.1"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.27.1.tgz#9defc53c16fc899e46941fc6901a9eea1c9d8560"
   integrity sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==
@@ -3304,6 +3304,13 @@ babel-plugin-polyfill-regenerator@^0.6.1:
   integrity sha512-2R25rQZWP63nGwaAswvDazbPXfrM3HwVoBXK6HcqeKrSrL/JqcC/rDcf95l4r7LXLyxDXc8uQDa064GubtCABg==
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.6.2"
+
+babel-plugin-react-compiler@^19.1.0-rc.1:
+  version "19.1.0-rc.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-compiler/-/babel-plugin-react-compiler-19.1.0-rc.1.tgz#99d131be61017e40abbaedd98321069bf8b7e54a"
+  integrity sha512-M4fpG+Hfq5gWzsJeeMErdRokzg0fdJ8IAk+JDhfB/WLT+U3WwJWR8edphypJrk447/JEvYu6DBFwsTn10bMW4Q==
+  dependencies:
+    "@babel/types" "^7.26.0"
 
 babel-plugin-react-native-web@~0.19.13:
   version "0.19.13"

@@ -24,8 +24,6 @@ export default function IndexRoute() {
       }}
       ref={useScrollRef()}
       dom={{
-        contentInsetAdjustmentBehavior: "automatic",
-        automaticallyAdjustsScrollIndicatorInsets: true,
         onLoadEnd(event) {
           // Keep the splash screen open until the DOM content has loaded.
           setTimeout(() => {

@@ -19,10 +19,6 @@ export default function AnalyticsRoute() {
           );
         }
       }}
-      dom={{
-        contentInsetAdjustmentBehavior: "automatic",
-        automaticallyAdjustsScrollIndicatorInsets: true,
-      }}
     />
   );
 }

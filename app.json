@@ -30,11 +30,12 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "reactCompiler": true
     },
     "extra": {
       "router": {

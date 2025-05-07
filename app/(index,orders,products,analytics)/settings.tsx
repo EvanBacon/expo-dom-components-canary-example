@@ -6,10 +6,6 @@ export default function Settings() {
   return (
     <>
       <SettingsRoute
-        dom={{
-          contentInsetAdjustmentBehavior: "automatic",
-          automaticallyAdjustsScrollIndicatorInsets: true,
-        }}
         onButtonClick={async (size: number) => {
           if (process.env.EXPO_OS !== "web") {
             Haptics.impactAsync(

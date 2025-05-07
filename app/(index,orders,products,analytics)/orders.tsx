@@ -7,10 +7,6 @@ export default function OrdersRoute() {
   return (
     <Orders
       ref={ref}
-      dom={{
-        contentInsetAdjustmentBehavior: "automatic",
-        automaticallyAdjustsScrollIndicatorInsets: true,
-      }}
       onButtonClick={async (size: number) => {
         if (process.env.EXPO_OS !== "web") {
           Haptics.impactAsync(

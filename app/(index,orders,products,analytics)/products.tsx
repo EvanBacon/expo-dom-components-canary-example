@@ -19,10 +19,6 @@ export default function ProductsRoute() {
           );
         }
       }}
-      dom={{
-        contentInsetAdjustmentBehavior: "automatic",
-        automaticallyAdjustsScrollIndicatorInsets: true,
-      }}
     />
   );
 }

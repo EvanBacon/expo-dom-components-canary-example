@@ -97,15 +97,15 @@ function ProfileButton({ segment }: { segment: string }) {
 }
 
 export const unstable_settings = {
-  initialRouteName: "index",
+  anchor: "index",
   orders: {
-    initialRouteName: "orders",
+    anchor: "orders",
   },
   products: {
-    initialRouteName: "products",
+    anchor: "products",
   },
   analytics: {
-    initialRouteName: "analytics",
+    anchor: "analytics",
   },
 };
 
