@@ -20,7 +20,9 @@ export default function StoryWrapper({}: {
         // This is easier to style and results in simpler DOM elements for debugging.
         ...webElements,
         // Good tailwind defaults for MDX.
-        img: (props) => <Img {...props} className="max-w-full rounded-md" />,
+        img: (props) => (
+          <Img {...props} className="max-w-full md:max-w-[59rem] rounded-md" />
+        ),
         h1: (props) => <h1 {...props} className="text-4xl font-bold mb-4" />,
         h2: (props) => <h2 {...props} className="text-3xl font-bold mb-4" />,
         hr: (props) => <hr {...props} className="my-4 border-gray-300" />,
