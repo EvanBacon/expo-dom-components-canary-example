@@ -6,6 +6,7 @@ import { router } from "expo-router";
 import React from "react";
 import { useScrollRef } from "@/lib/tab-to-top";
 import * as Haptics from "expo-haptics";
+import * as SplashScreen from "expo-splash-screen";
 
 export default function IndexRoute() {
   return (
@@ -56,4 +57,3 @@ async function notify() {
     trigger: null,
   });
 }
-import * as SplashScreen from "expo-splash-screen";
