@@ -1,13 +1,11 @@
 import SettingsRoute from "@/components/shad/settings";
 import * as Haptics from "expo-haptics";
-import { router } from "expo-router";
 import { StatusBar } from "react-native";
 
 export default function Settings() {
   return (
     <>
       <SettingsRoute
-        navigate={router.navigate}
         dom={{
           contentInsetAdjustmentBehavior: "automatic",
           automaticallyAdjustsScrollIndicatorInsets: true,

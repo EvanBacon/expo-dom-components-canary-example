@@ -2,7 +2,6 @@
 
 import Dashboard from "@/components/shad/dashboard";
 import * as Notifications from "expo-notifications";
-import { router } from "expo-router";
 import React from "react";
 import { useScrollRef } from "@/lib/tab-to-top";
 import * as Haptics from "expo-haptics";
@@ -24,7 +23,6 @@ export default function IndexRoute() {
         }
       }}
       ref={useScrollRef()}
-      navigate={router.navigate}
       dom={{
         contentInsetAdjustmentBehavior: "automatic",
         automaticallyAdjustsScrollIndicatorInsets: true,

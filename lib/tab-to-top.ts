@@ -128,12 +128,11 @@ export function useScrollToTop(
   }, [navigation, ref, offset, route.key]);
 }
 
-export function useScrollRef() {
+export function useScrollRef<T>() {
+  const ref = React.useRef<T>(null);
   if (process.env.EXPO_OS === "web") {
-    return undefined;
+    return ref;
   }
-
-  const ref = React.useRef(null);
 
   useScrollToTop(ref);
 

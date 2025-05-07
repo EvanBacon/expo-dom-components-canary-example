@@ -2,15 +2,15 @@ import React from "react";
 import TouchableBase from "./touchable-bounce";
 import * as Haptics from "expo-haptics";
 
-export const TouchableImpact = React.forwardRef<
-  typeof TouchableBase,
-  React.ComponentProps<typeof TouchableBase> & {
-    impact?: boolean | Haptics.ImpactFeedbackStyle;
-  }
->(({ onPressIn, impact = true, ...props }, ref) => {
+export function TouchableImpact({
+  onPressIn,
+  impact = true,
+  ...props
+}: React.ComponentProps<typeof TouchableBase> & {
+  impact?: boolean | Haptics.ImpactFeedbackStyle;
+}) {
   return (
     <TouchableBase
-      ref={ref}
       activeOpacity={0.8}
       onPressIn={(...props) => {
         if (impact && process.env.EXPO_OS !== "web") {
@@ -23,4 +23,4 @@ export const TouchableImpact = React.forwardRef<
       {...props}
     />
   );
-});
+}

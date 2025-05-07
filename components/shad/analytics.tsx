@@ -38,18 +38,18 @@ import ShadLayout from "./shad-layout";
 import { useGlobalButtonHaptics } from "../global-button-haptics";
 
 export default function AnalyticsRoute({
-  navigate,
   onButtonClick,
 }: {
-  navigate: typeof import("expo-router").router["navigate"];
   dom?: import("expo/dom").DOMProps;
-  ref?: import("react").RefObject<import("react-native-webview").WebView>;
+  ref?: import("react").RefObject<
+    import("react-native-webview").WebView | null
+  >;
   onButtonClick: (size: number) => Promise<void>;
 }) {
   useGlobalButtonHaptics(onButtonClick);
 
   return (
-    <ShadLayout navigate={navigate}>
+    <ShadLayout>
       <Charts />
     </ShadLayout>
   );
@@ -69,110 +69,7 @@ function Charts() {
               </span>
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <ChartContainer
-              config={{
-                steps: {
-                  label: "Steps",
-                  color: "hsl(var(--chart-1))",
-                },
-              }}
-            >
-              <BarChart
-                accessibilityLayer
-                margin={{
-                  left: -4,
-                  right: -4,
-                }}
-                data={[
-                  {
-                    date: "2024-01-01",
-                    steps: 2000,
-                  },
-                  {
-                    date: "2024-01-02",
-                    steps: 2100,
-                  },
-                  {
-                    date: "2024-01-03",
-                    steps: 2200,
-                  },
-                  {
-                    date: "2024-01-04",
-                    steps: 1300,
-                  },
-                  {
-                    date: "2024-01-05",
-                    steps: 1400,
-                  },
-                  {
-                    date: "2024-01-06",
-                    steps: 2500,
-                  },
-                  {
-                    date: "2024-01-07",
-                    steps: 1600,
-                  },
-                ]}
-              >
-                <Bar
-                  dataKey="steps"
-                  fill="var(--color-steps)"
-                  radius={5}
-                  fillOpacity={0.6}
-                  activeBar={<Rectangle fillOpacity={0.8} />}
-                />
-                <XAxis
-                  dataKey="date"
-                  tickLine={false}
-                  axisLine={false}
-                  tickMargin={4}
-                  tickFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
-                      weekday: "short",
-                    });
-                  }}
-                />
-                <ChartTooltip
-                  defaultIndex={2}
-                  content={
-                    <ChartTooltipContent
-                      hideIndicator
-                      labelFormatter={(value) => {
-                        return new Date(value).toLocaleDateString("en-US", {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        });
-                      }}
-                    />
-                  }
-                  cursor={false}
-                />
-                <ReferenceLine
-                  y={1200}
-                  stroke="hsl(var(--muted-foreground))"
-                  strokeDasharray="3 3"
-                  strokeWidth={1}
-                >
-                  <Label
-                    position="insideBottomLeft"
-                    value="Average Steps"
-                    offset={10}
-                    fill="hsl(var(--foreground))"
-                  />
-                  <Label
-                    position="insideTopLeft"
-                    value="12,343"
-                    className="text-lg"
-                    fill="hsl(var(--foreground))"
-                    offset={10}
-                    startOffset={100}
-                  />
-                </ReferenceLine>
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
+          <CardContent></CardContent>
           <CardFooter className="flex-col items-start gap-1">
             <CardDescription>
               Over the past 7 days, you have walked{" "}
@@ -207,7 +104,7 @@ function Charts() {
             </div>
           </CardHeader>
           <CardContent className="flex flex-1 items-center">
-            <ChartContainer
+            {/* <ChartContainer
               config={{
                 resting: {
                   label: "Resting",
@@ -301,7 +198,7 @@ function Charts() {
                   cursor={false}
                 />
               </LineChart>
-            </ChartContainer>
+            </ChartContainer> */}
           </CardContent>
         </Card>
       </div>
@@ -321,7 +218,7 @@ function Charts() {
                   steps/day
                 </span>
               </div>
-              <ChartContainer
+              {/* <ChartContainer
                 config={{
                   steps: {
                     label: "Steps",
@@ -363,7 +260,7 @@ function Charts() {
                   <YAxis dataKey="date" type="category" tickCount={1} hide />
                   <XAxis dataKey="steps" type="number" hide />
                 </BarChart>
-              </ChartContainer>
+              </ChartContainer> */}
             </div>
             <div className="grid auto-rows-min gap-2">
               <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
@@ -372,7 +269,7 @@ function Charts() {
                   steps/day
                 </span>
               </div>
-              <ChartContainer
+              {/* <ChartContainer
                 config={{
                   steps: {
                     label: "Steps",
@@ -414,7 +311,7 @@ function Charts() {
                   <YAxis dataKey="date" type="category" tickCount={1} hide />
                   <XAxis dataKey="steps" type="number" hide />
                 </BarChart>
-              </ChartContainer>
+              </ChartContainer> */}
             </div>
           </CardContent>
         </Card>

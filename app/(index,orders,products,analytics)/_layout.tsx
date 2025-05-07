@@ -1,4 +1,4 @@
-import { router, Link, Slot, Stack } from "expo-router";
+import { Link, Slot, Stack } from "expo-router";
 import { Image } from "react-native";
 import { TouchableImpact } from "@/components/touchable-impact";
 
@@ -9,7 +9,7 @@ import { ShadLayoutFull } from "@/components/shad/shad-layout";
 export default function RootLayout({ segment }: { segment: string }) {
   if (process.env.EXPO_OS === "web") {
     return (
-      <ShadLayoutFull navigate={router.navigate}>
+      <ShadLayoutFull>
         <Slot />
       </ShadLayoutFull>
     );

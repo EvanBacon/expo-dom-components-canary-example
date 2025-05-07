@@ -35,7 +35,7 @@ import {
 } from "lucide-react";
 import React from "react";
 
-import { Link, useSegments } from "@/lib/router-with-dom";
+import { Link, useSegments } from "expo-router";
 import { IS_DOM } from "expo/dom";
 
 const baseUrl = IS_DOM ? process.env.EXPO_DOM_BASE_URL : "";

@@ -1,14 +1,12 @@
 import Orders from "@/components/shad/orders";
-import { router } from "expo-router";
 import { useScrollRef } from "@/lib/tab-to-top";
 import * as Haptics from "expo-haptics";
 
 export default function OrdersRoute() {
-  const ref = useScrollRef();
+  const ref = useScrollRef<import("react-native-webview").WebView>();
   return (
     <Orders
       ref={ref}
-      navigate={router.navigate}
       dom={{
         contentInsetAdjustmentBehavior: "automatic",
         automaticallyAdjustsScrollIndicatorInsets: true,
