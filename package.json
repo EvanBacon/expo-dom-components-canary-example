@@ -8,7 +8,7 @@
     "ios": "expo run:ios",
     "lint": "expo lint",
     "predeploy:web": "expo export -p web",
-    "deploy:web": "netlify deploy --dir dist",
+    "deploy:web": "eas deploy",
     "prepare": "npx patch-package"
   },
   "dependencies": {

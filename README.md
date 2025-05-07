@@ -12,5 +12,5 @@ This demo has a template UI from:
 
 Try it now:
 
-- Web https://domcom.netlify.app/
+- Web https://usedom.expo.app/
 - Test Flight (limited demo) https://testflight.apple.com/join/W2r9d14u
