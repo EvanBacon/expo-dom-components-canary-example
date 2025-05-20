@@ -15,4 +15,4 @@ This demo has a template UI from:
 Try it now:
 
 - Web https://usedom.expo.app/
-- Test Flight (limited demo) https://testflight.apple.com/join/W2r9d14u
+- Test Flight (limited demo) https://usedom.expo.app/x/ios (https://testflight.apple.com/join/W2r9d14u)
